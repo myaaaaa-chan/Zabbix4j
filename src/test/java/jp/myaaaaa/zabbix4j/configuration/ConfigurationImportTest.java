@@ -1,27 +1,3 @@
-/*
- * The MIT License (MIT)
- *
- * Copyright (c) 2014 Suguru Yajima
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
-
 package jp.myaaaaa.zabbix4j.configuration;
 
 import jp.myaaaaa.zabbix4j.ZabbixApiException;
@@ -58,7 +34,7 @@ public class ConfigurationImportTest extends ZabbixApiTestBase {
         deleteDummy(id);
 
         ConfigurationImportRequest request = new ConfigurationImportRequest();
-        ConfigurationImportRequest.Params params =request.getParams();
+        ConfigurationImportRequest.Params params = request.getParams();
         params.setFormat(Configuration.FORMAT.XML.value);
         params.setSource(xml);
         Rules rules = new Rules();
@@ -68,7 +44,7 @@ public class ConfigurationImportTest extends ZabbixApiTestBase {
         rules.setHosts(hosts);
         params.setRules(rules);
 
-        ConfigurationImportResponse response= zabbixApi.configuration().imports(request);
+        ConfigurationImportResponse response = zabbixApi.configuration().imports(request);
         assertNotNull(response);
 
         assertTrue(response.getResult());
@@ -89,7 +65,7 @@ public class ConfigurationImportTest extends ZabbixApiTestBase {
         return response.getResult();
     }
 
-    private int createDummyHost () throws Exception {
+    private int createDummyHost() throws Exception {
 
         HostCreateRequest request = new HostCreateRequest();
         HostCreateRequest.Params params = request.getParams();

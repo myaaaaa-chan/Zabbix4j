@@ -22,34 +22,21 @@
  * SOFTWARE.
  */
 
-package jp.myaaaaa.zabbix4j.event;
-
-import jp.myaaaaa.zabbix4j.ZabbixApiTestBase;
-import org.junit.Test;
-
-import static org.junit.Assert.assertNotNull;
-
+package jp.myaaaaa.zabbix4j.utils.json;
 /**
- * Created by Suguru Yajima on 2014/05/28.
+ * The <code>JSONString</code> interface allows a <code>toJSONString()</code>
+ * method so that a class can change the behavior of
+ * <code>JSONObject.toString()</code>, <code>JSONArray.toString()</code>,
+ * and <code>JSONWriter.value(</code>Object<code>)</code>. The
+ * <code>toJSONString</code> method will be used instead of the default behavior
+ * of using the Object's <code>toString()</code> method and quoting the result.
  */
-public class EventGetTest extends ZabbixApiTestBase {
-
-    public EventGetTest() {
-        super();
-
-    }
-
-    @Test
-    public void testGet1() throws Exception {
-
-        EventGetRequest request = new EventGetRequest();
-        EventGetRequest.Params params = request.getParams();
-        params.setEventid_from(1);
-        params.setEventid_till(10100);
-
-        EventGetResponse response = zabbixApi.event().get(request);
-        assertNotNull(response);
-
-        logger.debug(getGson().toJson(response));
-    }
+public interface JSONString {
+    /**
+     * The <code>toJSONString</code> method allows a class to produce its own JSON
+     * serialization.
+     *
+     * @return A strictly syntactically correct JSON text.
+     */
+    public String toJSONString();
 }

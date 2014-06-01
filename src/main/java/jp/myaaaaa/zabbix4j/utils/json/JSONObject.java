@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package org.json;
+package jp.myaaaaa.zabbix4j.utils.json;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -164,8 +164,8 @@ public class JSONObject {
      *            A JSONObject.
      * @param names
      *            An array of strings.
-     * @throws org.json.JSONException
-     * @exception org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
+     * @exception jp.myaaaaa.zabbix4j.utils.json.JSONException
      *                If a value is a non-finite number or if a name is
      *                duplicated.
      */
@@ -184,7 +184,7 @@ public class JSONObject {
      *
      * @param x
      *            A JSONTokener object containing the source string.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             If there is a syntax error in the source string or a
      *             duplicated key.
      */
@@ -240,7 +240,7 @@ public class JSONObject {
      * @param map
      *            A map object that can be used to initialize the contents of
      *            the JSONObject.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      */
     public JSONObject(Map<String, Object> map) {
         this.map = new HashMap<String, Object>();
@@ -316,7 +316,7 @@ public class JSONObject {
      *            A string beginning with <code>{</code>&nbsp;<small>(left
      *            brace)</small> and ending with <code>}</code>
      *            &nbsp;<small>(right brace)</small>.
-     * @exception org.json.JSONException
+     * @exception jp.myaaaaa.zabbix4j.utils.json.JSONException
      *                If there is a syntax error in the source string or a
      *                duplicated key.
      */
@@ -331,7 +331,7 @@ public class JSONObject {
      *            The ResourceBundle base name.
      * @param locale
      *            The Locale to load the ResourceBundle for.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             If any JSONExceptions are detected.
      */
     public JSONObject(String baseName, Locale locale) throws JSONException {
@@ -383,7 +383,7 @@ public class JSONObject {
      * @param value
      *            An object to be accumulated under the key.
      * @return this.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             If the value is an invalid number or if the key is null.
      */
     public JSONObject accumulate(String key, Object value) throws JSONException {
@@ -412,7 +412,7 @@ public class JSONObject {
      * @param value
      *            An object to be accumulated under the key.
      * @return this.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             If the key is null or if the current value associated with
      *             the key is not a JSONArray.
      */
@@ -464,7 +464,7 @@ public class JSONObject {
      * @param key
      *            A key string.
      * @return The object associated with the key.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             if the key is not found.
      */
     public Object get(String key) throws JSONException {
@@ -484,7 +484,7 @@ public class JSONObject {
      * @param key
      *            A key string.
      * @return The truth.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             if the value is not a Boolean or the String "true" or
      *             "false".
      */
@@ -509,7 +509,7 @@ public class JSONObject {
      * @param key
      *            A key string.
      * @return The numeric value.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             if the key is not found or if the value is not a Number
      *             object and cannot be converted to a number.
      */
@@ -530,7 +530,7 @@ public class JSONObject {
      * @param key
      *            A key string.
      * @return The integer value.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             if the key is not found or if the value cannot be converted
      *             to an integer.
      */
@@ -551,7 +551,7 @@ public class JSONObject {
      * @param key
      *            A key string.
      * @return A JSONArray which is the value.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             if the key is not found or if the value is not a JSONArray.
      */
     public JSONArray getJSONArray(String key) throws JSONException {
@@ -569,7 +569,7 @@ public class JSONObject {
      * @param key
      *            A key string.
      * @return A JSONObject which is the value.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             if the key is not found or if the value is not a JSONObject.
      */
     public JSONObject getJSONObject(String key) throws JSONException {
@@ -587,7 +587,7 @@ public class JSONObject {
      * @param key
      *            A key string.
      * @return The long value.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             if the key is not found or if the value cannot be converted
      *             to a long.
      */
@@ -650,7 +650,7 @@ public class JSONObject {
      * @param key
      *            A key string.
      * @return A string which is the value.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             if there is no string value for the key.
      */
     public String getString(String key) throws JSONException {
@@ -680,7 +680,7 @@ public class JSONObject {
      * @param key
      *            A key string.
      * @return this.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             If there is already a property with this name that is not an
      *             Integer, Long, Double, or Float.
      */
@@ -764,7 +764,7 @@ public class JSONObject {
      * @param number
      *            A Number
      * @return A String.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             If n is a non-finite number.
      */
     public static String numberToString(Number number) throws JSONException {
@@ -1034,7 +1034,7 @@ public class JSONObject {
      * @param value
      *            A boolean which is the value.
      * @return this.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             If the key is null.
      */
     public JSONObject put(String key, boolean value) throws JSONException {
@@ -1051,7 +1051,7 @@ public class JSONObject {
      * @param value
      *            A Collection value.
      * @return this.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      */
     public JSONObject put(String key, Collection<Object> value) throws JSONException {
         this.put(key, new JSONArray(value));
@@ -1066,7 +1066,7 @@ public class JSONObject {
      * @param value
      *            A double which is the value.
      * @return this.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             If the key is null or if the number is invalid.
      */
     public JSONObject put(String key, double value) throws JSONException {
@@ -1082,7 +1082,7 @@ public class JSONObject {
      * @param value
      *            An int which is the value.
      * @return this.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             If the key is null.
      */
     public JSONObject put(String key, int value) throws JSONException {
@@ -1098,7 +1098,7 @@ public class JSONObject {
      * @param value
      *            A long which is the value.
      * @return this.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             If the key is null.
      */
     public JSONObject put(String key, long value) throws JSONException {
@@ -1115,7 +1115,7 @@ public class JSONObject {
      * @param value
      *            A Map value.
      * @return this.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      */
     public JSONObject put(String key, Map<String, Object> value) throws JSONException {
         this.put(key, new JSONObject(value));
@@ -1133,7 +1133,7 @@ public class JSONObject {
      *            types: Boolean, Double, Integer, JSONArray, JSONObject, Long,
      *            String, or the JSONObject.NULL object.
      * @return this.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             If the value is non-finite number or if the key is null.
      */
     public JSONObject put(String key, Object value) throws JSONException {
@@ -1157,7 +1157,7 @@ public class JSONObject {
      * @param key string
      * @param value object
      * @return this.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             if the key is a duplicate
      */
     public JSONObject putOnce(String key, Object value) throws JSONException {
@@ -1181,7 +1181,7 @@ public class JSONObject {
      *            types: Boolean, Double, Integer, JSONArray, JSONObject, Long,
      *            String, or the JSONObject.NULL object.
      * @return this.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             If the value is a non-finite number.
      */
     public JSONObject putOpt(String key, Object value) throws JSONException {
@@ -1382,7 +1382,7 @@ public class JSONObject {
      *
      * @param o
      *            The object to test.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             If o is a non-finite number.
      */
     public static void testValidity(Object o) throws JSONException {
@@ -1409,7 +1409,7 @@ public class JSONObject {
      *            A JSONArray containing a list of key strings. This determines
      *            the sequence of the values in the result.
      * @return A JSONArray of values.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             If any of the values are non-finite numbers.
      */
     public JSONArray toJSONArray(JSONArray names) throws JSONException {
@@ -1454,7 +1454,7 @@ public class JSONObject {
      *         of the object, beginning with <code>{</code>&nbsp;<small>(left
      *         brace)</small> and ending with <code>}</code>&nbsp;<small>(right
      *         brace)</small>.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             If the object contains an invalid number.
      */
     public String toString(int indentFactor) throws JSONException {
@@ -1485,7 +1485,7 @@ public class JSONObject {
      *         object, beginning with <code>{</code>&nbsp;<small>(left
      *         brace)</small> and ending with <code>}</code>&nbsp;<small>(right
      *         brace)</small>.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *             If the value is or contains an invalid number.
      */
     public static String valueToString(Object value) throws JSONException {
@@ -1580,7 +1580,7 @@ public class JSONObject {
      * Warning: This method assumes that the data structure is acyclical.
      *
      * @return The writer.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      */
     public Writer write(Writer writer) throws JSONException {
         return this.write(writer, 0, 0);
@@ -1632,7 +1632,7 @@ public class JSONObject {
      * Warning: This method assumes that the data structure is acyclical.
      *
      * @return The writer.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      */
     Writer write(Writer writer, int indentFactor, int indent)
             throws JSONException {

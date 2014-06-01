@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package org.json;
+package jp.myaaaaa.zabbix4j.utils.json;
 
 import java.io.StringWriter;
 

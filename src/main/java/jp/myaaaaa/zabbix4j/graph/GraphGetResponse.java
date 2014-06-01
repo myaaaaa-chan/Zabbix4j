@@ -22,34 +22,29 @@
  * SOFTWARE.
  */
 
-package jp.myaaaaa.zabbix4j.event;
+package jp.myaaaaa.zabbix4j.graph;
 
-import jp.myaaaaa.zabbix4j.ZabbixApiTestBase;
-import org.junit.Test;
+import jp.myaaaaa.zabbix4j.ZabbixApiResponse;
 
-import static org.junit.Assert.assertNotNull;
+import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/28.
+ * Created by Suguru Yajima on 2014/05/31.
  */
-public class EventGetTest extends ZabbixApiTestBase {
+public class GraphGetResponse extends ZabbixApiResponse {
 
-    public EventGetTest() {
+
+    private List<GraphObject> result;
+
+    public GraphGetResponse() {
         super();
-
     }
 
-    @Test
-    public void testGet1() throws Exception {
+    public List<GraphObject> getResult() {
+        return result;
+    }
 
-        EventGetRequest request = new EventGetRequest();
-        EventGetRequest.Params params = request.getParams();
-        params.setEventid_from(1);
-        params.setEventid_till(10100);
-
-        EventGetResponse response = zabbixApi.event().get(request);
-        assertNotNull(response);
-
-        logger.debug(getGson().toJson(response));
+    public void setResult(List<GraphObject> result) {
+        this.result = result;
     }
 }

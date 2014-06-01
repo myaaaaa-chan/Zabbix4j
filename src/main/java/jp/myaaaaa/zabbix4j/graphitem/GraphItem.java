@@ -22,34 +22,38 @@
  * SOFTWARE.
  */
 
-package jp.myaaaaa.zabbix4j.event;
+package jp.myaaaaa.zabbix4j.graphitem;
 
-import jp.myaaaaa.zabbix4j.ZabbixApiTestBase;
-import org.junit.Test;
-
-import static org.junit.Assert.assertNotNull;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import jp.myaaaaa.zabbix4j.ZabbixApiException;
+import jp.myaaaaa.zabbix4j.ZabbixApiMethod;
 
 /**
- * Created by Suguru Yajima on 2014/05/28.
+ * Created by Suguru Yajima on 2014/06/01.
  */
-public class EventGetTest extends ZabbixApiTestBase {
+public class GraphItem extends ZabbixApiMethod {
 
-    public EventGetTest() {
-        super();
-
+    public GraphItem(String apiUrl, String auth) {
+        super(apiUrl, auth);
     }
 
-    @Test
-    public void testGet1() throws Exception {
+    public GraphItemGetResponse get(GraphItemGetRequest request) throws ZabbixApiException {
+        GraphItemGetResponse response = null;
+        request.setAuth(auth);
 
-        EventGetRequest request = new EventGetRequest();
-        EventGetRequest.Params params = request.getParams();
-        params.setEventid_from(1);
-        params.setEventid_till(10100);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        EventGetResponse response = zabbixApi.event().get(request);
-        assertNotNull(response);
+        String requestJson = gson.toJson(request);
 
-        logger.debug(getGson().toJson(response));
+        try {
+            String responseJson = sendRequest(requestJson);
+
+            response = gson.fromJson(responseJson, GraphItemGetResponse.class);
+        } catch (ZabbixApiException e) {
+            throw new ZabbixApiException(e);
+        }
+
+        return response;
     }
 }

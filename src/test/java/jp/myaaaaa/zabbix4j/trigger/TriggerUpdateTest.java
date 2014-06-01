@@ -59,7 +59,7 @@ public class TriggerUpdateTest extends ZabbixApiTestBase {
         assertEquals(expectedid, actualid);
     }
 
-    private Integer createDummyTrigger () throws ZabbixApiException {
+    private Integer createDummyTrigger() throws ZabbixApiException {
 
         TriggerCreateRequest request = new TriggerCreateRequest();
         TriggerCreateRequest.Params params = request.getParams();

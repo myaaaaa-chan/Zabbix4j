@@ -30,8 +30,8 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import jp.myaaaaa.zabbix4j.utils.json.JSONException;
+import jp.myaaaaa.zabbix4j.utils.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

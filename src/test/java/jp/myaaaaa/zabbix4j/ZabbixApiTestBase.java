@@ -31,8 +31,6 @@ import org.slf4j.LoggerFactory;
 
 import static org.junit.Assert.fail;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by Suguru Yajima on 2014/04/27.
  */
@@ -48,7 +46,7 @@ public class ZabbixApiTestBase {
         login(user, password);
     }
 
-    protected void login (String user, String password) {
+    protected void login(String user, String password) {
         try {
             zabbixApi = new ZabbixApi("http://192.168.200.10/zabbix/api_jsonrpc.php");
             zabbixApi.login(user, password);
@@ -57,7 +55,7 @@ public class ZabbixApiTestBase {
         }
     }
 
-    protected Gson getGson () {
+    protected Gson getGson() {
 
         return new GsonBuilder().setPrettyPrinting().create();
     }

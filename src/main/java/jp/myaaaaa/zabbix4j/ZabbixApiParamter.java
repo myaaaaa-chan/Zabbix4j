@@ -138,4 +138,8 @@ public class ZabbixApiParamter {
             this.value = value;
         }
     }
+
+    public static enum QUERY {
+        count, shorten, refer, extend;
+    }
 }

@@ -98,7 +98,7 @@ public class HostgroupTest extends ZabbixApiTestBase {
     }
 
     @Test
-    public void testHostgroup () {
+    public void testHostgroup() {
 
         testCreate1();
 
@@ -121,7 +121,7 @@ public class HostgroupTest extends ZabbixApiTestBase {
             assertNotNull(hostgroupCreateResponse.getResult().getGroupids());
 
             assertTrue(0 < hostgroupCreateResponse.getResult().getGroupids().size());
-        }catch (ZabbixApiException e) {
+        } catch (ZabbixApiException e) {
             fail(e.getMessage());
         }
     }
@@ -143,7 +143,7 @@ public class HostgroupTest extends ZabbixApiTestBase {
 
             int groupId = response.getResult().getGroupids().get(0);
             assertEquals(targetGroupid, groupId);
-        }catch (ZabbixApiException e) {
+        } catch (ZabbixApiException e) {
             fail(e.getMessage());
         }
     }
@@ -164,7 +164,7 @@ public class HostgroupTest extends ZabbixApiTestBase {
             int groupId = response.getResult().getGroupids().get(0);
 
             assertEquals(targetGroupid, groupId);
-        }catch (ZabbixApiException e) {
+        } catch (ZabbixApiException e) {
             fail(e.getMessage());
         }
     }

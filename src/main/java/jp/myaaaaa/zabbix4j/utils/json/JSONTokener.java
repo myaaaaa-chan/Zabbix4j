@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package org.json;
+package jp.myaaaaa.zabbix4j.utils.json;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -183,7 +183,7 @@ public class JSONTokener {
      * character.
      * @param c The character to match.
      * @return The character.
-     * @throws org.json.JSONException if the character does not match.
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException if the character does not match.
      */
     public char next(char c) throws JSONException {
         char n = this.next();
@@ -200,7 +200,7 @@ public class JSONTokener {
      *
      * @param n     The number of characters to take.
      * @return      A string of n characters.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      *   Substring bounds error if there are not
      *   n characters remaining in the source string.
      */
@@ -225,7 +225,7 @@ public class JSONTokener {
 
     /**
      * Get the next char in the string, skipping whitespace.
-     * @throws org.json.JSONException
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException
      * @return  A character, or 0 if there are no more characters.
      */
     public char nextClean() throws JSONException {
@@ -247,7 +247,7 @@ public class JSONTokener {
      *      <code>"</code>&nbsp;<small>(double quote)</small> or
      *      <code>'</code>&nbsp;<small>(single quote)</small>.
      * @return      A String.
-     * @throws org.json.JSONException Unterminated string.
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException Unterminated string.
      */
     public String nextString(char quote) throws JSONException {
         char c;
@@ -347,7 +347,7 @@ public class JSONTokener {
     /**
      * Get the next value. The value can be a Boolean, Double, Integer,
      * JSONArray, JSONObject, Long, or String, or the JSONObject.NULL object.
-     * @throws org.json.JSONException If syntax error.
+     * @throws jp.myaaaaa.zabbix4j.utils.json.JSONException If syntax error.
      *
      * @return An object.
      */

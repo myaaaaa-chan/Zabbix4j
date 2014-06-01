@@ -33,6 +33,7 @@ import jp.myaaaaa.zabbix4j.discoveredservice.DiscoveredService;
 import jp.myaaaaa.zabbix4j.discoveryrule.DiscoveryRule;
 import jp.myaaaaa.zabbix4j.event.Event;
 import jp.myaaaaa.zabbix4j.graph.Graph;
+import jp.myaaaaa.zabbix4j.graphitem.GraphItem;
 import jp.myaaaaa.zabbix4j.host.Host;
 import jp.myaaaaa.zabbix4j.hostgroup.Hostgroup;
 import jp.myaaaaa.zabbix4j.hostinteface.HostInterface;
@@ -143,4 +144,11 @@ public class ZabbixApi {
 
         return new Graph(this.apiUrl, this.auth);
     }
+
+    public GraphItem graphItem() {
+
+        return new GraphItem(this.apiUrl, this.auth);
+    }
+
+
 }

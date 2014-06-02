@@ -3,7 +3,7 @@
 apply plugin: 'java'
 
 sourceCompatibility = 1.6
-version = '1.0'
+version = '0.0.1'
 
 repositories {
     mavenCentral()
@@ -30,4 +30,8 @@ task copyDependencies << {
         from configurations.compile
         into './lib'
     }
+}
+
+jar {
+    from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
 }

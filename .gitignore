@@ -1,6 +1,11 @@
 out
 lib
 .idea
+.gradle
 Zabbix4j.iml
-build
 logs
+build/reports
+build/resources
+build/classes
+build/test-results
+build/tmp

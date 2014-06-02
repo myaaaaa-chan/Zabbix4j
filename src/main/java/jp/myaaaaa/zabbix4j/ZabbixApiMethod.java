@@ -72,12 +72,12 @@ public class ZabbixApiMethod {
             throw new ZabbixApiException("HTTP Request Error");
         }
 
-        // HTTP エラー処理
+        // HTTP status error
         if (httpResponse.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
             throw new ZabbixApiException("HTTP Error : " + responseBody);
         }
 
-        // JSON Objectの取り出し
+        // response message to JSON Object
         JSONObject responseJson;
         try {
             responseJson = new JSONObject(responseBody);
@@ -85,7 +85,7 @@ public class ZabbixApiMethod {
             throw new ZabbixApiException(e.getMessage());
         }
 
-        // APIエラー処理
+        // API error
         if (responseJson.has("error")) {
             String message;
             try {
@@ -96,7 +96,6 @@ public class ZabbixApiMethod {
             message += "\nRequest:" + requestJson.toString();
             throw new ZabbixApiException(message);
         }
-
 
         logger.debug("response json is \n" + responseBody);
 

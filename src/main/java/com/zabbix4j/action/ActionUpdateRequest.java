@@ -27,7 +27,7 @@ package com.zabbix4j.action;
 import com.zabbix4j.ZabbixApiRequest;
 
 /**
- * Created by Suguru Yajima on 2014/05/20.
+ * @author Suguru Yajima on 2014/05/20.
  */
 public class ActionUpdateRequest extends ZabbixApiRequest {
 

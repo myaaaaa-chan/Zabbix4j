@@ -25,7 +25,7 @@
 package com.zabbix4j.action;
 
 /**
- * Created by Suguru Yajima on 2014/05/19.
+ * @author Suguru Yajima on 2014/05/19.
  */
 public class OperationCondition {
 

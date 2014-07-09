@@ -39,7 +39,7 @@ public class ActionUpdateTest extends ZabbixApiTestBase {
     private Integer createDummyAction() throws ZabbixApiException {
 
         ActionCreateRequest request = new ActionCreateRequest();
-        ActionCreateRequest.Params params = request.getParams();
+        ActionCreateRequest.Params params = request.createParam();
         params.setName("action update test1");
         params.setEventsource(0);
         params.setEvaltype(0);

@@ -1,23 +1,20 @@
 package com.zabbix4j.action;
 
+import com.zabbix4j.ZabbixApi;
 import com.zabbix4j.ZabbixApiException;
-import com.zabbix4j.ZabbixApiTestBase;
-import org.junit.Test;
+import com.zabbix4j.ZabbixApiTestDummyMethodBase;
 
 import java.util.Date;
 
-import static org.junit.Assert.assertNotNull;
-
 /**
- * Created by Suguru Yajima on 2014/05/20.
+ * @author yajima 2014
  */
-public class ActionCreateTest extends ZabbixApiTestBase {
-    public ActionCreateTest() {
-        super();
+public class DummyAction extends ZabbixApiTestDummyMethodBase {
+    public DummyAction(ZabbixApi zabbixApi) {
+        super(zabbixApi);
     }
 
-    @Test
-    public void testCreate1() throws Exception {
+    public Integer create() throws ZabbixApiException {
         final String hostId = "10084";
 
         ActionCreateRequest request = new ActionCreateRequest();
@@ -55,21 +52,9 @@ public class ActionCreateTest extends ZabbixApiTestBase {
         param.addActionOperation(ao);
 
         ActionCreateResponse response = zabbixApi.action().create(request);
-        assertNotNull(response);
-
-        logger.debug(getGson().toJson(response));
 
         Integer actionId = response.getResult().getActionids().get(0);
-        assertNotNull(actionId);
 
-        deleteDummy(actionId);
-    }
-
-    private void deleteDummy(Integer id) throws ZabbixApiException {
-
-        ActionDeleteRequest request = new ActionDeleteRequest();
-        request.getParams().add(id);
-
-        ActionDeleteResponse response = zabbixApi.action().delete(request);
+        return actionId;
     }
 }

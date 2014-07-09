@@ -30,7 +30,7 @@ import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiMethod;
 
 /**
- * Created by Suguru Yajima on 2014/05/19.
+ * @author Suguru Yajima on 2014/05/19.
  */
 public class Action extends ZabbixApiMethod {
 
@@ -57,6 +57,14 @@ public class Action extends ZabbixApiMethod {
         return response;
     }
 
+    /**
+     * This method allows to delete actions.</br>
+     * see <a hred="https://www.zabbix.com/documentation/2.2/manual/api/reference/action/delete">action.delete</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public ActionUpdateResponse update(ActionUpdateRequest request) throws ZabbixApiException {
         ActionUpdateResponse response = null;
         request.setAuth(auth);
@@ -107,6 +115,32 @@ public class Action extends ZabbixApiMethod {
             String responseJson = sendRequest(requestJson);
 
             response = gson.fromJson(responseJson, ActionGetResponse.class);
+        } catch (ZabbixApiException e) {
+            throw new ZabbixApiException(e);
+        }
+
+        return response;
+    }
+
+    /**
+     * This method checks if at least one action that matches the given filter criteria exists.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/action/exists">action.exists</a>
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
+    public ActionExistsResponse exists(ActionExistsRequest request) throws ZabbixApiException {
+        ActionExistsResponse response = null;
+        request.setAuth(auth);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson(request);
+
+        try {
+            String responseJson = sendRequest(requestJson);
+
+            response = gson.fromJson(responseJson, ActionExistsResponse.class);
         } catch (ZabbixApiException e) {
             throw new ZabbixApiException(e);
         }

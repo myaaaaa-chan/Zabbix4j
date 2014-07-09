@@ -25,37 +25,32 @@
 package com.zabbix4j.action;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/19.
+ * Response paramter of action.create
+ *
+ * @author Suguru Yajima on 2014/05/19.
  */
+@Data
 public class ActionCreateResponse extends ZabbixApiResponse {
 
     private Result result;
 
     public ActionCreateResponse() {
+        super();
     }
 
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
+    @Data
     public class Result {
 
+        public Result () {
+            super();
+        }
+
         List<Integer> actionids;
-
-        public List<Integer> getActionids() {
-            return actionids;
-        }
-
-        public void setActionids(List<Integer> actionids) {
-            this.actionids = actionids;
-        }
     }
 }

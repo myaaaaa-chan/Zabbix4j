@@ -25,13 +25,16 @@
 package com.zabbix4j.action;
 
 import com.zabbix4j.ZabbixApiRequest;
+import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/20.
+ * Request parameter for action.delete
+ * @author Suguru Yajima on 2014/05/20.
  */
+@Data
 public class ActionDeleteRequest extends ZabbixApiRequest {
 
     private List<Integer> params = new ArrayList<Integer>();
@@ -40,11 +43,7 @@ public class ActionDeleteRequest extends ZabbixApiRequest {
         setMethod("action.delete");
     }
 
-    public List<Integer> getParams() {
-        return params;
-    }
-
-    public void setParams(List<Integer> params) {
-        this.params = params;
+    public void addActionId(Integer id) {
+        params.add(id);
     }
 }

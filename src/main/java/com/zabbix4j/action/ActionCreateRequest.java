@@ -26,59 +26,54 @@ package com.zabbix4j.action;
 
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/19.
+ * Request paramter of action.create
+ *
+ * @author Suguru Yajima on 2014/05/19.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class ActionCreateRequest extends ZabbixApiRequest {
 
-    private Params params = new Params();
+    private List<Params> params = new ArrayList<Params>();
 
     public ActionCreateRequest() {
         setMethod("action.create");
     }
 
-    public Params getParams() {
-        return params;
+    public void add(Params param) {
+        params = ZbxListUtils.add(params, param);
     }
 
-    public void setParams(Params params) {
-        this.params = params;
+    public Params createParam() {
+        Params param = new Params();
+        params.add(param);
+
+        return param;
     }
 
+    @Data
     public class Params extends ActionObject {
 
         private List<ActionCondition> conditions;
         private List<ActionOperation> operations;
 
         public Params() {
+            super();
         }
 
         public void addActionConditon(ActionCondition ac) {
             conditions = ZbxListUtils.add(conditions, ac);
         }
 
-        public List<ActionCondition> getConditions() {
-            return conditions;
-        }
-
-        public void setConditions(List<ActionCondition> conditions) {
-            this.conditions = conditions;
-        }
-
-        public List<ActionOperation> getOperations() {
-            return operations;
-        }
-
-        public void setOperations(List<ActionOperation> operations) {
-            this.operations = operations;
-        }
-
         public void addActionOperation(ActionOperation ao) {
             operations = ZbxListUtils.add(operations, ao);
-
         }
     }
 }

@@ -24,57 +24,30 @@
 
 package com.zabbix4j.action;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 /**
- * Created by Suguru Yajima on 2014/05/16.
+ * The action condition object defines a condition that must be met to perform the configured action operations.It has the following properties.
+ * <br>
+ * see Zabbix Documentation
+ * <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/action/object">Action condition</a>
+ *
+ * @author Suguru Yajima on 2014/05/16.
  */
+@Data
 public class ActionCondition {
+
+    public ActionCondition() {
+        super();
+    }
 
     private Integer conditionid;
     private Integer conditiontype;
     private String value;
     private Integer actionid;
     private Integer operator;
-
-    public Integer getConditionid() {
-        return conditionid;
-    }
-
-    public void setConditionid(Integer conditionid) {
-        this.conditionid = conditionid;
-    }
-
-    public Integer getConditiontype() {
-        return conditiontype;
-    }
-
-    public void setConditiontype(Integer conditiontype) {
-        this.conditiontype = conditiontype;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    public Integer getActionid() {
-        return actionid;
-    }
-
-    public void setActionid(Integer actionid) {
-        this.actionid = actionid;
-    }
-
-    public Integer getOperator() {
-        return operator;
-    }
-
-    public void setOperator(Integer operator) {
-        this.operator = operator;
-    }
-
 
     public static enum CONDITION_TYPE_TRIGGER {
         HOST_GROUP(0), HOST(1), TRIGGER(2), TRIGGER_NAMW(3), TRIIGER_SERVERITY(4), TRIGGER_VALUE(5), TIME_PERIOD(6), HOST_TEMPLATE(13), APPLICATION(15), MAINTENANCE_STATUS(16), NODE(17);

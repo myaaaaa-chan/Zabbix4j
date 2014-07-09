@@ -25,12 +25,15 @@
 package com.zabbix4j.action;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
 
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/20.
+ * Response paramter for action.delete
+ * @author Suguru Yajima on 2014/05/20.
  */
+@Data
 public class ActionDeleteResponse extends ZabbixApiResponse {
 
     private Result result = new Result();
@@ -39,18 +42,12 @@ public class ActionDeleteResponse extends ZabbixApiResponse {
         super();
     }
 
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
+    @Data
     public class Result {
         private List<Integer> actionids;
 
         public Result() {
+            super();
         }
 
         public List<Integer> getActionids() {

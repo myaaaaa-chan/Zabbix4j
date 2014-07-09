@@ -27,30 +27,37 @@ package com.zabbix4j.alert;
 import com.zabbix4j.GetRequestCommonParams;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/21.
+ * Request parameter for alert.get
+ *
+ * @author Suguru Yajima on 2014/05/21.
  */
+@Data
+@EqualsAndHashCode(callSuper=false)
 public class AlertGetRequest extends ZabbixApiRequest {
-    private Params params = new Params();
+    private List<Params> params = new ArrayList<Params>();
 
     public AlertGetRequest() {
         setMethod("alert.get");
     }
 
-    public Params getParams() {
-        return params;
+    public Params createParam() {
+        Params param = new Params();
+        params.add(param);
+
+        return param;
     }
 
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @EqualsAndHashCode(callSuper=false)
     public class Params extends GetRequestCommonParams {
 
-        private List<Integer> alertids;
         private List<Integer> actionids;
         private List<Integer> eventids;
         private List<Integer> groupids;
@@ -63,41 +70,11 @@ public class AlertGetRequest extends ZabbixApiRequest {
         private String selectHosts;
         private String selectMediatypes;
         private String selectUsers;
+        private List<Integer> alertids;
+
 
         public Params() {
             super();
-        }
-
-        public List<Integer> getHostids() {
-            return hostids;
-        }
-
-        public void setHostids(List<Integer> hostids) {
-            this.hostids = hostids;
-        }
-
-        public String getSelectHosts() {
-            return selectHosts;
-        }
-
-        public void setSelectHosts(String selectHosts) {
-            this.selectHosts = selectHosts;
-        }
-
-        public String getSelectMediatypes() {
-            return selectMediatypes;
-        }
-
-        public void setSelectMediatypes(String selectMediatypes) {
-            this.selectMediatypes = selectMediatypes;
-        }
-
-        public String getSelectUsers() {
-            return selectUsers;
-        }
-
-        public void setSelectUsers(String selectUsers) {
-            this.selectUsers = selectUsers;
         }
 
         public void addAlertId(Integer id) {
@@ -112,80 +89,8 @@ public class AlertGetRequest extends ZabbixApiRequest {
             eventids = ZbxListUtils.add(eventids, id);
         }
 
-        public void add(Integer id) {
+        public void addGroupId(Integer id) {
             groupids = ZbxListUtils.add(groupids, id);
-        }
-
-        public List<Integer> getAlertids() {
-            return alertids;
-        }
-
-        public void setAlertids(List<Integer> alertids) {
-            this.alertids = alertids;
-        }
-
-        public List<Integer> getActionids() {
-            return actionids;
-        }
-
-        public void setActionids(List<Integer> actionids) {
-            this.actionids = actionids;
-        }
-
-        public List<Integer> getEventids() {
-            return eventids;
-        }
-
-        public void setEventids(List<Integer> eventids) {
-            this.eventids = eventids;
-        }
-
-        public List<Integer> getGroupids() {
-            return groupids;
-        }
-
-        public void setGroupids(List<Integer> groupids) {
-            this.groupids = groupids;
-        }
-
-        public List<Integer> getMediatypeids() {
-            return mediatypeids;
-        }
-
-        public void setMediatypeids(List<Integer> mediatypeids) {
-            this.mediatypeids = mediatypeids;
-        }
-
-        public List<Integer> getTriggerids() {
-            return triggerids;
-        }
-
-        public void setTriggerids(List<Integer> triggerids) {
-            this.triggerids = triggerids;
-        }
-
-        public List<Integer> getUserids() {
-            return userids;
-        }
-
-        public void setUserids(List<Integer> userids) {
-            this.userids = userids;
-        }
-
-        public Long getTime_from() {
-            return time_from;
-        }
-
-        public void setTime_from(Long time_from) {
-            this.time_from = time_from;
-        }
-
-        public Long getTime_till() {
-            return time_till;
-        }
-
-        public void setTime_till(Long time_till) {
-            this.time_till = time_till;
         }
 
         public void addMediaTypeId(Integer id) {
@@ -203,5 +108,7 @@ public class AlertGetRequest extends ZabbixApiRequest {
         public void addHostId(Integer id) {
             hostids = ZbxListUtils.add(hostids, id);
         }
+
+
     }
 }

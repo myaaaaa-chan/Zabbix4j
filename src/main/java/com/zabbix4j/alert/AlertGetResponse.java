@@ -25,31 +25,23 @@
 package com.zabbix4j.alert;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/21.
+ * Response paramter for alert.get
+ *
+ * @author Suguru Yajima on 2014/05/21.
  */
+@Data
+@EqualsAndHashCode(callSuper=false)
 public class AlertGetResponse extends ZabbixApiResponse {
-    private List<Result> result = new ArrayList<Result>();
+    private List<AlertObject> result = new ArrayList<AlertObject>();
 
     public AlertGetResponse() {
         super();
-    }
-
-    public List<Result> getResult() {
-        return result;
-    }
-
-    public void setResult(List<Result> result) {
-        this.result = result;
-    }
-
-    public class Result extends AlertObject {
-        public Result() {
-            super();
-        }
     }
 }

@@ -24,11 +24,16 @@
 
 package com.zabbix4j.alert;
 
+import lombok.Data;
+
 import java.util.Date;
 
 /**
- * Created by Suguru Yajima on 2014/05/21.
+ * The following objects are directly related to the alert API.
+ *
+ * @author Suguru Yajima on 2014/05/21.
  */
+@Data
 public class AlertObject {
 
     private Integer alertid;
@@ -47,6 +52,7 @@ public class AlertObject {
     private Integer userid;
 
     public AlertObject() {
+        super();
     }
 
     public Date getClockByDate() {
@@ -57,117 +63,6 @@ public class AlertObject {
         return null;
     }
 
-    public Integer getAlertid() {
-        return alertid;
-    }
-
-    public void setAlertid(Integer alertid) {
-        this.alertid = alertid;
-    }
-
-    public Integer getActionid() {
-        return actionid;
-    }
-
-    public void setActionid(Integer actionid) {
-        this.actionid = actionid;
-    }
-
-    public Integer getAlerttype() {
-        return alerttype;
-    }
-
-    public void setAlerttype(Integer alerttype) {
-        this.alerttype = alerttype;
-    }
-
-    public Long getClock() {
-        return clock;
-    }
-
-    public void setClock(Long clock) {
-        this.clock = clock;
-    }
-
-    public String getError() {
-        return error;
-    }
-
-    public void setError(String error) {
-        this.error = error;
-    }
-
-    public Integer getEsc_step() {
-        return esc_step;
-    }
-
-    public void setEsc_step(Integer esc_step) {
-        this.esc_step = esc_step;
-    }
-
-    public Integer getEventid() {
-        return eventid;
-    }
-
-    public void setEventid(Integer eventid) {
-        this.eventid = eventid;
-    }
-
-    public Integer getMediatypeid() {
-        return mediatypeid;
-    }
-
-    public void setMediatypeid(Integer mediatypeid) {
-        this.mediatypeid = mediatypeid;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public Integer getRetries() {
-        return retries;
-    }
-
-    public void setRetries(Integer retries) {
-        this.retries = retries;
-    }
-
-    public String getSendto() {
-        return sendto;
-    }
-
-    public void setSendto(String sendto) {
-        this.sendto = sendto;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-    public Integer getUserid() {
-        return userid;
-    }
-
-    public void setUserid(Integer userid) {
-        this.userid = userid;
-    }
 
     public static enum ALERT_TYPE {
         MESSAGE(0), REMOTE_COMMAND(1);

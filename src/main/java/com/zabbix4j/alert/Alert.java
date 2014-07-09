@@ -30,7 +30,8 @@ import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiMethod;
 
 /**
- * Created by Suguru Yajima on 2014/05/21.
+ *
+ * @author Suguru Yajima on 2014/05/21.
  */
 public class Alert extends ZabbixApiMethod {
 
@@ -38,6 +39,12 @@ public class Alert extends ZabbixApiMethod {
         super(apiUrl, auth);
     }
 
+    /**
+     * The method allows to retrieve alerts according to the given parameters.
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public AlertGetResponse get(AlertGetRequest request) throws ZabbixApiException {
         AlertGetResponse response = null;
         request.setAuth(auth);

@@ -16,10 +16,11 @@ public class AlertGetTest extends ZabbixApiTestBase {
 
     @Test
     public void testGet1() throws Exception {
+        final Integer alertId = 10112;
 
         AlertGetRequest request = new AlertGetRequest();
-        AlertGetRequest.Params params = request.getParams();
-        params.addHostId(10112);
+        AlertGetRequest.Params params = request.createParam();
+        params.addHostId(alertId);
 
         AlertGetResponse response = zabbixApi.alert().get(request);
         assertNotNull(response);

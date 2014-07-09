@@ -31,7 +31,7 @@ import com.zabbix4j.utils.ZbxListUtils;
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/20.
+ * @author Suguru Yajima on 2014/05/20.
  */
 public class ActionGetRequest extends ZabbixApiRequest {
 

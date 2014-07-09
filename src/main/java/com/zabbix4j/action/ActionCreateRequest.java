@@ -59,6 +59,7 @@ public class ActionCreateRequest extends ZabbixApiRequest {
     }
 
     @Data
+    @EqualsAndHashCode(callSuper=false)
     public class Params extends ActionObject {
 
         private List<ActionCondition> conditions;

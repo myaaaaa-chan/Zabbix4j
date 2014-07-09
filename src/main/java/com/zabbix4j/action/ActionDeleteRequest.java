@@ -26,6 +26,7 @@ package com.zabbix4j.action;
 
 import com.zabbix4j.ZabbixApiRequest;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,7 @@ import java.util.List;
  * @author Suguru Yajima on 2014/05/20.
  */
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class ActionDeleteRequest extends ZabbixApiRequest {
 
     private List<Integer> params = new ArrayList<Integer>();

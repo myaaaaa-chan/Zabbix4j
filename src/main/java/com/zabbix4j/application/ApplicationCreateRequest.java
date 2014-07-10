@@ -25,30 +25,28 @@
 package com.zabbix4j.application;
 
 import com.zabbix4j.ZabbixApiRequest;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/22.
+ * Request paramter for application.create
+ *
+ * @author Suguru Yajima on 2014/05/22.
  */
+@Data
+@EqualsAndHashCode(callSuper=false)
 public class ApplicationCreateRequest extends ZabbixApiRequest {
 
-    private Params params = new Params();
+    private List<ApplicationObject> params = new ArrayList<ApplicationObject>();
 
     public ApplicationCreateRequest() {
         setMethod("application.create");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
-    public class Params extends ApplicationObject {
-
-        public Params() {
-            super();
-        }
+    public void addApplicationObject(ApplicationObject obj) {
+        params.add(obj);
     }
 }

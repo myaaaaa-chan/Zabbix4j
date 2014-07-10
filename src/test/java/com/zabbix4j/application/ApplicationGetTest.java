@@ -21,59 +21,33 @@ public class ApplicationGetTest extends ZabbixApiTestBase {
 
     @Test
     public void testGet() throws Exception {
+        DummyApplication dummyApplication = new DummyApplication(zabbixApi);
+        Integer target1 = dummyApplication.create();
+        Integer target2 = dummyApplication.create();
 
-        ArrayList<Integer> ids = new ArrayList<Integer>();
-        ids.add(createDummy());
-        ids.add(createDummy2());
+        try {
+            ArrayList<Integer> ids = new ArrayList<Integer>();
+            ids.add(target1);
+            ids.add(target2);
 
-        Integer hostId = 10113;
-        ApplicationGetRequest request = new ApplicationGetRequest();
-        ApplicationGetRequest.Params params = request.getParams();
-        params.addHostId(hostId);
+            Integer hostId = 10113;
+            ApplicationGetRequest request = new ApplicationGetRequest();
+            ApplicationGetRequest.Params params = request.getParams();
+            params.addHostId(hostId);
 
-        ApplicationGetResponse response = zabbixApi.application().get(request);
-        assertNotNull(response);
+            ApplicationGetResponse response = zabbixApi.application().get(request);
+            assertNotNull(response);
 
-        deleteDummy(ids.get(0));
-        deleteDummy(ids.get(1));
+            List<ApplicationGetResponse.Result> resultList = response.getResult();
+            for (int i = 0; i < resultList.size(); i++) {
+                ApplicationGetResponse.Result result = resultList.get(i);
 
-        List<ApplicationGetResponse.Result> resultList = response.getResult();
-        for (int i = 0; i < resultList.size(); i++) {
-            ApplicationGetResponse.Result result = resultList.get(i);
-
-            assertNotNull(result);
-            assertEquals(hostId, result.getHostid());
+                assertNotNull(result);
+                assertEquals(hostId, result.getHostid());
+            }
+        } finally {
+            dummyApplication.delete(target1);
+            dummyApplication.delete(target2);
         }
-    }
-
-    private Integer createDummy() throws ZabbixApiException {
-        ApplicationCreateRequest request = new ApplicationCreateRequest();
-        ApplicationCreateRequest.Params params = request.getParams();
-        params.setName("Application get test");
-        params.setHostid(10113);
-
-        ApplicationCreateResponse response = zabbixApi.application().create(request);
-
-        Integer id = response.getResult().getApplicationids().get(0);
-        return id;
-    }
-
-    private Integer createDummy2() throws ZabbixApiException {
-        ApplicationCreateRequest request = new ApplicationCreateRequest();
-        ApplicationCreateRequest.Params params = request.getParams();
-        params.setName("Application get test2");
-        params.setHostid(10113);
-
-        ApplicationCreateResponse response = zabbixApi.application().create(request);
-
-        Integer id = response.getResult().getApplicationids().get(0);
-        return id;
-    }
-
-    private void deleteDummy(Integer id) throws ZabbixApiException {
-        ApplicationDeleteRequest request = new ApplicationDeleteRequest();
-        request.addParams(id);
-
-        ApplicationDeleteResponse response = zabbixApi.application().delete(request);
     }
 }

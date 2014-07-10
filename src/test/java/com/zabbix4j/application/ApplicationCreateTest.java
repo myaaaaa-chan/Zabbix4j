@@ -1,8 +1,9 @@
 package com.zabbix4j.application;
 
-import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiTestBase;
 import org.junit.Test;
+
+import java.util.Date;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -19,9 +20,10 @@ public class ApplicationCreateTest extends ZabbixApiTestBase {
     public void testCreate1() throws Exception {
 
         ApplicationCreateRequest request = new ApplicationCreateRequest();
-        ApplicationCreateRequest.Params params = request.getParams();
-        params.setName("Application crated");
-        params.setHostid(10113);
+        ApplicationObject obj = new ApplicationObject();
+        obj.setName("Application crated." + new Date().getTime());
+        obj.setHostid(10113);
+        request.addApplicationObject(obj);
 
         ApplicationCreateResponse response = zabbixApi.application().create(request);
         assertNotNull(response);
@@ -29,14 +31,7 @@ public class ApplicationCreateTest extends ZabbixApiTestBase {
         Integer id = response.getResult().getApplicationids().get(0);
         assertNotNull(id);
 
-        delete(id);
-    }
-
-    private void delete(Integer id) throws ZabbixApiException {
-
-        ApplicationDeleteRequest request = new ApplicationDeleteRequest();
-        request.addParams(id);
-
-        ApplicationDeleteResponse response = zabbixApi.application().delete(request);
+        DummyApplication dummyApplication = new DummyApplication(zabbixApi);
+        dummyApplication.delete(id);
     }
 }

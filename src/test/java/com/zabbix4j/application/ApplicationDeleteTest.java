@@ -18,8 +18,8 @@ public class ApplicationDeleteTest extends ZabbixApiTestBase {
 
     @Test
     public void testDelete() throws Exception {
-
-        Integer expect = createDummy();
+        DummyApplication dummyApplication = new DummyApplication(zabbixApi);
+        Integer expect = dummyApplication.create();
 
         ApplicationDeleteRequest request = new ApplicationDeleteRequest();
         request.addParams(expect);
@@ -29,18 +29,5 @@ public class ApplicationDeleteTest extends ZabbixApiTestBase {
 
         Integer actual = response.getResult().getApplicationids().get(0);
         assertEquals(expect, actual);
-    }
-
-    private Integer createDummy() throws ZabbixApiException {
-        ApplicationCreateRequest request = new ApplicationCreateRequest();
-        ApplicationCreateRequest.Params params = request.getParams();
-        params.setName("Application before delete");
-        params.setHostid(10113);
-
-        ApplicationCreateResponse response = zabbixApi.application().create(request);
-        assertNotNull(response);
-
-        Integer id = response.getResult().getApplicationids().get(0);
-        return id;
     }
 }

@@ -37,6 +37,12 @@ public class Application extends ZabbixApiMethod {
         super(apiUrl, auth);
     }
 
+    /**
+     * This method allows to create new applications.
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public ApplicationCreateResponse create(ApplicationCreateRequest request) throws ZabbixApiException {
         ApplicationCreateResponse response = null;
         request.setAuth(auth);

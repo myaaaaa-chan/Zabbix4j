@@ -25,12 +25,18 @@
 package com.zabbix4j.application;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/22.
+ * Response paramter for application.create
+ *
+ * @author Suguru Yajima on 2014/05/22.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class ApplicationCreateResponse extends ZabbixApiResponse {
 
     private Result result = new Result();
@@ -39,27 +45,14 @@ public class ApplicationCreateResponse extends ZabbixApiResponse {
         super();
     }
 
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
+    @Data
+    @EqualsAndHashCode(callSuper = false)
     public class Result {
 
         private List<Integer> applicationids;
 
         public Result() {
-        }
-
-        public List<Integer> getApplicationids() {
-            return applicationids;
-        }
-
-        public void setApplicationids(List<Integer> applicationids) {
-            this.applicationids = applicationids;
+            super();
         }
     }
 }

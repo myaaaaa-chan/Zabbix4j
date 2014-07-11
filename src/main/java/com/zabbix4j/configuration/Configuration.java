@@ -30,7 +30,7 @@ import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiMethod;
 
 /**
- * Created by Suguru Yajima on 2014/05/24.
+ * @author Suguru Yajima on 2014/05/24.
  */
 public class Configuration extends ZabbixApiMethod {
 
@@ -38,6 +38,14 @@ public class Configuration extends ZabbixApiMethod {
         super(apiUrl, auth);
     }
 
+    /**
+     * This method allows to export configuration data as a serialized string.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/configuration/export">configuration.export</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public ConfigurationExportResponse export(ConfigurationExportRequest request) throws ZabbixApiException {
         ConfigurationExportResponse response = null;
         request.setAuth(auth);
@@ -46,17 +54,21 @@ public class Configuration extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, ConfigurationExportResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, ConfigurationExportResponse.class);
 
         return response;
     }
 
+    /**
+     * This method allows to import configuration data from a serialized string.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/configuration/import">configuration.import</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public ConfigurationImportResponse imports(ConfigurationImportRequest request) throws ZabbixApiException {
         ConfigurationImportResponse response = null;
         request.setAuth(auth);
@@ -65,24 +77,10 @@ public class Configuration extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, ConfigurationImportResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, ConfigurationImportResponse.class);
 
         return response;
-    }
-
-    public static enum FORMAT {
-        JSON("json"), XML("xml");
-
-        public String value;
-
-        private FORMAT(String value) {
-            this.value = value;
-        }
     }
 }

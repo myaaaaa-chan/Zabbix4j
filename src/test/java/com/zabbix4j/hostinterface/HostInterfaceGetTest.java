@@ -21,11 +21,11 @@ public class HostInterfaceGetTest extends ZabbixApiTestBase {
 
     @Test
     public void testGet1() throws Exception {
-
+        final Integer hostId = 10084;
         HostInterfaceGetRequest request = new HostInterfaceGetRequest();
         HostInterfaceGetRequest.Params params = request.getParams();
         ArrayList<Integer> hostids = new ArrayList<Integer>();
-        hostids.add(10109);
+        hostids.add(hostId);
         params.setHostids(hostids);
 
         HostInterfaceGetResponse response = zabbixApi.hostInterface().get(request);

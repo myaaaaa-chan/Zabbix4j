@@ -39,6 +39,7 @@ public class Application extends ZabbixApiMethod {
 
     /**
      * This method allows to create new applications.
+     *
      * @param request
      * @return
      * @throws ZabbixApiException
@@ -51,13 +52,9 @@ public class Application extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, ApplicationCreateResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, ApplicationCreateResponse.class);
 
         return response;
     }
@@ -70,13 +67,11 @@ public class Application extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, ApplicationUpdateResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        String responseJson = sendRequest(requestJson);
+
+        response = gson.fromJson(responseJson, ApplicationUpdateResponse.class);
+
 
         return response;
     }
@@ -89,13 +84,10 @@ public class Application extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, ApplicationDeleteResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, ApplicationDeleteResponse.class);
+
 
         return response;
     }
@@ -108,13 +100,32 @@ public class Application extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, ApplicationGetResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, ApplicationGetResponse.class);
+
+        return response;
+    }
+
+    /**
+     * This method allows to simultaneously add multiple items to the given applications.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/application/massadd">application.massadd</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
+    public ApplicationMassaddResponse massadd(ApplicationMassaddRequest request) throws ZabbixApiException {
+        ApplicationMassaddResponse response = null;
+        request.setAuth(auth);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson(request);
+
+        String responseJson = sendRequest(requestJson);
+
+        response = gson.fromJson(responseJson, ApplicationMassaddResponse.class);
 
         return response;
     }

@@ -30,7 +30,7 @@ import com.zabbix4j.utils.ZbxListUtils;
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/23.
+ * @author Suguru Yajima on 2014/05/23.
  */
 public class ApplicationDeleteRequest extends ZabbixApiRequest {
 

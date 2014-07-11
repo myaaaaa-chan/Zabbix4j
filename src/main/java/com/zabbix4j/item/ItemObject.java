@@ -32,7 +32,7 @@ import com.zabbix4j.ZabbixApiParamter;
 public class ItemObject {
 
     private Integer itemid;
-    private Integer delay = ZabbixApiParamter.ITEM_DELAY_DEFAULT;
+    private Integer delay;
     private Integer hostid;
     private Integer interfaceid;
     private String key_;

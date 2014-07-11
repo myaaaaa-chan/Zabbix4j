@@ -24,15 +24,66 @@
 
 package com.zabbix4j;
 
+import com.google.gson.Gson;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 /**
  * Created by Suguru Yajima on 2014/04/25.
  */
 public class ZabbixApiException extends Exception {
-    public ZabbixApiException(String message){
+    private ZabbixApiErrorMessageObject errorMessageObject;
+    private String requestMessage;
+
+    public ZabbixApiException(String message) {
         super(message);
+
+        try {
+            Gson gson = new Gson();
+            errorMessageObject = gson.fromJson(message, ZabbixApiErrorMessageObject.class);
+        } catch (Exception e) {
+            errorMessageObject = new ZabbixApiErrorMessageObject();
+        }
     }
 
-    public ZabbixApiException(Throwable t){
+
+    public ZabbixApiException(String message, String requestMessage) {
+        super(message);
+        this.requestMessage = requestMessage;
+
+        try {
+            Gson gson = new Gson();
+            errorMessageObject = gson.fromJson(message, ZabbixApiErrorMessageObject.class);
+        } catch (Exception e) {
+            errorMessageObject = new ZabbixApiErrorMessageObject();
+        }
+    }
+
+    public ZabbixApiException(Throwable t) {
         super(t);
+    }
+
+    public String getMessage() {
+        return errorMessageObject.getMessage();
+    }
+
+    public Integer getCode() {
+        return errorMessageObject.getCode();
+    }
+
+    public String getData() {
+        return errorMessageObject.getData();
+    }
+
+    @Data
+    @EqualsAndHashCode(callSuper = false)
+    public class ZabbixApiErrorMessageObject {
+        private String message;
+        private String data;
+        private Integer code;
+
+        public ZabbixApiErrorMessageObject() {
+            super();
+        }
     }
 }

@@ -27,6 +27,7 @@ package com.zabbix4j;
 import com.google.gson.Gson;
 import com.zabbix4j.utils.json.JSONException;
 import com.zabbix4j.utils.json.JSONObject;
+import lombok.Data;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpPost;
@@ -39,6 +40,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by Suguru Yajima on 2014/04/26.
  */
+@Data
 public class ZabbixApiMethod {
 
     private static Logger logger = LoggerFactory.getLogger(ZabbixApiMethod.class);
@@ -92,12 +94,11 @@ public class ZabbixApiMethod {
         if (responseJson.has("error")) {
             String message;
             try {
-                message = "API Error : " + responseJson.getJSONObject("error").toString();
+                message = responseJson.getJSONObject("error").toString();
             } catch (JSONException e) {
                 throw new ZabbixApiException(e.getMessage());
             }
-            message += "\nRequest:" + requestJson.toString();
-            throw new ZabbixApiException(message);
+            throw new ZabbixApiException(message, requestJson.toString());
         }
 
         // check id

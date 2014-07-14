@@ -38,7 +38,14 @@ public class DiscoveredService extends ZabbixApiMethod {
         super(apiUrl, auth);
     }
 
-
+    /**
+     * The method allows to retrieve discovered services according to the given parameters.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/dservice/get">dservice.get</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public DServiceGetResponse get(DServiceGetRequest request) throws ZabbixApiException {
         DServiceGetResponse response = null;
         request.setAuth(auth);
@@ -47,17 +54,20 @@ public class DiscoveredService extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, DServiceGetResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, DServiceGetResponse.class);
 
         return response;
     }
 
+    /**
+     * This method checks if at least one discovered service that matches the given filter criteria exists.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/dservice/exists">dservice.exists</a>
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public DServiceExistResponse exist(DServiceExistRequest request) throws ZabbixApiException {
         DServiceExistResponse response = null;
         request.setAuth(auth);

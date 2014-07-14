@@ -83,4 +83,9 @@ public class Configuration extends ZabbixApiMethod {
 
         return response;
     }
+
+    public static enum FORMAT {
+        xml, json;
+    }
+
 }

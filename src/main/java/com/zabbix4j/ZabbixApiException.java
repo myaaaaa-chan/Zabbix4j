@@ -27,16 +27,21 @@ package com.zabbix4j;
 import com.google.gson.Gson;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by Suguru Yajima on 2014/04/25.
  */
 public class ZabbixApiException extends Exception {
+    private static Logger logger = LoggerFactory.getLogger(ZabbixApiException.class);
     private ZabbixApiErrorMessageObject errorMessageObject;
     private String requestMessage;
 
     public ZabbixApiException(String message) {
         super(message);
+
+        logger.error(message);
 
         try {
             Gson gson = new Gson();
@@ -51,6 +56,8 @@ public class ZabbixApiException extends Exception {
         super(message);
         this.requestMessage = requestMessage;
 
+        logger.error(message);
+        
         try {
             Gson gson = new Gson();
             errorMessageObject = gson.fromJson(message, ZabbixApiErrorMessageObject.class);

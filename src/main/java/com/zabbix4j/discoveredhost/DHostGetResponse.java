@@ -25,6 +25,7 @@
 package com.zabbix4j.discoveredhost;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
 
 import java.util.Date;
 import java.util.List;
@@ -32,6 +33,7 @@ import java.util.List;
 /**
  * Created by Suguru Yajima on 2014/05/25.
  */
+@Data
 public class DHostGetResponse extends ZabbixApiResponse {
 
     private List<Result> result;
@@ -40,18 +42,10 @@ public class DHostGetResponse extends ZabbixApiResponse {
         super();
     }
 
-    public List<Result> getResult() {
-        return result;
-    }
-
-    public void setResult(List<Result> result) {
-        this.result = result;
-    }
-
+    @Data
     public class Result {
 
         private List<Dservice> dservices;
-
         private Integer dhostid;
         private Integer druleid;
         private Integer status;
@@ -71,54 +65,6 @@ public class DHostGetResponse extends ZabbixApiResponse {
             }
 
             return null;
-        }
-
-        public List<Dservice> getDservices() {
-            return dservices;
-        }
-
-        public void setDservices(List<Dservice> dservices) {
-            this.dservices = dservices;
-        }
-
-        public Integer getDhostid() {
-            return dhostid;
-        }
-
-        public void setDhostid(Integer dhostid) {
-            this.dhostid = dhostid;
-        }
-
-        public Integer getDruleid() {
-            return druleid;
-        }
-
-        public void setDruleid(Integer druleid) {
-            this.druleid = druleid;
-        }
-
-        public Integer getStatus() {
-            return status;
-        }
-
-        public void setStatus(Integer status) {
-            this.status = status;
-        }
-
-        public Long getLastup() {
-            return lastup;
-        }
-
-        public void setLastup(Long lastup) {
-            this.lastup = lastup;
-        }
-
-        public Long getLastdown() {
-            return lastdown;
-        }
-
-        public void setLastdown(Long lastdown) {
-            this.lastdown = lastdown;
         }
     }
 }

@@ -26,12 +26,14 @@ package com.zabbix4j.discoveredhost;
 
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
+import lombok.Data;
 
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/25.
+ * @author Suguru Yajima on 2014/05/25.
  */
+@Data
 public class DHostExistRequest extends ZabbixApiRequest {
     private Params params = new Params();
 
@@ -39,31 +41,15 @@ public class DHostExistRequest extends ZabbixApiRequest {
         setMethod("dhost.exists");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
     public class Params {
         private List<Integer> dhostid;
 
         public Params() {
         }
 
-        public List<Integer> getDhostid() {
-            return dhostid;
-        }
-
-        public void setDhostid(List<Integer> dhostid) {
-            this.dhostid = dhostid;
-        }
-
         public void addDHostId(Integer id) {
             dhostid = ZbxListUtils.add(dhostid, id);
-
         }
     }
 }

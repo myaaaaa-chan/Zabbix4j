@@ -30,13 +30,20 @@ import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiMethod;
 
 /**
- * Created by Suguru Yajima on 2014/05/25.
+ * @author Suguru Yajima on 2014/05/25.
  */
 public class DiscoveredHosts extends ZabbixApiMethod {
     public DiscoveredHosts(String apiUrl, String auth) {
         super(apiUrl, auth);
     }
 
+    /**
+     * The method allows to retrieve discovered hosts according to the given parameters.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/dhost/get">dhost.get</a>
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public DHostGetResponse get(DHostGetRequest request) throws ZabbixApiException {
         DHostGetResponse response = null;
         request.setAuth(auth);
@@ -45,17 +52,20 @@ public class DiscoveredHosts extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, DHostGetResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, DHostGetResponse.class);
 
         return response;
     }
 
+    /**
+     * This method checks if at least one discovered host that matches the given filter criteria exists.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/dhost/exists">dhost.exists</a>
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public DHostExistResponse exist(DHostExistRequest request) throws ZabbixApiException {
         DHostExistResponse response = null;
         request.setAuth(auth);
@@ -64,13 +74,9 @@ public class DiscoveredHosts extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, DHostExistResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, DHostExistResponse.class);
 
         return response;
     }

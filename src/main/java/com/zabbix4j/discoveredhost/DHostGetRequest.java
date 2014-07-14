@@ -27,12 +27,14 @@ package com.zabbix4j.discoveredhost;
 import com.zabbix4j.GetRequestCommonParams;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
+import lombok.Data;
 
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/25.
+ * @author Suguru Yajima on 2014/05/25.
  */
+@Data
 public class DHostGetRequest extends ZabbixApiRequest {
 
     private Params params = new Params();
@@ -41,14 +43,7 @@ public class DHostGetRequest extends ZabbixApiRequest {
         setMethod("dhost.get");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
     public class Params extends GetRequestCommonParams {
         private List<Integer> dhostids;
         private List<Integer> druleids;
@@ -71,44 +66,5 @@ public class DHostGetRequest extends ZabbixApiRequest {
             dserviceids = ZbxListUtils.add(dserviceids, id);
         }
 
-        public List<Integer> getDhostids() {
-            return dhostids;
-        }
-
-        public void setDhostids(List<Integer> dhostids) {
-            this.dhostids = dhostids;
-        }
-
-        public List<Integer> getDruleids() {
-            return druleids;
-        }
-
-        public void setDruleids(List<Integer> druleids) {
-            this.druleids = druleids;
-        }
-
-        public List<Integer> getDserviceids() {
-            return dserviceids;
-        }
-
-        public void setDserviceids(List<Integer> dserviceids) {
-            this.dserviceids = dserviceids;
-        }
-
-        public String getSelectDRules() {
-            return selectDRules;
-        }
-
-        public void setSelectDRules(String selectDRules) {
-            this.selectDRules = selectDRules;
-        }
-
-        public String getSelectDServices() {
-            return selectDServices;
-        }
-
-        public void setSelectDServices(String selectDServices) {
-            this.selectDServices = selectDServices;
-        }
     }
 }

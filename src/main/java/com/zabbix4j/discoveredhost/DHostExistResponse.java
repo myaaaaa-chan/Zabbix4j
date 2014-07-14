@@ -25,23 +25,17 @@
 package com.zabbix4j.discoveredhost;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
 
 /**
- * Created by Suguru Yajima on 2014/05/25.
+ * @author Suguru Yajima on 2014/05/25.
  */
+@Data
 public class DHostExistResponse extends ZabbixApiResponse {
 
     private Boolean result;
 
     public DHostExistResponse() {
         super();
-    }
-
-    public Boolean getResult() {
-        return result;
-    }
-
-    public void setResult(Boolean result) {
-        this.result = result;
     }
 }

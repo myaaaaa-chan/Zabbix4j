@@ -23,8 +23,9 @@ public class DServiceExistTest extends ZabbixApiTestBase {
 
         DServiceExistResponse response = zabbixApi.discoveredService().exist(request);
         assertNotNull(response);
-        assertFalse(response.getResult());
 
         logger.debug(getGson().toJson(response));
+
+        assertFalse(response.getResult());
     }
 }

@@ -1,15 +1,16 @@
 package com.zabbix4j.host;
 
-import com.zabbix4j.ZabbixApiParamter;
-import com.zabbix4j.ZabbixApiTestDummyMethodBase;
 import com.zabbix4j.ZabbixApi;
 import com.zabbix4j.ZabbixApiException;
+import com.zabbix4j.ZabbixApiParamter;
+import com.zabbix4j.ZabbixApiTestDummyMethodBase;
 import com.zabbix4j.hostinteface.HostInterfaceGetRequest;
 import com.zabbix4j.hostinteface.HostInterfaceGetResponse;
 import com.zabbix4j.hostinteface.HostInterfaceObject;
 import com.zabbix4j.usermacro.Macro;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -46,8 +47,8 @@ public class DummyHost extends ZabbixApiTestDummyMethodBase {
         interfaces.add(hostInterface);
         params.setInterfaces(interfaces);
 
-        params.setHost("dummy host");
-        params.setName("dymmy host name");
+        params.setHost("dummy host." + new Date().getTime());
+        params.setName("dymmy host name." + new Date().getTime());
 
         HostCreateResponse response = zabbixApi.host().create(request);
 
@@ -75,7 +76,7 @@ public class DummyHost extends ZabbixApiTestDummyMethodBase {
         return response.getResult().get(0).getInterfaceid();
     }
 
-    public HostObject getHost () throws ZabbixApiException {
+    public HostObject getHost() throws ZabbixApiException {
 
         Integer targetHostId = 10108;
         HostGetRequest request = new HostGetRequest();

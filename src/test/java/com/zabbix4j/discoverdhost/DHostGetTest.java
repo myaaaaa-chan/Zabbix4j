@@ -18,10 +18,10 @@ public class DHostGetTest extends ZabbixApiTestBase {
 
     @Test
     public void testGet1() throws Exception {
-
+        final Integer hostId = 10084;
         DHostGetRequest request = new DHostGetRequest();
         DHostGetRequest.Params params = request.getParams();
-        params.addDHostId(10105);
+        params.addDHostId(hostId);
 
         DHostGetResponse response = zabbixApi.discoverdHost().get(request);
         assertNotNull(response);

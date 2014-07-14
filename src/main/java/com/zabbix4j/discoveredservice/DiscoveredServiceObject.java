@@ -24,11 +24,14 @@
 
 package com.zabbix4j.discoveredservice;
 
+import lombok.Data;
+
 import java.util.Date;
 
 /**
  * Created by Suguru Yajima on 2014/05/25.
  */
+@Data
 public class DiscoveredServiceObject {
 
     private Integer dserviceid;
@@ -61,102 +64,6 @@ public class DiscoveredServiceObject {
         }
 
         return null;
-    }
-
-    public Integer getDserviceid() {
-        return dserviceid;
-    }
-
-    public void setDserviceid(Integer dserviceid) {
-        this.dserviceid = dserviceid;
-    }
-
-    public Integer getDcheckid() {
-        return dcheckid;
-    }
-
-    public void setDcheckid(Integer dcheckid) {
-        this.dcheckid = dcheckid;
-    }
-
-    public Integer getDhostid() {
-        return dhostid;
-    }
-
-    public void setDhostid(Integer dhostid) {
-        this.dhostid = dhostid;
-    }
-
-    public String getDns() {
-        return dns;
-    }
-
-    public void setDns(String dns) {
-        this.dns = dns;
-    }
-
-    public String getIp() {
-        return ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
-
-    public String getKey_() {
-        return key_;
-    }
-
-    public void setKey_(String key_) {
-        this.key_ = key_;
-    }
-
-    public Long getLastdown() {
-        return lastdown;
-    }
-
-    public void setLastdown(Long lastdown) {
-        this.lastdown = lastdown;
-    }
-
-    public Long getLastup() {
-        return lastup;
-    }
-
-    public void setLastup(Long lastup) {
-        this.lastup = lastup;
-    }
-
-    public Integer getPort() {
-        return port;
-    }
-
-    public void setPort(Integer port) {
-        this.port = port;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
     }
 
     public static enum STATUS {

@@ -26,12 +26,14 @@ package com.zabbix4j.discoveredservice;
 
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
+import lombok.Data;
 
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/25.
+ * @author Suguru Yajima on 2014/05/25.
  */
+@Data
 public class DServiceExistRequest extends ZabbixApiRequest {
 
     private Params params = new Params();
@@ -40,14 +42,7 @@ public class DServiceExistRequest extends ZabbixApiRequest {
         setMethod("dservice.exists");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
     public class Params {
         private List<Integer> dserviceid;
         private String node;
@@ -58,30 +53,6 @@ public class DServiceExistRequest extends ZabbixApiRequest {
 
         public void addDServiceId(Integer id) {
             dserviceid = ZbxListUtils.add(dserviceid, id);
-        }
-
-        public List<Integer> getDserviceid() {
-            return dserviceid;
-        }
-
-        public void setDserviceid(List<Integer> dserviceid) {
-            this.dserviceid = dserviceid;
-        }
-
-        public String getNode() {
-            return node;
-        }
-
-        public void setNode(String node) {
-            this.node = node;
-        }
-
-        public List<Integer> getNodeids() {
-            return nodeids;
-        }
-
-        public void setNodeids(List<Integer> nodeids) {
-            this.nodeids = nodeids;
         }
 
         public void addNodeId(Integer id) {

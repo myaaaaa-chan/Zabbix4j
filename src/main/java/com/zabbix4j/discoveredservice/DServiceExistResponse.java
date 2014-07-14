@@ -25,22 +25,16 @@
 package com.zabbix4j.discoveredservice;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
 
 /**
- * Created by Suguru Yajima on 2014/05/25.
+ * @author Suguru Yajima on 2014/05/25.
  */
+@Data
 public class DServiceExistResponse extends ZabbixApiResponse {
     private Boolean result;
 
     public DServiceExistResponse() {
         super();
-    }
-
-    public Boolean getResult() {
-        return result;
-    }
-
-    public void setResult(Boolean result) {
-        this.result = result;
     }
 }

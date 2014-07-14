@@ -25,24 +25,18 @@
 package com.zabbix4j.discoveredservice;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
 
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/25.
+ * @author Suguru Yajima on 2014/05/25.
  */
+@Data
 public class DServiceGetResponse extends ZabbixApiResponse {
     private List<DiscoveredServiceObject> result;
 
     public DServiceGetResponse() {
         super();
-    }
-
-    public List<DiscoveredServiceObject> getResult() {
-        return result;
-    }
-
-    public void setResult(List<DiscoveredServiceObject> result) {
-        this.result = result;
     }
 }

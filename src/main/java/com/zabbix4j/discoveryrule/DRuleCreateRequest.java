@@ -26,42 +26,39 @@ package com.zabbix4j.discoveryrule;
 
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/26.
+ * @author Suguru Yajima on 2014/05/26.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class DRuleCreateRequest extends ZabbixApiRequest {
 
-    private Params params = new Params();
+    private List<Params> params = new ArrayList<Params>();
 
     public DRuleCreateRequest() {
         setMethod("drule.create");
     }
 
-    public Params getParams() {
-        return params;
+    public Params createParams() {
+        Params param = new Params();
+        params.add(param);
+        return param;
     }
 
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @EqualsAndHashCode(callSuper = false)
     public class Params extends DiscoveryRuleObject {
 
         private List<DCheck> dchecks;
 
         public Params() {
             super();
-        }
-
-        public List<DCheck> getDchecks() {
-            return dchecks;
-        }
-
-        public void setDchecks(List<DCheck> dchecks) {
-            this.dchecks = dchecks;
         }
 
         public void addCheck(DCheck DCheck) {

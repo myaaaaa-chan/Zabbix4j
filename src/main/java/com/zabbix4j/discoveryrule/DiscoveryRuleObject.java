@@ -24,11 +24,14 @@
 
 package com.zabbix4j.discoveryrule;
 
+import lombok.Data;
+
 import java.util.Date;
 
 /**
- * Created by Suguru Yajima on 2014/05/26.
+ * @author Suguru Yajima on 2014/05/26.
  */
+@Data
 public class DiscoveryRuleObject {
 
     private Integer druleid;
@@ -51,62 +54,6 @@ public class DiscoveryRuleObject {
     private Integer status = STATUS.ENABLED.value;
 
     public DiscoveryRuleObject() {
-    }
-
-    public Integer getDruleid() {
-        return druleid;
-    }
-
-    public void setDruleid(Integer druleid) {
-        this.druleid = druleid;
-    }
-
-    public String getIprange() {
-        return iprange;
-    }
-
-    public void setIprange(String iprange) {
-        this.iprange = iprange;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getDelay() {
-        return delay;
-    }
-
-    public void setDelay(Integer delay) {
-        this.delay = delay;
-    }
-
-    public Long getNextcheck() {
-        return nextcheck;
-    }
-
-    public void setNextcheck(Long nextcheck) {
-        this.nextcheck = nextcheck;
-    }
-
-    public Integer getProxy_hostid() {
-        return proxy_hostid;
-    }
-
-    public void setProxy_hostid(Integer proxy_hostid) {
-        this.proxy_hostid = proxy_hostid;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
     }
 
     public Date getNextCheckDate() {

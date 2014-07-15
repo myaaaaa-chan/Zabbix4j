@@ -30,7 +30,7 @@ import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiMethod;
 
 /**
- * Created by Suguru Yajima on 2014/05/26.
+ * @author Suguru Yajima on 2014/05/26.
  */
 public class DiscoveryRule extends ZabbixApiMethod {
 
@@ -38,6 +38,14 @@ public class DiscoveryRule extends ZabbixApiMethod {
         super(apiUrl, auth);
     }
 
+    /**
+     * This method allows to create new discrovery rules.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/drule/create">drule.create</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public DRuleCreateResponse create(DRuleCreateRequest request) throws ZabbixApiException {
         DRuleCreateResponse response = null;
         request.setAuth(auth);
@@ -46,17 +54,21 @@ public class DiscoveryRule extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, DRuleCreateResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, DRuleCreateResponse.class);
 
         return response;
     }
 
+    /**
+     * This method allows to delete discovery rules.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/drule/delete">drule.delete</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public DRuleDeleteResponse delete(DRuleDeleteRequest request) throws ZabbixApiException {
         DRuleDeleteResponse response = null;
         request.setAuth(auth);
@@ -65,17 +77,21 @@ public class DiscoveryRule extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, DRuleDeleteResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, DRuleDeleteResponse.class);
 
         return response;
     }
 
+    /**
+     * This method allows to update existing discovery rules.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/drule/update">drule.update</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public DRuleUpdateResponse update(DRuleUpdateRequest request) throws ZabbixApiException {
         DRuleUpdateResponse response = null;
         request.setAuth(auth);
@@ -84,17 +100,21 @@ public class DiscoveryRule extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, DRuleUpdateResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, DRuleUpdateResponse.class);
 
         return response;
     }
 
+    /**
+     * The method allows to retrieve discovery rules according to the given parameters.</br>
+     * <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/drule/get">drule.get</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public DRuleGetResponse get(DRuleGetRequest request) throws ZabbixApiException {
         DRuleGetResponse response = null;
         request.setAuth(auth);
@@ -103,13 +123,78 @@ public class DiscoveryRule extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, DRuleGetResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, DRuleGetResponse.class);
+
+        return response;
+    }
+
+    /**
+     * This method checks if at least one discrovery rule that matches the given filter criteria exists.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/drule/exists">drule.exists</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
+    public DRuleExistResponse exist(DRuleExistRequest request) throws ZabbixApiException {
+        DRuleExistResponse response = null;
+        request.setAuth(auth);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson(request);
+
+        String responseJson = sendRequest(requestJson);
+
+        response = gson.fromJson(responseJson, DRuleExistResponse.class);
+
+        return response;
+    }
+
+    /**
+     * This method checks if the given discovery rules are available for reading.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/drule/isreadable">drule.isreadable</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
+    public DRuleIsReadableResponse isReadable(DRuleIsReadableRequest request) throws ZabbixApiException {
+        DRuleIsReadableResponse response = null;
+        request.setAuth(auth);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson(request);
+
+        String responseJson = sendRequest(requestJson);
+
+        response = gson.fromJson(responseJson, DRuleIsReadableResponse.class);
+
+        return response;
+    }
+
+    /**
+     * This method checks if the given discovery rules are available for writing.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/drule/iswritable">drule.iswritable</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
+    public DRuleIsWritableResponse isWritable(DRuleIsWritableRequest request) throws ZabbixApiException {
+        DRuleIsWritableResponse response = null;
+        request.setAuth(auth);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson(request);
+
+        String responseJson = sendRequest(requestJson);
+
+        response = gson.fromJson(responseJson, DRuleIsWritableResponse.class);
 
         return response;
     }

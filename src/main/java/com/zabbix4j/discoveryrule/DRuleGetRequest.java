@@ -27,12 +27,16 @@ package com.zabbix4j.discoveryrule;
 import com.zabbix4j.GetRequestCommonParams;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/27.
+ * @author Suguru Yajima on 2014/05/27.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class DRuleGetRequest extends ZabbixApiRequest {
 
     private Params params = new Params();
@@ -41,14 +45,8 @@ public class DRuleGetRequest extends ZabbixApiRequest {
         setMethod("drule.get");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @EqualsAndHashCode(callSuper = false)
     public class Params extends GetRequestCommonParams {
         private List<Integer> dhostids;
         private List<Integer> druleids;
@@ -57,6 +55,7 @@ public class DRuleGetRequest extends ZabbixApiRequest {
         private String selectDHosts;
 
         public Params() {
+            super();
         }
 
         public void addDHostId(Integer id) {

@@ -25,25 +25,21 @@
 package com.zabbix4j.discoveryrule;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/27.
+ * @author Suguru Yajima on 2014/05/27.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class DRuleGetResponse extends ZabbixApiResponse {
 
     private List<DiscoveryRuleObject> result;
 
     public DRuleGetResponse() {
         super();
-    }
-
-    public List<DiscoveryRuleObject> getResult() {
-        return result;
-    }
-
-    public void setResult(List<DiscoveryRuleObject> result) {
-        this.result = result;
     }
 }

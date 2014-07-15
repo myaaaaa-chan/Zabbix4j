@@ -25,12 +25,16 @@
 package com.zabbix4j.discoveryrule;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/26.
+ * @author Suguru Yajima on 2014/05/26.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class DRuleCreateResponse extends ZabbixApiResponse {
 
     private Result result;
@@ -39,24 +43,13 @@ public class DRuleCreateResponse extends ZabbixApiResponse {
         super();
     }
 
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
+    @Data
     public class Result {
 
         private List<Integer> druleids;
 
-        public List<Integer> getDruleids() {
-            return druleids;
-        }
-
-        public void setDruleids(List<Integer> druleids) {
-            this.druleids = druleids;
+        public Result() {
+            super();
         }
     }
 }

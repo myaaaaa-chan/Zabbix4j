@@ -19,6 +19,7 @@ public class ActionCreateTest extends ZabbixApiTestBase {
     @Test
     public void testCreate1() throws Exception {
         final String hostId = "10084";
+        final Integer userGroupId = 13;
 
         ActionCreateRequest request = new ActionCreateRequest();
 
@@ -45,7 +46,7 @@ public class ActionCreateTest extends ZabbixApiTestBase {
         ao.setEvaltype(0);
 
         OperationMessageGroup omg = new OperationMessageGroup();
-        omg.setUsrgrpid(13);
+        omg.setUsrgrpid(userGroupId);
         ao.addOpmessageGrp(omg);
 
         OperationMessage om = new OperationMessage();

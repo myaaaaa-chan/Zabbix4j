@@ -1,6 +1,5 @@
 package com.zabbix4j.discoveryrule;
 
-import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiTestBase;
 import org.junit.Test;
 
@@ -18,7 +17,8 @@ public class DRuleDeleteTest extends ZabbixApiTestBase {
 
     @Test
     public void testDelete1() throws Exception {
-        Integer druleId = createDummy();
+        DummyDiscoveryRule dummyDiscoveryRule = new DummyDiscoveryRule(zabbixApi);
+        Integer druleId = dummyDiscoveryRule.create();
 
         DRuleDeleteRequest request = new DRuleDeleteRequest();
         request.addDRuleId(druleId);
@@ -31,24 +31,5 @@ public class DRuleDeleteTest extends ZabbixApiTestBase {
         Integer acutalId = response.getResult().getDruleids().get(0);
 
         assertEquals(druleId, acutalId);
-    }
-
-    private Integer createDummy() throws ZabbixApiException {
-
-        DRuleCreateRequest request = new DRuleCreateRequest();
-        DRuleCreateRequest.Params params = request.getParams();
-        params.setIprange("127.0.0.1");
-        params.setName("dicovery test at localhost");
-
-        DCheck dcheck = new DCheck();
-        dcheck.setKey_("key_");
-        dcheck.setPorts(10050);
-        dcheck.setType(9);
-        dcheck.setUniq(0);
-        params.addCheck(dcheck);
-
-        DRuleCreateResponse response = zabbixApi.discoveryRule().create(request);
-
-        return response.getResult().getDruleids().get(0);
     }
 }

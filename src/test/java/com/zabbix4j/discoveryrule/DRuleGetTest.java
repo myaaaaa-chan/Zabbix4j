@@ -18,49 +18,24 @@ public class DRuleGetTest extends ZabbixApiTestBase {
 
     @Test
     public void testGet1() throws Exception {
+        DummyDiscoveryRule dummyDiscoveryRule = new DummyDiscoveryRule(zabbixApi);
+        Integer targetId = dummyDiscoveryRule.create();
 
-        Integer targetId = createDummy();
+        try {
+            DRuleGetRequest request = new DRuleGetRequest();
+            DRuleGetRequest.Params params = request.getParams();
+            params.addDRuleId(targetId);
 
-        DRuleGetRequest request = new DRuleGetRequest();
-        DRuleGetRequest.Params params = request.getParams();
-        params.addDRuleId(targetId);
+            DRuleGetResponse response = zabbixApi.discoveryRule().get(request);
+            assertNotNull(response);
 
-        DRuleGetResponse response = zabbixApi.discoveryRule().get(request);
-        assertNotNull(response);
+            DiscoveryRuleObject ruleObject = response.getResult().get(0);
+            assertNotNull(ruleObject);
 
-        deleteDummy(targetId);
-
-        DiscoveryRuleObject ruleObject = response.getResult().get(0);
-        assertNotNull(ruleObject);
-
-        assertEquals("dicovery get test at localhost", ruleObject.getName());
-        assertEquals("127.0.0.1", ruleObject.getIprange());
-    }
-
-    private Integer createDummy() throws ZabbixApiException {
-
-        DRuleCreateRequest request = new DRuleCreateRequest();
-        DRuleCreateRequest.Params params = request.getParams();
-        params.setIprange("127.0.0.1");
-        params.setName("dicovery get test at localhost");
-
-        DCheck dcheck = new DCheck();
-        dcheck.setKey_("key_");
-        dcheck.setPorts(10050);
-        dcheck.setType(9);
-        dcheck.setUniq(0);
-        params.addCheck(dcheck);
-
-        DRuleCreateResponse response = zabbixApi.discoveryRule().create(request);
-
-        return response.getResult().getDruleids().get(0);
-    }
-
-    private void deleteDummy(Integer id) throws ZabbixApiException {
-
-        DRuleDeleteRequest request = new DRuleDeleteRequest();
-        request.addDRuleId(id);
-
-        DRuleDeleteResponse response = zabbixApi.discoveryRule().delete(request);
+            assertNotNull(ruleObject.getName());
+            assertEquals("127.0.0.1", ruleObject.getIprange());
+        } finally {
+            dummyDiscoveryRule.delete(targetId);
+        }
     }
 }

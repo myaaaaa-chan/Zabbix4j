@@ -3,6 +3,8 @@ package com.zabbix4j.discoveryrule;
 import com.zabbix4j.ZabbixApiTestBase;
 import org.junit.Test;
 
+import java.util.Date;
+
 import static org.junit.Assert.assertNotNull;
 
 /**
@@ -18,9 +20,9 @@ public class DRuleCreateTest extends ZabbixApiTestBase {
     public void testCreate1() throws Exception {
 
         DRuleCreateRequest request = new DRuleCreateRequest();
-        DRuleCreateRequest.Params params = request.getParams();
+        DRuleCreateRequest.Params params = request.createParams();
         params.setIprange("127.0.0.1");
-        params.setName("dicovery test at localhost");
+        params.setName("test discoveryrule." + new Date().getTime());
 
         DCheck dcheck = new DCheck();
         dcheck.setKey_("key_");
@@ -33,5 +35,8 @@ public class DRuleCreateTest extends ZabbixApiTestBase {
         assertNotNull(response);
 
         logger.debug(getGson().toJson(response));
+
+        Integer actualId = response.getResult().getDruleids().get(0);
+        assertNotNull(actualId);
     }
 }

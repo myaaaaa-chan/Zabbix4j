@@ -26,11 +26,13 @@ package com.zabbix4j.discoveredservice;
 
 import com.zabbix4j.ZabbixApiResponse;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author Suguru Yajima on 2014/05/25.
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class DServiceExistResponse extends ZabbixApiResponse {
     private Boolean result;
 

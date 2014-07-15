@@ -26,6 +26,7 @@ package com.zabbix4j.discoveredhost;
 
 import com.zabbix4j.ZabbixApiResponse;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 import java.util.List;
@@ -34,6 +35,7 @@ import java.util.List;
  * Created by Suguru Yajima on 2014/05/25.
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class DHostGetResponse extends ZabbixApiResponse {
 
     private List<Result> result;

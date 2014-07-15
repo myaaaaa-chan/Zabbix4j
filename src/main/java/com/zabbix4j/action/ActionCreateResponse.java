@@ -36,6 +36,7 @@ import java.util.List;
  * @author Suguru Yajima on 2014/05/19.
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class ActionCreateResponse extends ZabbixApiResponse {
 
     private Result result;

@@ -41,6 +41,7 @@ import org.slf4j.LoggerFactory;
  * Created by Suguru Yajima on 2014/04/26.
  */
 @Data
+@SuppressWarnings("deprecation")
 public class ZabbixApiMethod {
 
     private static Logger logger = LoggerFactory.getLogger(ZabbixApiMethod.class);
@@ -67,7 +68,6 @@ public class ZabbixApiMethod {
             httpPost.setHeader("Content-Type", "application/json-rpc");
             httpPost.setEntity(new StringEntity(requestJson));
 
-            @SuppressWarnings("deprecated")
             DefaultHttpClient client = new DefaultHttpClient();
             //HttpClient client = HttpClientBuilder.create().build();
             httpResponse = client.execute(httpPost);

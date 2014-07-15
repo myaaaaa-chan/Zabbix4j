@@ -28,6 +28,7 @@ import com.zabbix4j.GetRequestCommonParams;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
@@ -35,6 +36,7 @@ import java.util.List;
  * @author Suguru Yajima on 2014/05/25.
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class DServiceGetRequest extends ZabbixApiRequest {
 
     private Params params = new Params();
@@ -44,6 +46,7 @@ public class DServiceGetRequest extends ZabbixApiRequest {
     }
 
     @Data
+    @EqualsAndHashCode(callSuper = false)
     public class Params extends GetRequestCommonParams {
         private List<Integer> dserviceids;
         private List<Integer> dhostids;

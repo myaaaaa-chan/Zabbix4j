@@ -26,14 +26,17 @@ package com.zabbix4j.action;
 
 import com.zabbix4j.ZabbixApiResponse;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 /**
  * Response paramter for action.delete
+ *
  * @author Suguru Yajima on 2014/05/20.
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class ActionDeleteResponse extends ZabbixApiResponse {
 
     private Result result = new Result();

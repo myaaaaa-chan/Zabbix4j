@@ -27,6 +27,7 @@ package com.zabbix4j.discoveredhost;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
@@ -34,6 +35,7 @@ import java.util.List;
  * @author Suguru Yajima on 2014/05/25.
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class DHostExistRequest extends ZabbixApiRequest {
     private Params params = new Params();
 
@@ -46,6 +48,7 @@ public class DHostExistRequest extends ZabbixApiRequest {
         private List<Integer> dhostid;
 
         public Params() {
+            super();
         }
 
         public void addDHostId(Integer id) {

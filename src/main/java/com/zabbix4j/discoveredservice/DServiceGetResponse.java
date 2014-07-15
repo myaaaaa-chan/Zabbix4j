@@ -26,6 +26,7 @@ package com.zabbix4j.discoveredservice;
 
 import com.zabbix4j.ZabbixApiResponse;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
@@ -33,6 +34,7 @@ import java.util.List;
  * @author Suguru Yajima on 2014/05/25.
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class DServiceGetResponse extends ZabbixApiResponse {
     private List<DiscoveredServiceObject> result;
 

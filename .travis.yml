@@ -3,7 +3,6 @@ language: java
 jdk:
   - oraclejdk7
   - openjdk7
-  - oraclejdk6
   - openjdk6
 
 script:

@@ -38,6 +38,15 @@ public class Event extends ZabbixApiMethod {
         super(apiUrl, auth);
     }
 
+    /**
+     * The method allows to retrieve events according to the given parameters.
+     * <p/>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/event/get">event.get</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public EventGetResponse get(EventGetRequest request) throws ZabbixApiException {
         EventGetResponse response = null;
         request.setAuth(auth);
@@ -57,6 +66,14 @@ public class Event extends ZabbixApiMethod {
         return response;
     }
 
+    /**
+     * This method allows to acknowledge events and add an acknowledgement message. If an event is already acknowledged, a new message will still be added.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/event/acknowledge">event.acknowledge</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public EventAcknowledgeResponse acknowledge(EventAcknowledgeRequest request) throws ZabbixApiException {
         EventAcknowledgeResponse response = null;
         request.setAuth(auth);

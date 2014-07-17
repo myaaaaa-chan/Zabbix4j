@@ -27,13 +27,18 @@ package com.zabbix4j.event;
 import com.zabbix4j.GetRequestCommonParams;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/28.
+ * Request paramter for event.get
+ * @author Suguru Yajima on 2014/05/28.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class EventGetRequest extends ZabbixApiRequest {
 
     private Params params = new Params();
@@ -42,14 +47,8 @@ public class EventGetRequest extends ZabbixApiRequest {
         setMethod("event.get");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @EqualsAndHashCode(callSuper = false)
     public class Params extends GetRequestCommonParams {
         private List<Integer> eventids;
         private List<Integer> groupids;
@@ -100,134 +99,6 @@ public class EventGetRequest extends ZabbixApiRequest {
                 return new Date(time_till);
             }
             return null;
-        }
-
-        public List<Integer> getEventids() {
-            return eventids;
-        }
-
-        public void setEventids(List<Integer> eventids) {
-            this.eventids = eventids;
-        }
-
-        public List<Integer> getGroupids() {
-            return groupids;
-        }
-
-        public void setGroupids(List<Integer> groupids) {
-            this.groupids = groupids;
-        }
-
-        public List<Integer> getHostids() {
-            return hostids;
-        }
-
-        public void setHostids(List<Integer> hostids) {
-            this.hostids = hostids;
-        }
-
-        public List<Integer> getObjectids() {
-            return objectids;
-        }
-
-        public void setObjectids(List<Integer> objectids) {
-            this.objectids = objectids;
-        }
-
-        public Integer getObject() {
-            return object;
-        }
-
-        public void setObject(Integer object) {
-            this.object = object;
-        }
-
-        public Boolean getAcknowledged() {
-            return acknowledged;
-        }
-
-        public void setAcknowledged(Boolean acknowledged) {
-            this.acknowledged = acknowledged;
-        }
-
-        public Integer getEventid_from() {
-            return eventid_from;
-        }
-
-        public void setEventid_from(Integer eventid_from) {
-            this.eventid_from = eventid_from;
-        }
-
-        public Integer getEventid_till() {
-            return eventid_till;
-        }
-
-        public void setEventid_till(Integer eventid_till) {
-            this.eventid_till = eventid_till;
-        }
-
-        public Integer getSource() {
-            return source;
-        }
-
-        public void setSource(Integer source) {
-            this.source = source;
-        }
-
-        public Long getTime_from() {
-            return time_from;
-        }
-
-        public void setTime_from(Long time_from) {
-            this.time_from = time_from;
-        }
-
-        public Long getTime_till() {
-            return time_till;
-        }
-
-        public void setTime_till(Long time_till) {
-            this.time_till = time_till;
-        }
-
-        public List<Integer> getValue() {
-            return value;
-        }
-
-        public void setValue(List<Integer> value) {
-            this.value = value;
-        }
-
-        public String getSelectHosts() {
-            return selectHosts;
-        }
-
-        public void setSelectHosts(String selectHosts) {
-            this.selectHosts = selectHosts;
-        }
-
-        public String getSelectRelatedObject() {
-            return selectRelatedObject;
-        }
-
-        public void setSelectRelatedObject(String selectRelatedObject) {
-            this.selectRelatedObject = selectRelatedObject;
-        }
-
-        public String getSelect_alerts() {
-            return select_alerts;
-        }
-
-        public void setSelect_alerts(String select_alerts) {
-            this.select_alerts = select_alerts;
-        }
-
-        public String getSelect_acknowledges() {
-            return select_acknowledges;
-        }
-
-        public void setSelect_acknowledges(String select_acknowledges) {
-            this.select_acknowledges = select_acknowledges;
         }
     }
 }

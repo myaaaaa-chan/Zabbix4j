@@ -25,25 +25,22 @@
 package com.zabbix4j.event;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/28.
+ * Response paramter for event.get
+ * @author Suguru Yajima on 2014/05/28.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class EventGetResponse extends ZabbixApiResponse {
 
     private List<EventObject> result;
 
     public EventGetResponse() {
         super();
-    }
-
-    public List<EventObject> getResult() {
-        return result;
-    }
-
-    public void setResult(List<EventObject> result) {
-        this.result = result;
     }
 }

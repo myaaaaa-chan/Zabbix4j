@@ -25,12 +25,17 @@
 package com.zabbix4j.event;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/29.
+ * Response paramter for event.acknowledge
+ * @author Suguru Yajima on 2014/05/29.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class EventAcknowledgeResponse extends ZabbixApiResponse {
     private Result result;
 
@@ -38,27 +43,13 @@ public class EventAcknowledgeResponse extends ZabbixApiResponse {
         super();
     }
 
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
+    @Data
+    @EqualsAndHashCode(callSuper = false)
     public class Result {
 
         private List<Integer> eventids;
 
         public Result() {
-        }
-
-        public List<Integer> getEventids() {
-            return eventids;
-        }
-
-        public void setEventids(List<Integer> eventids) {
-            this.eventids = eventids;
         }
     }
 }

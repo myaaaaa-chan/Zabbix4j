@@ -24,11 +24,16 @@
 
 package com.zabbix4j.event;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import java.util.Date;
 
 /**
- * Created by Suguru Yajima on 2014/05/27.
+ * @author Suguru Yajima on 2014/05/27.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class EventObject {
 
     private Integer eventid;

@@ -133,6 +133,7 @@ public class Graph extends ZabbixApiMethod {
     /**
      * This method checks if at least one graph that matches the given filter criteria exists.</br>
      * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/graph/exists">graph.exists</a>
+     *
      * @param request
      * @return
      * @throws ZabbixApiException
@@ -149,6 +150,30 @@ public class Graph extends ZabbixApiMethod {
         String responseJson = sendRequest(requestJson);
 
         response = gson.fromJson(responseJson, GraphExistsResponse.class);
+
+        return response;
+    }
+
+    /**
+     * This method allows to retrieve graphs that match the given filter criteria.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/graph/getobjects">graph.getobjects</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
+    public GraphGetObjectsResponse getobjects(GraphGetObjectsRequest request) throws ZabbixApiException {
+        GraphGetObjectsResponse response = null;
+        request.setAuth(auth);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson(request);
+
+
+        String responseJson = sendRequest(requestJson);
+
+        response = gson.fromJson(responseJson, GraphGetObjectsResponse.class);
 
         return response;
     }

@@ -39,16 +39,16 @@ public class GraphObject {
     private Integer graphtype;
     private Float percent_left;
     private Float percent_right;
-    private Integer show_3d = GRAPH_SHOW_DIMENSION_TYPE.SHOW_IN_2D.value;
-    private Integer show_legend = GRAPH_SHOW_TYPE.SHOW.value;
-    private Integer show_work_period = GRAPH_SHOW_TYPE.SHOW.value;
+    private Integer show_3d;
+    private Integer show_legend;
+    private Integer show_work_period;
     private Integer templateid;
     private Float yaxismax;
     private Float yaxismin;
     private Integer ymax_itemid;
-    private Integer ymax_type = CALCULATION_METHOD.CALCULATED.value;
+    private Integer ymax_type;
     private Integer ymin_itemid;
-    private Integer ymin_type = CALCULATION_METHOD.CALCULATED.value;
+    private Integer ymin_type;
     private List<GraphId> graphs;
 
     public List<GraphId> getGraphs() {

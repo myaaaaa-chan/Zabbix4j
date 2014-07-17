@@ -30,13 +30,21 @@ import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiMethod;
 
 /**
- * Created by Suguru Yajima on 2014/05/29.
+ * @author Suguru Yajima on 2014/05/29.
  */
 public class Graph extends ZabbixApiMethod {
     public Graph(String apiUrl, String auth) {
         super(apiUrl, auth);
     }
 
+    /**
+     * This method allows to create new graphs.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/graph/create">graph.create</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public GraphCreateResponse create(GraphCreateRequest request) throws ZabbixApiException {
         GraphCreateResponse response = null;
         request.setAuth(auth);
@@ -45,17 +53,21 @@ public class Graph extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, GraphCreateResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, GraphCreateResponse.class);
 
         return response;
     }
 
+    /**
+     * This method allows to update existing graphs.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/graph/update">graph.update</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public GraphUpdateResponse update(GraphUpdateRequest request) throws ZabbixApiException {
         GraphUpdateResponse response = null;
         request.setAuth(auth);
@@ -64,17 +76,21 @@ public class Graph extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, GraphUpdateResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, GraphUpdateResponse.class);
 
         return response;
     }
 
+    /**
+     * This method allows to delete graphs.
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/graph/delete">graph.delete</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public GraphDeleteResponse delete(GraphDeleteRequest request) throws ZabbixApiException {
         GraphDeleteResponse response = null;
         request.setAuth(auth);
@@ -83,17 +99,21 @@ public class Graph extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, GraphDeleteResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, GraphDeleteResponse.class);
 
         return response;
     }
 
+    /**
+     * The method allows to retrieve graphs according to the given parameters.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/graph/get">graph.get</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public GraphGetResponse get(GraphGetRequest request) throws ZabbixApiException {
         GraphGetResponse response = null;
         request.setAuth(auth);
@@ -102,13 +122,33 @@ public class Graph extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, GraphGetResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        String responseJson = sendRequest(requestJson);
+
+        response = gson.fromJson(responseJson, GraphGetResponse.class);
+
+        return response;
+    }
+
+    /**
+     * This method checks if at least one graph that matches the given filter criteria exists.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/graph/exists">graph.exists</a>
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
+    public GraphExistsResponse exists(GraphExistsRequest request) throws ZabbixApiException {
+        GraphExistsResponse response = null;
+        request.setAuth(auth);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson(request);
+
+
+        String responseJson = sendRequest(requestJson);
+
+        response = gson.fromJson(responseJson, GraphExistsResponse.class);
 
         return response;
     }

@@ -25,12 +25,18 @@
 package com.zabbix4j.graph;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/31.
+ * Response paramter for graph.update
+ *
+ * @author Suguru Yajima on 2014/05/31.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class GraphUpdateResponse extends ZabbixApiResponse {
     private Result result;
 
@@ -38,27 +44,13 @@ public class GraphUpdateResponse extends ZabbixApiResponse {
         super();
     }
 
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
+    @Data
+    @EqualsAndHashCode(callSuper = false)
     public class Result {
 
         private List<Integer> graphids;
 
         public Result() {
-        }
-
-        public List<Integer> getGraphids() {
-            return graphids;
-        }
-
-        public void setGraphids(List<Integer> graphids) {
-            this.graphids = graphids;
         }
     }
 }

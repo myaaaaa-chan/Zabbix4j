@@ -25,43 +25,37 @@
 package com.zabbix4j.graph;
 
 import com.zabbix4j.ZabbixApiRequest;
-import com.zabbix4j.utils.ZbxListUtils;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/31.
+ * Request paramter for graph.update
+ *
+ * @author Suguru Yajima on 2014/05/31.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class GraphUpdateRequest extends ZabbixApiRequest {
 
-    private Params params = new Params();
+    private List<Params> params = new ArrayList<Params>();
 
     public GraphUpdateRequest() {
         setMethod("graph.update");
     }
 
-    public Params getParams() {
-        return params;
+    public Params createParams() {
+        Params param = new Params();
+        params.add(param);
+        return param;
     }
 
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @EqualsAndHashCode(callSuper = false)
     public class Params extends GraphObject {
 
         private List<GraphItem> gitems;
-
-        public List<GraphItem> getGitems() {
-            return gitems;
-        }
-
-        public void setGitems(List<GraphItem> gitems) {
-            this.gitems = gitems;
-        }
-
-        public void addGraphItem(GraphItem gitem) {
-            gitems = ZbxListUtils.add(gitems, gitem);
-        }
     }
 }

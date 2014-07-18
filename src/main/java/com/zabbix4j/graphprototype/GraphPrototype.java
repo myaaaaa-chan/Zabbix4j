@@ -14,6 +14,14 @@ public class GraphPrototype extends ZabbixApiMethod {
         super(apiUrl, auth);
     }
 
+    /**
+     * This method allows to create new graph prototypes.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/graphprototype/create">graphprototype.create</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public GraphPrototypeCreateResponse create(GraphPrototypeCreateRequest request) throws ZabbixApiException {
         GraphPrototypeCreateResponse response = null;
         request.setAuth(auth);
@@ -22,17 +30,21 @@ public class GraphPrototype extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, GraphPrototypeCreateResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, GraphPrototypeCreateResponse.class);
 
         return response;
     }
 
+    /**
+     * This method allows to delete graph prototypes.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/graphprototype/delete">graphprototype.delete</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public GraphPrototypeDeleteResponse delete(GraphPrototypeDeleteRequest request) throws ZabbixApiException {
         GraphPrototypeDeleteResponse response = null;
         request.setAuth(auth);
@@ -41,13 +53,9 @@ public class GraphPrototype extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, GraphPrototypeDeleteResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, GraphPrototypeDeleteResponse.class);
 
         return response;
     }
@@ -60,13 +68,9 @@ public class GraphPrototype extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, GraphPrototypeUpdateResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, GraphPrototypeUpdateResponse.class);
 
         return response;
     }
@@ -79,13 +83,9 @@ public class GraphPrototype extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, GraphPrototypeGetResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, GraphPrototypeGetResponse.class);
 
         return response;
     }

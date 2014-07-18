@@ -27,12 +27,18 @@ package com.zabbix4j.graphitem;
 import com.zabbix4j.GetRequestCommonParams;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/06/01.
+ * Request paramter for graphitem.get
+ *
+ * @author Suguru Yajima on 2014/06/01.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class GraphItemGetRequest extends ZabbixApiRequest {
 
     private Params params = new Params();
@@ -41,14 +47,8 @@ public class GraphItemGetRequest extends ZabbixApiRequest {
         setMethod("graphitem.get");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @EqualsAndHashCode(callSuper = false)
     public class Params extends GetRequestCommonParams {
         private List<Integer> gitemids;
         private List<Integer> graphids;
@@ -69,52 +69,5 @@ public class GraphItemGetRequest extends ZabbixApiRequest {
             this.itemids = ZbxListUtils.add(this.itemids, id);
         }
 
-        public List<Integer> getGitemids() {
-            return gitemids;
-        }
-
-        public void setGitemids(List<Integer> gitemids) {
-            this.gitemids = gitemids;
-        }
-
-        public List<Integer> getGraphids() {
-            return graphids;
-        }
-
-        public void setGraphids(List<Integer> graphids) {
-            this.graphids = graphids;
-        }
-
-        public List<Integer> getItemids() {
-            return itemids;
-        }
-
-        public void setItemids(List<Integer> itemids) {
-            this.itemids = itemids;
-        }
-
-        public Integer getType() {
-            return type;
-        }
-
-        public void setType(Integer type) {
-            this.type = type;
-        }
-
-        public String getExpandData() {
-            return expandData;
-        }
-
-        public void setExpandData(String expandData) {
-            this.expandData = expandData;
-        }
-
-        public String getSelectGraphs() {
-            return selectGraphs;
-        }
-
-        public void setSelectGraphs(String selectGraphs) {
-            this.selectGraphs = selectGraphs;
-        }
     }
 }

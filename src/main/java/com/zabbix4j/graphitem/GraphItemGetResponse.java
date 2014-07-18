@@ -25,12 +25,17 @@
 package com.zabbix4j.graphitem;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/06/01.
+ * Response paramter for graphitem.get
+ * @author Suguru Yajima on 2014/06/01.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class GraphItemGetResponse extends ZabbixApiResponse {
 
     private List<Result> result;
@@ -39,14 +44,8 @@ public class GraphItemGetResponse extends ZabbixApiResponse {
         super();
     }
 
-    public List<Result> getResult() {
-        return result;
-    }
-
-    public void setResult(List<Result> result) {
-        this.result = result;
-    }
-
+    @Data
+    @EqualsAndHashCode(callSuper = false)
     public class Result extends GraphItemObject {
 
         public Result() {

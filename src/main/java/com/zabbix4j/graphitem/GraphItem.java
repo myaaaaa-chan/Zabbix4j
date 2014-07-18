@@ -30,7 +30,7 @@ import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiMethod;
 
 /**
- * Created by Suguru Yajima on 2014/06/01.
+ * @author Suguru Yajima on 2014/06/01.
  */
 public class GraphItem extends ZabbixApiMethod {
 
@@ -38,6 +38,14 @@ public class GraphItem extends ZabbixApiMethod {
         super(apiUrl, auth);
     }
 
+    /**
+     * The method allows to retrieve graph items according to the given parameters.
+     * see <a href"https://www.zabbix.com/documentation/2.2/manual/api/reference/graphitem/get">graphitem.get</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public GraphItemGetResponse get(GraphItemGetRequest request) throws ZabbixApiException {
         GraphItemGetResponse response = null;
         request.setAuth(auth);
@@ -46,13 +54,9 @@ public class GraphItem extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, GraphItemGetResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, GraphItemGetResponse.class);
 
         return response;
     }

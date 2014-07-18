@@ -48,6 +48,9 @@ public class ZabbixApiException extends Exception {
             errorMessageObject = gson.fromJson(message, ZabbixApiErrorMessageObject.class);
         } catch (Exception e) {
             errorMessageObject = new ZabbixApiErrorMessageObject();
+            errorMessageObject.setMessage(message);
+            errorMessageObject.setCode(0);
+            errorMessageObject.setData("");
         }
     }
 
@@ -57,7 +60,7 @@ public class ZabbixApiException extends Exception {
         this.requestMessage = requestMessage;
 
         logger.error(message);
-        
+
         try {
             Gson gson = new Gson();
             errorMessageObject = gson.fromJson(message, ZabbixApiErrorMessageObject.class);

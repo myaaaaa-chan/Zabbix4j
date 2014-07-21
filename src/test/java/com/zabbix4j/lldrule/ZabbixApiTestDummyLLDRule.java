@@ -1,8 +1,9 @@
 package com.zabbix4j.lldrule;
 
-import com.zabbix4j.ZabbixApiTestDummyMethodBase;
 import com.zabbix4j.ZabbixApi;
 import com.zabbix4j.ZabbixApiException;
+import com.zabbix4j.ZabbixApiTestDummyMethodBase;
+import com.zabbix4j.host.HostObject;
 import com.zabbix4j.hostinteface.HostInterfaceGetRequest;
 import com.zabbix4j.hostinteface.HostInterfaceGetResponse;
 
@@ -30,7 +31,10 @@ public class ZabbixApiTestDummyLLDRule extends ZabbixApiTestDummyMethodBase {
         LLDRuleCreateRequest request = new LLDRuleCreateRequest();
         LLDRuleCreateRequest.Params params = request.getParams();
         params.setDelay(30);
-        params.setHostid(hostId);
+
+        HostObject obj = new HostObject();
+        obj.setHostid(hostId);
+        params.addHost(obj);
         params.setInterfaceid(interfaceId);
         params.setKey_("test");
         params.setName("LLD create");

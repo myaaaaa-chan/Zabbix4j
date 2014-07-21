@@ -2,6 +2,7 @@ package com.zabbix4j.lldrule;
 
 import com.zabbix4j.ZabbixApiTestBase;
 import com.zabbix4j.host.DummyHost;
+import com.zabbix4j.host.HostObject;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
@@ -27,7 +28,10 @@ public class LLDRuleCreateTest extends ZabbixApiTestBase {
             LLDRuleCreateRequest request = new LLDRuleCreateRequest();
             LLDRuleCreateRequest.Params params = request.getParams();
             params.setDelay(30);
-            params.setHostid(targetHostId);
+
+            HostObject obj = new HostObject();
+            obj.setHostid(targetHostId);
+            params.addHost(obj);
             params.setInterfaceid(interfaceId);
             params.setKey_("test");
             params.setName("LLD create");

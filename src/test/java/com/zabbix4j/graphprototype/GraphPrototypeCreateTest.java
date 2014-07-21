@@ -5,6 +5,8 @@ import com.zabbix4j.ZabbixApiTestBase;
 import com.zabbix4j.graph.GraphItem;
 import org.junit.Test;
 
+import java.util.Date;
+
 import static org.junit.Assert.assertNotNull;
 
 /**
@@ -18,12 +20,13 @@ public class GraphPrototypeCreateTest extends ZabbixApiTestBase {
 
     @Test
     public void testCreate1() throws Exception {
+        final Integer itemId = 22948;
         GraphPrototypeCreateRequest request = new GraphPrototypeCreateRequest();
-        GraphPrototypeCreateRequest.Params params = request.getParams();
-        params.setName("Graphprototype create test");
+        GraphPrototypeCreateRequest.Params params = request.createParam();
+        params.setName("test Graphprototype create." + new Date().getTime());
         GraphItem gitem = new GraphItem();
         gitem.setColor("00AA00");
-        gitem.setItemid(23730);
+        gitem.setItemid(itemId);
         params.addGraphItem(gitem);
         params.setHeight(140);
         params.setWidth(800);
@@ -33,15 +36,8 @@ public class GraphPrototypeCreateTest extends ZabbixApiTestBase {
 
         Integer id = response.getResult().getGraphids().get(0);
         assertNotNull(id);
+
+        DummyGraphPrototype dummyGraphPrototype = new DummyGraphPrototype(zabbixApi);
+        dummyGraphPrototype.delete(id);
     }
-
-    private void deleteResult(Integer id) throws ZabbixApiException {
-
-        GraphPrototypeDeleteRequest request = new GraphPrototypeDeleteRequest();
-        request.addParam(id);
-
-        GraphPrototypeDeleteResponse response = zabbixApi.graphPrototype().delete(request);
-    }
-
-
 }

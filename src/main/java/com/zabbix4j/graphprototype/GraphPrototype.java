@@ -60,6 +60,13 @@ public class GraphPrototype extends ZabbixApiMethod {
         return response;
     }
 
+    /**
+     * This method allows to update existing graph prototypes.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/graphprototype/update">graphprototype.update</a>
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public GraphPrototypeUpdateResponse update(GraphPrototypeUpdateRequest request) throws ZabbixApiException {
         GraphPrototypeUpdateResponse response = null;
         request.setAuth(auth);
@@ -75,6 +82,13 @@ public class GraphPrototype extends ZabbixApiMethod {
         return response;
     }
 
+    /**
+     * The method allows to retrieve graph prototypes according to the given parameters.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/graphprototype/get">graphprototype.get</a>
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public GraphPrototypeGetResponse get(GraphPrototypeGetRequest request) throws ZabbixApiException {
         GraphPrototypeGetResponse response = null;
         request.setAuth(auth);

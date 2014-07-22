@@ -63,6 +63,7 @@ public class GraphPrototype extends ZabbixApiMethod {
     /**
      * This method allows to update existing graph prototypes.</br>
      * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/graphprototype/update">graphprototype.update</a>
+     *
      * @param request
      * @return
      * @throws ZabbixApiException
@@ -85,6 +86,7 @@ public class GraphPrototype extends ZabbixApiMethod {
     /**
      * The method allows to retrieve graph prototypes according to the given parameters.</br>
      * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/graphprototype/get">graphprototype.get</a>
+     *
      * @param request
      * @return
      * @throws ZabbixApiException
@@ -100,6 +102,29 @@ public class GraphPrototype extends ZabbixApiMethod {
         String responseJson = sendRequest(requestJson);
 
         response = gson.fromJson(responseJson, GraphPrototypeGetResponse.class);
+
+        return response;
+    }
+
+    /**
+     * This method allows to retrieve graph prototypes that match the given filter criteria.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/graphprototype/getobjects">graphprototype.getobjects</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
+    public GraphPrototypeGetobjectsResponse getobjects(GraphPrototypeGetobjectsRequest request) throws ZabbixApiException {
+        GraphPrototypeGetobjectsResponse response = null;
+        request.setAuth(auth);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson(request);
+
+        String responseJson = sendRequest(requestJson);
+
+        response = gson.fromJson(responseJson, GraphPrototypeGetobjectsResponse.class);
 
         return response;
     }

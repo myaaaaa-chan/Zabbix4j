@@ -31,7 +31,7 @@ public class GraphPrototypeGetTest extends ZabbixApiTestBase {
             params.addGraphId(tagetId);
             params.setSelectItems(ZabbixApiParamter.QUERY.extend.name());
             params.setSelectHosts(ZabbixApiParamter.QUERY.extend.name());
-            params.setSelectGroups¡1(ZabbixApiParamter.QUERY.extend.name());
+            params.setSelectGroups(ZabbixApiParamter.QUERY.extend.name());
             params.setSelectDiscoveryRule(ZabbixApiParamter.QUERY.extend.name());
             params.setSelectGraphItems(ZabbixApiParamter.QUERY.extend.name());
             params.setSelectTemplates(ZabbixApiParamter.QUERY.extend.name());

@@ -128,4 +128,27 @@ public class GraphPrototype extends ZabbixApiMethod {
 
         return response;
     }
+
+    /**
+     * This method checks if at least one graph prototype that matches the given filter criteria exists.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/graphprototype/exists">graphprototype.exists</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
+    public GraphPrototypeExistsResponse exists(GraphPrototypeExistsRequest request) throws ZabbixApiException {
+        GraphPrototypeExistsResponse response = null;
+        request.setAuth(auth);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson(request);
+
+        String responseJson = sendRequest(requestJson);
+
+        response = gson.fromJson(responseJson, GraphPrototypeExistsResponse.class);
+
+        return response;
+    }
 }

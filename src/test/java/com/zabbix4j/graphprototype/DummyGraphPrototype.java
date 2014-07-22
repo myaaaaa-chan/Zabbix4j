@@ -11,6 +11,8 @@ import java.util.Date;
  * @author suguru yajima 2014
  */
 public class DummyGraphPrototype extends ZabbixApiTestDummyMethodBase {
+    public String name;
+
     public DummyGraphPrototype(ZabbixApi zabbixApi) {
         super(zabbixApi);
     }
@@ -19,7 +21,8 @@ public class DummyGraphPrototype extends ZabbixApiTestDummyMethodBase {
         final Integer itemId = 22948;
         GraphPrototypeCreateRequest request = new GraphPrototypeCreateRequest();
         GraphPrototypeCreateRequest.Params params = request.createParam();
-        params.setName("test Graphprototype create." + new Date().getTime());
+        name = "test Graphprototype create." + new Date().getTime();
+        params.setName(name);
         GraphItem gitem = new GraphItem();
         gitem.setColor("00AA00");
         gitem.setItemid(itemId);

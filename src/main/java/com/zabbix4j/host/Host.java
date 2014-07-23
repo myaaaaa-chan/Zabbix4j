@@ -38,6 +38,14 @@ public class Host extends ZabbixApiMethod {
         super(apiUrl, auth);
     }
 
+    /**
+     * This method allows to create new hosts.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/host/create">host.create</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public HostCreateResponse create(HostCreateRequest request) throws ZabbixApiException {
         HostCreateResponse response = null;
         request.setAuth(auth);

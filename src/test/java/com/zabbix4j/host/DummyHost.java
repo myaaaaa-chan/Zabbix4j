@@ -23,16 +23,19 @@ public class DummyHost extends ZabbixApiTestDummyMethodBase {
     }
 
     public Integer createHost() throws ZabbixApiException {
+        // Linux servers
+        final Integer groupId = 2;
+        // Template OS LInux
+        final Integer templateId = 10001;
+
         HostCreateRequest request = new HostCreateRequest();
         HostCreateRequest.Params params = request.getParams();
 
         List<Integer> templates = new ArrayList<Integer>();
-        templates.add(10093);
-        templates.add(10094);
-        templates.add(10095);
+        templates.add(templateId);
         params.setTemplates(templates);
 
-        params.addGroupId(12);
+        params.addGroupId(groupId);
 
         List<Macro> macros = new ArrayList<Macro>();
         Macro macro1 = new Macro();
@@ -78,7 +81,7 @@ public class DummyHost extends ZabbixApiTestDummyMethodBase {
 
     public HostObject getHost() throws ZabbixApiException {
 
-        Integer targetHostId = 10108;
+        Integer targetHostId = 10084;
         HostGetRequest request = new HostGetRequest();
         HostGetRequest.Params params = request.getParams();
 

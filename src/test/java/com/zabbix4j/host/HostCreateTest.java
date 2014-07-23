@@ -22,8 +22,10 @@ public class HostCreateTest extends ZabbixApiTestBase {
 
     @Test
     public void testCreate1() {
-        final Integer groupId = 25;
-        final Integer templateId = 10093;
+        // Linux servers
+        final Integer groupId = 2;
+        // Template OS LInux
+        final Integer templateId = 10001;
 
         try {
             HostCreateRequest request = new HostCreateRequest();

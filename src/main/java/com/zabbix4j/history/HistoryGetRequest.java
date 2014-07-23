@@ -3,13 +3,19 @@ package com.zabbix4j.history;
 import com.zabbix4j.GetRequestCommonParams;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/06/03.
+ * Request paramter for history.get
+ *
+ * @author Suguru Yajima on 2014/06/03.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class HistoryGetRequest extends ZabbixApiRequest {
 
     private Params params = new Params();
@@ -18,14 +24,8 @@ public class HistoryGetRequest extends ZabbixApiRequest {
         setMethod("history.get");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @EqualsAndHashCode(callSuper = false)
     public class Params extends GetRequestCommonParams {
         private Integer history = HistoryObject.HISOTRY_OBJECT_TYPE.INTEGER.value;
         private List<Integer> hostids;
@@ -50,46 +50,6 @@ public class HistoryGetRequest extends ZabbixApiRequest {
                 return new Date(time_from);
             }
             return null;
-        }
-
-        public Integer getHistory() {
-            return history;
-        }
-
-        public void setHistory(Integer history) {
-            this.history = history;
-        }
-
-        public List<Integer> getHostids() {
-            return hostids;
-        }
-
-        public void setHostids(List<Integer> hostids) {
-            this.hostids = hostids;
-        }
-
-        public List<Integer> getItemids() {
-            return itemids;
-        }
-
-        public void setItemids(List<Integer> itemids) {
-            this.itemids = itemids;
-        }
-
-        public Long getTime_from() {
-            return time_from;
-        }
-
-        public void setTime_from(Long time_from) {
-            this.time_from = time_from;
-        }
-
-        public Long getTime_till() {
-            return time_till;
-        }
-
-        public void setTime_till(Long time_till) {
-            this.time_till = time_till;
         }
 
         public Date getTimeTillDate() {

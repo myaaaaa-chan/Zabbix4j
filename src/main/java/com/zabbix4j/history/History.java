@@ -14,6 +14,14 @@ public class History extends ZabbixApiMethod {
         super(apiUrl, auth);
     }
 
+    /**
+     * The method allows to retrieve history data according to the given parameters.
+     * see <ah ref="https://www.zabbix.com/documentation/2.2/manual/api/reference/history/get">history.get</ah>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public HistoryGetResponse get(HistoryGetRequest request) throws ZabbixApiException {
         HistoryGetResponse response = null;
         request.setAuth(auth);

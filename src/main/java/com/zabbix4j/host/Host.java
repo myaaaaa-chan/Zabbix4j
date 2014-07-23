@@ -107,6 +107,13 @@ public class Host extends ZabbixApiMethod {
         return response;
     }
 
+    /**
+     * This method allows to delete hosts.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/host/delete">host.delete</a>
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public HostDeleteResponse delete(HostDeleteRequest request) throws ZabbixApiException {
         HostDeleteResponse response = null;
         request.setAuth(auth);

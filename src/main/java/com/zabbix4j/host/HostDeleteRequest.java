@@ -24,15 +24,21 @@
 
 package com.zabbix4j.host;
 
-import com.zabbix4j.utils.ZbxListUtils;
 import com.zabbix4j.ZabbixApiRequest;
+import com.zabbix4j.utils.ZbxListUtils;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/02.
+ * Request paramter for host.delete
+ *
+ * @author Suguru Yajima on 2014/05/02.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class HostDeleteRequest extends ZabbixApiRequest {
 
     private List<Params> params = new ArrayList<Params>();
@@ -41,18 +47,12 @@ public class HostDeleteRequest extends ZabbixApiRequest {
         setMethod("host.delete");
     }
 
-    public List<Params> getParams() {
-        return params;
-    }
-
-    public void setParams(List<Params> params) {
-        this.params = params;
-    }
-
     public void addParams(int hostid) {
         this.params = ZbxListUtils.add(this.params, new Params(hostid));
     }
 
+    @Data
+    @EqualsAndHashCode(callSuper = false)
     public class Params {
 
         private Integer hostid;

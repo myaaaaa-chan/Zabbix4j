@@ -27,12 +27,17 @@ package com.zabbix4j.host;
 import com.zabbix4j.GetRequestCommonParams;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/02.
+ * Request paramter for host.get
+ * @author Suguru Yajima on 2014/05/02.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class HostGetRequest extends ZabbixApiRequest {
 
     private Params params = new Params();
@@ -41,14 +46,9 @@ public class HostGetRequest extends ZabbixApiRequest {
         setMethod("host.get");
     }
 
-    public Params getParams() {
-        return params;
-    }
 
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @EqualsAndHashCode(callSuper = false)
     public class Params extends GetRequestCommonParams {
         private List<Integer> groupids;
         private List<Integer> applicationids;

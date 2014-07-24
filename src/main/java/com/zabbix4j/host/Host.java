@@ -61,6 +61,14 @@ public class Host extends ZabbixApiMethod {
         return response;
     }
 
+    /**
+     * This method allows to update existing hosts.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/host/update">host.update</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public HostUpdateResponse update(HostUpdateRequest request) throws ZabbixApiException {
         HostUpdateResponse response = null;
         request.setAuth(auth);
@@ -77,6 +85,13 @@ public class Host extends ZabbixApiMethod {
         return response;
     }
 
+    /**
+     * The method allows to retrieve hosts according to the given parameters.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/host/get">host.get</a>
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public HostGetResponse get(HostGetRequest request) throws ZabbixApiException {
         HostGetResponse response = null;
         request.setAuth(auth);
@@ -110,6 +125,7 @@ public class Host extends ZabbixApiMethod {
     /**
      * This method allows to delete hosts.</br>
      * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/host/delete">host.delete</a>
+     *
      * @param request
      * @return
      * @throws ZabbixApiException

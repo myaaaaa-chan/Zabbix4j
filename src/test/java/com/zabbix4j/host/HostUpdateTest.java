@@ -6,7 +6,8 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Created by Suguru Yajima on 2014/05/01.
@@ -19,9 +20,12 @@ public class HostUpdateTest extends ZabbixApiTestBase {
 
     @Test
     public void testUpdate1() throws Exception {
-
-        int targetHostId = 10108;
+        DummyHost dummyHost = new DummyHost(zabbixApi);
+        int targetHostId = dummyHost.createHost();
         try {
+            Integer unLinkTemplate = 10001;
+            Integer groupId = 5;
+
             HostUpdateRequest request = new HostUpdateRequest();
             HostUpdateRequest.Params params = request.getParams();
 
@@ -29,9 +33,9 @@ public class HostUpdateTest extends ZabbixApiTestBase {
             params.setHost("192.168.100.100");
             params.setName("test host update1");
 
-            params.setGroup(2);
+            params.setGroup(groupId);
 
-            params.setUnLinkTemplate(10093);
+            params.setUnLinkTemplate(unLinkTemplate);
 
             ArrayList<Integer> templates = new ArrayList<Integer>();
             templates.add(10093);
@@ -40,15 +44,15 @@ public class HostUpdateTest extends ZabbixApiTestBase {
             Macro macro = new Macro();
             macro.setMacro("{$MACRO2}");
             macro.setValue("VALUE2");
-            params.setMacro(macro);
+            params.addMacro(macro);
 
             HostUpdateResponse response = zabbixApi.host().update(request);
 
             assertNotNull(response);
             int actualId = response.getResult().getHostids().get(0);
             assertEquals(targetHostId, actualId);
-        } catch (Exception e) {
-            fail(e.getMessage());
+        } finally {
+            dummyHost.deleteHost(targetHostId);
         }
     }
 }

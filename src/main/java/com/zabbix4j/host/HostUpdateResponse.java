@@ -25,40 +25,32 @@
 package com.zabbix4j.host;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/01.
+ * Response paramter for host.update
+ * @author Suguru Yajima on 2014/05/01.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class HostUpdateResponse extends ZabbixApiResponse {
 
     private Result result = new Result();
 
     public HostUpdateResponse() {
+        super();
     }
 
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
+    @Data
+    @EqualsAndHashCode(callSuper = false)
     public class Result {
         private List<Integer> hostids = new ArrayList<Integer>();
 
         public Result() {
-        }
-
-        public List<Integer> getHostids() {
-            return hostids;
-        }
-
-        public void setHostids(List<Integer> hostids) {
-            this.hostids = hostids;
         }
     }
 }

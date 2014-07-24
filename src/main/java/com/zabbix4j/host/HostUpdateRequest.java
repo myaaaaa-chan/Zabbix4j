@@ -25,17 +25,22 @@
 package com.zabbix4j.host;
 
 import com.google.gson.annotations.SerializedName;
-import com.zabbix4j.utils.ZbxListUtils;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.hostinteface.HostInterfaceObject;
 import com.zabbix4j.usermacro.Macro;
+import com.zabbix4j.utils.ZbxListUtils;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/01.
+ * Request parameter for host.update
+ *
+ * @author Suguru Yajima on 2014/05/01.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class HostUpdateRequest extends ZabbixApiRequest {
 
     private Params params = new Params();
@@ -44,14 +49,8 @@ public class HostUpdateRequest extends ZabbixApiRequest {
         setMethod("host.update");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @EqualsAndHashCode(callSuper = false)
     public class Params extends HostObject {
 
         private List<Group> groups;
@@ -65,99 +64,21 @@ public class HostUpdateRequest extends ZabbixApiRequest {
         }
 
         public void setUnLinkTemplate(int templateId) {
-            if (templatesClear == null) {
-                templatesClear = new ArrayList<UnLinkTemplate>();
-            }
-            templatesClear.add(new UnLinkTemplate(templateId));
-        }
-
-        public List<UnLinkTemplate> getTemplatesClear() {
-            return templatesClear;
-        }
-
-        public void setTemplatesClear(List<UnLinkTemplate> templatesClear) {
-            this.templatesClear = templatesClear;
+            templatesClear = ZbxListUtils.add(templatesClear, new UnLinkTemplate(templateId));
         }
 
         public void setGroup(int groupId) {
-            if (this.groups == null) {
-                this.groups = new ArrayList<Group>();
-            }
             Group group = new Group();
             group.setGroupid(groupId);
-            this.groups.add(group);
-        }
-
-        public List<Group> getGroups() {
-            return groups;
-        }
-
-        public void setGroups(List<Group> groups) {
-            this.groups = groups;
+            groups = ZbxListUtils.add(groups, group);
         }
 
         public void setInteface(HostInterfaceObject hostInterface) {
             interfaces = ZbxListUtils.add(interfaces, hostInterface);
         }
 
-        public List<HostInterfaceObject> getInterfaces() {
-            return interfaces;
-        }
-
-        public void setInterfaces(List<HostInterfaceObject> interfaces) {
-            this.interfaces = interfaces;
-        }
-
-        public List<Integer> getTemplates() {
-            return templates;
-        }
-
-        public void setTemplates(List<Integer> templates) {
-            this.templates = templates;
-        }
-
-        public List<Macro> getMacros() {
-            return macros;
-        }
-
-        public void setMacros(List<Macro> macros) {
-            this.macros = macros;
-        }
-
-        public void setMacro(Macro macro) {
+        public void addMacro(Macro macro) {
             macros = ZbxListUtils.add(macros, macro);
-        }
-
-    }
-
-    public class Group {
-
-        private int groupid;
-
-        public Group() {
-        }
-
-        public int getGroupid() {
-            return groupid;
-        }
-
-        public void setGroupid(int groupid) {
-            this.groupid = groupid;
-        }
-    }
-
-    public class UnLinkTemplate {
-        private int templateid;
-
-        public UnLinkTemplate(int templateId) {
-        }
-
-        public int getTemplateid() {
-            return templateid;
-        }
-
-        public void setTemplateid(int templateid) {
-            this.templateid = templateid;
         }
     }
 }

@@ -20,36 +20,41 @@ public class HostGetTest extends ZabbixApiTestBase {
 
     @Test
     public void testGet1() throws Exception {
+        DummyHost dummyHost = new DummyHost(zabbixApi);
+        Integer targetHostId = dummyHost.createHost();
 
-        Integer targetHostId = 10108;
-        HostGetRequest request = new HostGetRequest();
-        HostGetRequest.Params params = request.getParams();
+        try {
+            HostGetRequest request = new HostGetRequest();
+            HostGetRequest.Params params = request.getParams();
 
-        ArrayList<Integer> hostIds = new ArrayList<Integer>();
-        hostIds.add(targetHostId);
-        params.setHostids(hostIds);
+            ArrayList<Integer> hostIds = new ArrayList<Integer>();
+            hostIds.add(targetHostId);
+            params.setHostids(hostIds);
 
-        params.setSelectDiscoveryRule(ZabbixApiParamter.QUERY.extend.name());
-        params.setSelectGroups(ZabbixApiParamter.QUERY.extend.name());
-        params.setSelectItems(ZabbixApiParamter.QUERY.extend.name());
-        params.setSelectApplications(ZabbixApiParamter.QUERY.extend.name());
-        params.setSelectDiscoveries(ZabbixApiParamter.QUERY.extend.name());
-        params.setSelectGraphs(ZabbixApiParamter.QUERY.extend.name());
-        params.setSelectHostDiscovery(ZabbixApiParamter.QUERY.extend.name());
-        params.setSelectHttpTests(ZabbixApiParamter.QUERY.extend.name());
-        params.setSelectInterfaces(ZabbixApiParamter.QUERY.extend.name());
-        params.setSelectInventory(ZabbixApiParamter.QUERY.extend.name());
-        params.setSelectMacros(ZabbixApiParamter.QUERY.extend.name());
-        params.setSelectParentTemplates(ZabbixApiParamter.QUERY.extend.name());
-        params.setSelectScreens(ZabbixApiParamter.QUERY.extend.name());
-        params.setSelectTriggers(ZabbixApiParamter.QUERY.extend.name());
+            params.setSelectDiscoveryRule(ZabbixApiParamter.QUERY.extend.name());
+            params.setSelectGroups(ZabbixApiParamter.QUERY.extend.name());
+            params.setSelectItems(ZabbixApiParamter.QUERY.extend.name());
+            params.setSelectApplications(ZabbixApiParamter.QUERY.extend.name());
+            params.setSelectDiscoveries(ZabbixApiParamter.QUERY.extend.name());
+            params.setSelectGraphs(ZabbixApiParamter.QUERY.extend.name());
+            params.setSelectHostDiscovery(ZabbixApiParamter.QUERY.extend.name());
+            params.setSelectHttpTests(ZabbixApiParamter.QUERY.extend.name());
+            params.setSelectInterfaces(ZabbixApiParamter.QUERY.extend.name());
+            params.setSelectInventory(ZabbixApiParamter.QUERY.extend.name());
+            params.setSelectMacros(ZabbixApiParamter.QUERY.extend.name());
+            params.setSelectParentTemplates(ZabbixApiParamter.QUERY.extend.name());
+            params.setSelectScreens(ZabbixApiParamter.QUERY.extend.name());
+            params.setSelectTriggers(ZabbixApiParamter.QUERY.extend.name());
 
-        HostGetResponse response = zabbixApi.host().get(request);
-        assertNotNull(response);
+            HostGetResponse response = zabbixApi.host().get(request);
+            assertNotNull(response);
 
-        logger.debug(getGson().toJson(response));
+            logger.debug(getGson().toJson(response));
 
-        HostGetResponse.Result result = response.getResult().get(0);
-        assertEquals(targetHostId, result.getHostid());
+            HostGetResponse.Result result = response.getResult().get(0);
+            assertEquals(targetHostId, result.getHostid());
+        } finally {
+            dummyHost.deleteHost(targetHostId);
+        }
     }
 }

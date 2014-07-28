@@ -16,17 +16,21 @@ public class HostExistTest extends ZabbixApiTestBase {
 
     @Test
     public void testExist1() throws Exception {
+        DummyHost dummyHost = new DummyHost(zabbixApi);
+        int hostId = dummyHost.createHost();
 
-        int hostId = 10108;
+        try {
+            HostExistRequest request = new HostExistRequest();
+            HostExistRequest.Params params = request.getParams();
+            params.addHostId(hostId);
 
-        HostExistRequest request = new HostExistRequest();
-        HostExistRequest.Params params = request.getParams();
-        params.addHostId(hostId);
+            HostExistResponse response = zabbixApi.host().exist(request);
 
-        HostExistResponse response = zabbixApi.host().exist(request);
-
-        assertNotNull(response);
-        assertTrue(response.isResult());
+            assertNotNull(response);
+            assertTrue(response.isResult());
+        } finally {
+            dummyHost.deleteHost(hostId);
+        }
     }
 
     @Test

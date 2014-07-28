@@ -88,6 +88,7 @@ public class Host extends ZabbixApiMethod {
     /**
      * The method allows to retrieve hosts according to the given parameters.</br>
      * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/host/get">host.get</a>
+     *
      * @param request
      * @return
      * @throws ZabbixApiException
@@ -107,6 +108,14 @@ public class Host extends ZabbixApiMethod {
         return response;
     }
 
+    /**
+     * This method checks if at least one host that matches the given filter criteria exists.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/host/exists">host.exists</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public HostExistResponse exist(HostExistRequest request) throws ZabbixApiException {
         HostExistResponse response = null;
         request.setAuth(auth);
@@ -141,6 +150,97 @@ public class Host extends ZabbixApiMethod {
         String responseJson = sendRequest(requestJson);
 
         response = gson.fromJson(responseJson, HostDeleteResponse.class);
+
+        return response;
+    }
+
+    /**
+     * This method allows to retrieve hosts that match the given filter criteria.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/host/getobjects">host.getobjects</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
+    public HostGetobjectsResponse getobjects(HostGetobjectsRequest request) throws ZabbixApiException {
+        HostGetobjectsResponse response = null;
+        request.setAuth(auth);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson(request);
+
+        String responseJson = sendRequest(requestJson);
+
+        response = gson.fromJson(responseJson, HostGetobjectsResponse.class);
+
+        return response;
+    }
+
+    /**
+     * This method checks if the given hosts are available for reading. </br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/host/isreadable">host.isreadable</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
+    public HostIsReadableResponse isReadable(HostIsReadableRequest request) throws ZabbixApiException {
+        HostIsReadableResponse response = null;
+        request.setAuth(auth);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson(request);
+
+        String responseJson = sendRequest(requestJson);
+
+        response = gson.fromJson(responseJson, HostIsReadableResponse.class);
+
+        return response;
+    }
+
+    /**
+     * This method checks if the given hosts are available for writing.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/host/iswritable">host.iswritable</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
+    public HostIsWritableResponse isWritable(HostIsWritableRequest request) throws ZabbixApiException {
+        HostIsWritableResponse response = null;
+        request.setAuth(auth);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson(request);
+
+        String responseJson = sendRequest(requestJson);
+
+        response = gson.fromJson(responseJson, HostIsWritableResponse.class);
+
+        return response;
+    }
+
+    /**
+     * This method allows to simultaneously add multiple related objects to all the given hosts.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/host/massadd">host.massadd</a>
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
+    public HostMassaddResponse massadd(HostMassaddRequest request) throws ZabbixApiException {
+        HostMassaddResponse response = null;
+        request.setAuth(auth);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson(request);
+
+        String responseJson = sendRequest(requestJson);
+
+        response = gson.fromJson(responseJson, HostMassaddResponse.class);
 
         return response;
     }

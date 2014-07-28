@@ -24,14 +24,20 @@
 
 package com.zabbix4j.host;
 
-import com.zabbix4j.utils.ZbxListUtils;
 import com.zabbix4j.ZabbixApiRequest;
+import com.zabbix4j.utils.ZbxListUtils;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/02.
+ * Request paramter for host.exists
+ *
+ * @author Suguru Yajima on 2014/05/02.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class HostExistRequest extends ZabbixApiRequest {
     private Params params = new Params();
 
@@ -39,14 +45,8 @@ public class HostExistRequest extends ZabbixApiRequest {
         setMethod("host.exists");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @EqualsAndHashCode(callSuper = false)
     public class Params {
         private List<Integer> hostid;
         private List<String> host;
@@ -67,46 +67,6 @@ public class HostExistRequest extends ZabbixApiRequest {
 
         public void addName(String name) {
             this.name = ZbxListUtils.add(this.name, name);
-        }
-
-        public List<Integer> getHostid() {
-            return hostid;
-        }
-
-        public void setHostid(List<Integer> hostid) {
-            this.hostid = hostid;
-        }
-
-        public List<String> getHost() {
-            return host;
-        }
-
-        public void setHost(List<String> host) {
-            this.host = host;
-        }
-
-        public List<String> getName() {
-            return name;
-        }
-
-        public void setName(List<String> name) {
-            this.name = name;
-        }
-
-        public String getNode() {
-            return node;
-        }
-
-        public void setNode(String node) {
-            this.node = node;
-        }
-
-        public List<Integer> getNodeids() {
-            return nodeids;
-        }
-
-        public void setNodeids(List<Integer> nodeids) {
-            this.nodeids = nodeids;
         }
 
         public void addNodeId(int nodeId) {

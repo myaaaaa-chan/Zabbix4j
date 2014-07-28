@@ -25,22 +25,20 @@
 package com.zabbix4j.host;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
- * Created by Suguru Yajima on 2014/05/02.
+ * Response paramter for host.exists
+ *
+ * @author Suguru Yajima on 2014/05/02.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class HostExistResponse extends ZabbixApiResponse {
 
     private boolean result;
 
     public HostExistResponse() {
-    }
-
-    public boolean isResult() {
-        return result;
-    }
-
-    public void setResult(boolean result) {
-        this.result = result;
     }
 }

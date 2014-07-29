@@ -268,4 +268,27 @@ public class Host extends ZabbixApiMethod {
 
         return response;
     }
+
+    /**
+     * This method allows to simultaneously replace or remove related objects and update properties on multiple hosts.</br>
+     *
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/host/massupdate">host.massupdate</a>
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
+    public HostMassupdateResponse massupdate(HostMassupdateRequest request) throws ZabbixApiException {
+        HostMassupdateResponse response = null;
+        request.setAuth(auth);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson(request);
+
+        String responseJson = sendRequest(requestJson);
+
+        response = gson.fromJson(responseJson, HostMassupdateResponse.class);
+
+        return response;
+    }
 }

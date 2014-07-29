@@ -226,6 +226,7 @@ public class Host extends ZabbixApiMethod {
     /**
      * This method allows to simultaneously add multiple related objects to all the given hosts.</br>
      * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/host/massadd">host.massadd</a>
+     *
      * @param request
      * @return
      * @throws ZabbixApiException
@@ -241,6 +242,29 @@ public class Host extends ZabbixApiMethod {
         String responseJson = sendRequest(requestJson);
 
         response = gson.fromJson(responseJson, HostMassaddResponse.class);
+
+        return response;
+    }
+
+    /**
+     * This method allows to remove related objects from multiple hosts.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/host/massremove">host.massremove</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
+    public HostMassRemoveResponse massremove(HostMassremoveRequest request) throws ZabbixApiException {
+        HostMassRemoveResponse response = null;
+        request.setAuth(auth);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson(request);
+
+        String responseJson = sendRequest(requestJson);
+
+        response = gson.fromJson(responseJson, HostMassRemoveResponse.class);
 
         return response;
     }

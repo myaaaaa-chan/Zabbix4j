@@ -25,40 +25,39 @@
 package com.zabbix4j.hostgroup;
 
 import com.zabbix4j.ZabbixApiRequest;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/04/29.
+ * Request paramter for hostgroup.create
+ *
+ * @author Suguru Yajima on 2014/04/29.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class HostgroupCreateRequest extends ZabbixApiRequest {
 
-    private Params params = new Params();
+    private List<Params> params = new ArrayList<Params>();
 
     public HostgroupCreateRequest() {
         setMethod("hostgroup.create");
     }
 
-    public Params getParams() {
-        return params;
+    public Params createParam() {
+        Params param = new Params();
+        this.params.add(param);
+        return param;
     }
 
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
-    public class Params {
-
-        private String name;
+    @Data
+    @EqualsAndHashCode(callSuper = false)
+    public class Params extends HostgroupObject {
 
         public Params() {
-
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
+            super();
         }
     }
 }

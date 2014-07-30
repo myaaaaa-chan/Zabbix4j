@@ -76,6 +76,13 @@ public class Hostgroup extends ZabbixApiMethod {
         return response;
     }
 
+    /**
+     * This method allows to create new host groups.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/hostgroup/create">hostgroup.create</a>
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public HostgroupCreateResponse create(HostgroupCreateRequest request) throws ZabbixApiException {
 
         HostgroupCreateResponse response = null;
@@ -116,6 +123,13 @@ public class Hostgroup extends ZabbixApiMethod {
         return response;
     }
 
+    /**
+     * This method allows to delete host groups.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/hostgroup/delete">hostgroup.delete</a>
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public HostgroupDeleteResponse delete(HostgroupDeleteRequest request) throws ZabbixApiException {
 
         HostgroupDeleteResponse response = null;

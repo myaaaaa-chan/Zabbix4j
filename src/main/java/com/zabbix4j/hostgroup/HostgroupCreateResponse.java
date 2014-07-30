@@ -25,12 +25,18 @@
 package com.zabbix4j.hostgroup;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.ArrayList;
 
 /**
- * Created by Suguru Yajima on 2014/04/29.
+ * Response parameter for hostgroup.create
+ *
+ * @author Suguru Yajima on 2014/04/29.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class HostgroupCreateResponse extends ZabbixApiResponse {
 
     private Result result = new Result();
@@ -39,28 +45,15 @@ public class HostgroupCreateResponse extends ZabbixApiResponse {
 
     }
 
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
+    @Data
+    @EqualsAndHashCode(callSuper = false)
     public class Result {
 
-        private ArrayList<Integer> groupids = new ArrayList<Integer>();
+        private ArrayList<Integer> groupids;
 
         public Result() {
         }
 
-        public ArrayList<Integer> getGroupids() {
-            return groupids;
-        }
-
-        public void setGroupids(ArrayList<Integer> groupids) {
-            this.groupids = groupids;
-        }
     }
 
 }

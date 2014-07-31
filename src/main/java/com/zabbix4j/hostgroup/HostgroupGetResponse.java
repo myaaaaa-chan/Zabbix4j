@@ -25,12 +25,17 @@
 package com.zabbix4j.hostgroup;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.ArrayList;
 
 /**
- * Created by Suguru Yajima on 2014/04/27.
+ * Response paramter for hostgroup.get
+ * @author Suguru Yajima on 2014/04/27.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class HostgroupGetResponse extends ZabbixApiResponse {
 
     private ArrayList<Result> result = new ArrayList<Result>();

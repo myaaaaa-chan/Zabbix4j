@@ -38,6 +38,13 @@ public class Hostgroup extends ZabbixApiMethod {
         super(apiUrl, auth);
     }
 
+    /**
+     * The method allows to retrieve host groups according to the given parameters.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/hostgroup/get">hostgroup.get</a>
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public HostgroupGetResponse get(HostgroupGetRequest request) throws ZabbixApiException {
         HostgroupGetResponse response = null;
         request.setAuth(auth);
@@ -103,6 +110,13 @@ public class Hostgroup extends ZabbixApiMethod {
         return response;
     }
 
+    /**
+     * This method allows to update existing hosts groups.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/hostgroup/update">hostgroup.update</a>
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public HostgroupUpdateResponse update(HostgroupUpdateRequest request) throws ZabbixApiException {
 
         HostgroupUpdateResponse response = null;

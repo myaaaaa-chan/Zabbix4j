@@ -25,22 +25,20 @@
 package com.zabbix4j.hostgroup;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
- * Created by Suguru Yajima on 2014/04/30.
+ * Response paramter for hostgroup.iswritable
+ *
+ * @author Suguru Yajima on 2014/04/30.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class HostgroupIsWritableResponse extends ZabbixApiResponse {
 
-    private boolean result = false;
+    private Boolean result;
 
     public HostgroupIsWritableResponse() {
-    }
-
-    public boolean isResult() {
-        return result;
-    }
-
-    public void setResult(boolean result) {
-        this.result = result;
     }
 }

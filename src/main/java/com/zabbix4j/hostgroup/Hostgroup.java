@@ -191,6 +191,13 @@ public class Hostgroup extends ZabbixApiMethod {
         return response;
     }
 
+    /**
+     * This method checks if the given host groups are available for writing.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/hostgroup/iswritable">hostgroup.iswritable</a>
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public HostgroupIsWritableResponse isWritable(HostgroupIsWritableRequest request) throws ZabbixApiException {
 
         HostgroupIsWritableResponse response = null;

@@ -36,7 +36,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class HostgroupIsReadableResponse extends ZabbixApiResponse {
-    private boolean result = false;
+    private Boolean result;
 
     public HostgroupIsReadableResponse() {
     }

@@ -25,12 +25,18 @@
 package com.zabbix4j.hostgroup;
 
 import com.zabbix4j.ZabbixApiRequest;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.ArrayList;
 
 /**
- * Created by Suguru Yajima on 2014/04/30.
+ * Request paramter for hostgroup.iswritable
+ *
+ * @author Suguru Yajima on 2014/04/30.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class HostgroupIsWritableRequest extends ZabbixApiRequest {
 
     private ArrayList<Integer> params = new ArrayList<Integer>();
@@ -39,11 +45,7 @@ public class HostgroupIsWritableRequest extends ZabbixApiRequest {
         setMethod("hostgroup.iswritable");
     }
 
-    public ArrayList<Integer> getParams() {
-        return params;
-    }
-
-    public void setParams(ArrayList<Integer> params) {
-        this.params = params;
+    public void addHostgroupId(Integer id) {
+        params.add(id);
     }
 }

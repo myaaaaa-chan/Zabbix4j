@@ -7,26 +7,25 @@ import org.junit.Test;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
-
 /**
- * Created by Suguru Yajima on 2014/04/30.
+ * @author suguru yajima 2014
  */
-public class HostgroupIsWritableTest extends ZabbixApiTestBase {
+public class HostgroupIsReadableTest extends ZabbixApiTestBase {
 
-    public HostgroupIsWritableTest() {
+    public HostgroupIsReadableTest() {
         super();
     }
 
     @Test
-    public void testIsWritable1() throws Exception {
+    public void testIsReadable1() throws Exception {
         DummyHostgroup dummyHostgroup = new DummyHostgroup(zabbixApi);
         Integer targetId = dummyHostgroup.create();
 
         try {
-            HostgroupIsWritableRequest request = new HostgroupIsWritableRequest();
+            HostgroupIsReadableRequest request = new HostgroupIsReadableRequest();
             request.addHostgroupId(targetId);
 
-            HostgroupIsWritableResponse response = zabbixApi.hostgroup().isWritable(request);
+            HostgroupIsReadableResponse response = zabbixApi.hostgroup().isreadable(request);
             assertNotNull(response);
 
             logger.debug(getGson().toJson(response));
@@ -37,20 +36,22 @@ public class HostgroupIsWritableTest extends ZabbixApiTestBase {
         }
     }
 
+
     @Test
-    public void testIsWritable2() throws Exception {
+    public void testIsReadable2() throws Exception {
         Integer targetId = 99999;
 
-        HostgroupIsWritableRequest request = new HostgroupIsWritableRequest();
+
+        HostgroupIsReadableRequest request = new HostgroupIsReadableRequest();
         request.addHostgroupId(targetId);
 
-        HostgroupIsWritableResponse response = zabbixApi.hostgroup().isWritable(request);
+        HostgroupIsReadableResponse response = zabbixApi.hostgroup().isreadable(request);
         assertNotNull(response);
 
         logger.debug(getGson().toJson(response));
 
         assertThat(response.getResult(), Is.is(Boolean.FALSE));
 
-    }
 
+    }
 }

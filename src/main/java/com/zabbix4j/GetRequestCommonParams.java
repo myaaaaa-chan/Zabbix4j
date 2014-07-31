@@ -73,4 +73,21 @@ public class GetRequestCommonParams {
             this.sortfield = sortfield;
         }
     }
+
+    public class Filter {
+        private List<String> name;
+
+        public List<String> getName() {
+            return name;
+        }
+
+        public void setName(List<String> name) {
+            this.name = name;
+        }
+
+        public void addName(String name) {
+            this.name = ZbxListUtils.add(this.name, name);
+
+        }
+    }
 }

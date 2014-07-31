@@ -164,7 +164,14 @@ public class Hostgroup extends ZabbixApiMethod {
         return response;
     }
 
-    public HostgroupIsReadableResponse isReable(HostgroupIsReadableRequest request) throws ZabbixApiException {
+    /**
+     * This method checks if the given host groups are available for reading.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/hostgroup/isreadable">hostgroup.isreadable</a>
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
+    public HostgroupIsReadableResponse isreadable(HostgroupIsReadableRequest request) throws ZabbixApiException {
 
         HostgroupIsReadableResponse response = null;
         request.setAuth(auth);

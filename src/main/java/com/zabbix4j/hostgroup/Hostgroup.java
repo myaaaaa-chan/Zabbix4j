@@ -41,6 +41,7 @@ public class Hostgroup extends ZabbixApiMethod {
     /**
      * The method allows to retrieve host groups according to the given parameters.</br>
      * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/hostgroup/get">hostgroup.get</a>
+     *
      * @param request
      * @return
      * @throws ZabbixApiException
@@ -64,8 +65,16 @@ public class Hostgroup extends ZabbixApiMethod {
         return response;
     }
 
-    public HostgroupExistResponse exist(HostgroupExistRequest request) throws ZabbixApiException {
-        HostgroupExistResponse response = null;
+    /**
+     * This method checks if at least one host group that matches the given filter criteria exists.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/hostgroup/exists">hostgroup.exists</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
+    public HostgroupExistsResponse exist(HostgroupExistsRequest request) throws ZabbixApiException {
+        HostgroupExistsResponse response = null;
         request.setAuth(auth);
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -75,7 +84,7 @@ public class Hostgroup extends ZabbixApiMethod {
         try {
             String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, HostgroupExistResponse.class);
+            response = gson.fromJson(responseJson, HostgroupExistsResponse.class);
         } catch (ZabbixApiException e) {
             throw new ZabbixApiException(e);
         }
@@ -86,6 +95,7 @@ public class Hostgroup extends ZabbixApiMethod {
     /**
      * This method allows to create new host groups.</br>
      * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/hostgroup/create">hostgroup.create</a>
+     *
      * @param request
      * @return
      * @throws ZabbixApiException
@@ -113,6 +123,7 @@ public class Hostgroup extends ZabbixApiMethod {
     /**
      * This method allows to update existing hosts groups.</br>
      * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/hostgroup/update">hostgroup.update</a>
+     *
      * @param request
      * @return
      * @throws ZabbixApiException
@@ -140,6 +151,7 @@ public class Hostgroup extends ZabbixApiMethod {
     /**
      * This method allows to delete host groups.</br>
      * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/hostgroup/delete">hostgroup.delete</a>
+     *
      * @param request
      * @return
      * @throws ZabbixApiException
@@ -167,6 +179,7 @@ public class Hostgroup extends ZabbixApiMethod {
     /**
      * This method checks if the given host groups are available for reading.</br>
      * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/hostgroup/isreadable">hostgroup.isreadable</a>
+     *
      * @param request
      * @return
      * @throws ZabbixApiException
@@ -194,6 +207,7 @@ public class Hostgroup extends ZabbixApiMethod {
     /**
      * This method checks if the given host groups are available for writing.</br>
      * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/hostgroup/iswritable">hostgroup.iswritable</a>
+     *
      * @param request
      * @return
      * @throws ZabbixApiException
@@ -221,6 +235,7 @@ public class Hostgroup extends ZabbixApiMethod {
     /**
      * This method allows to retrieve host groups that match the given filter criteria.</br>
      * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/hostgroup/getobjects">hostgroup.getobjects</a>
+     *
      * @param request
      * @return
      * @throws ZabbixApiException

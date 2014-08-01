@@ -25,72 +25,48 @@
 package com.zabbix4j.hostgroup;
 
 import com.zabbix4j.ZabbixApiRequest;
+import com.zabbix4j.utils.ZbxListUtils;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/04/27.
+ * Request paramter for hostgroup.exists
+ *
+ * @author Suguru Yajima on 2014/04/27.
  */
-public class HostgroupExistRequest extends ZabbixApiRequest {
+@Data
+@EqualsAndHashCode(callSuper = false)
+public class HostgroupExistsRequest extends ZabbixApiRequest {
 
     private Params params = new Params();
 
-    public HostgroupExistRequest() {
+    public HostgroupExistsRequest() {
         setMethod("hostgroup.exists");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @EqualsAndHashCode(callSuper = false)
     public class Params {
-
-        private ArrayList<Integer> groupid = new ArrayList<Integer>();
-
-        private ArrayList<String> name = new ArrayList<String>();
-
+        private List<Integer> groupid;
+        private List<String> name;
         private String node;
-
-        private ArrayList<String> nodeids = new ArrayList<String>();
+        private List<Integer> nodeids;
 
         public Params() {
         }
 
-        public ArrayList<String> getName() {
-            return name;
+        public void addGroupId(Integer id) {
+            groupid = ZbxListUtils.add(groupid, id);
         }
 
-        public void setName(ArrayList<String> name) {
-            this.name = name;
+        public void addName(String n) {
+            name = ZbxListUtils.add(name, n);
         }
 
-        public String getNode() {
-            return node;
-        }
-
-        public void setNode(String node) {
-            this.node = node;
-        }
-
-        public ArrayList<String> getNodeids() {
-            return nodeids;
-        }
-
-        public void setNodeids(ArrayList<String> nodeids) {
-            this.nodeids = nodeids;
-        }
-
-        public ArrayList<Integer> getGroupid() {
-
-            return groupid;
-        }
-
-        public void setGroupid(ArrayList<Integer> groupid) {
-            this.groupid = groupid;
+        public void addNodeId(Integer id) {
+            nodeids = ZbxListUtils.add(nodeids, id);
         }
     }
 }

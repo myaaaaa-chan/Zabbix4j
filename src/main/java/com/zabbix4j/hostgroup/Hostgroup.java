@@ -258,4 +258,31 @@ public class Hostgroup extends ZabbixApiMethod {
 
         return response;
     }
+
+    /**
+     * This method allows to simultaneously add multiple related objects to all the given host groups.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/hostgroup/massadd">hostgroup.massadd</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
+    public HostgroupMassaddResponse massadd(HostgroupMassaddRequest request) throws ZabbixApiException {
+        HostgroupMassaddResponse response = null;
+        request.setAuth(auth);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson(request);
+
+        try {
+            String responseJson = sendRequest(requestJson);
+
+            response = gson.fromJson(responseJson, HostgroupMassaddResponse.class);
+        } catch (ZabbixApiException e) {
+            throw new ZabbixApiException(e);
+        }
+
+        return response;
+    }
 }

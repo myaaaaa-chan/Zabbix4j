@@ -312,4 +312,31 @@ public class Hostgroup extends ZabbixApiMethod {
 
         return response;
     }
+
+    /**
+     * This method allows to simultaneously replace or remove related objects for multiple host groups.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/hostgroup/massupdate">hostgroup.massupdate</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
+    public HostgroupMassupdateResponse massupdate(HostgroupMassupdateRequest request) throws ZabbixApiException {
+        HostgroupMassupdateResponse response = null;
+        request.setAuth(auth);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson(request);
+
+        try {
+            String responseJson = sendRequest(requestJson);
+
+            response = gson.fromJson(responseJson, HostgroupMassupdateResponse.class);
+        } catch (ZabbixApiException e) {
+            throw new ZabbixApiException(e);
+        }
+
+        return response;
+    }
 }

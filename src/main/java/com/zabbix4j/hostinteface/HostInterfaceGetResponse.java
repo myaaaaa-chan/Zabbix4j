@@ -25,32 +25,23 @@
 package com.zabbix4j.hostinteface;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/08.
+ * Response parameter for hostinterface.get
+ *
+ * @author Suguru Yajima on 2014/05/08.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class HostInterfaceGetResponse extends ZabbixApiResponse {
 
-    private List<Result> result = new ArrayList<Result>();
+    private List<HostInterfaceObject> result;
 
     public HostInterfaceGetResponse() {
         super();
-    }
-
-    public List<Result> getResult() {
-        return result;
-    }
-
-    public void setResult(List<Result> result) {
-        this.result = result;
-    }
-
-    public class Result extends HostInterfaceObject {
-        public Result() {
-            super();
-        }
     }
 }

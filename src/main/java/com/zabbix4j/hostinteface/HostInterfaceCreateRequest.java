@@ -22,59 +22,32 @@
  * SOFTWARE.
  */
 
-package com.zabbix4j.screen;
+package com.zabbix4j.hostinteface;
 
-import com.zabbix4j.ZabbixApiResponse;
+import com.zabbix4j.ZabbixApiRequest;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Suguru Yajima
+ * Request parameter for hostinterface.create
+ *
+ * @author suguru yajima 2014
  */
-public class ScreenCreateResponse extends ZabbixApiResponse {
-    private Result result;
+@Data
+@EqualsAndHashCode(callSuper = false)
+public class HostInterfaceCreateRequest extends ZabbixApiRequest {
+    private List<HostInterfaceObject> params = new ArrayList<HostInterfaceObject>();
 
-    public ScreenCreateResponse() {
-        super();
+    public HostInterfaceCreateRequest() {
+        setMethod("hostinterface.create");
     }
 
-    /**
-     * Gets result.
-     *
-     * @return Value of result.
-     */
-    public Result getResult() {
-        return result;
-    }
-
-    /**
-     * Sets new result.
-     *
-     * @param result New value of result.
-     */
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
-    public class Result {
-        private List<Integer> screenids;
-
-        /**
-         * Gets screenids.
-         *
-         * @return Value of screenids.
-         */
-        public List<Integer> getScreenids() {
-            return screenids;
-        }
-
-        /**
-         * Sets new screenids.
-         *
-         * @param screenids New value of screenids.
-         */
-        public void setScreenids(List<Integer> screenids) {
-            this.screenids = screenids;
-        }
+    public HostInterfaceObject createParam() {
+        HostInterfaceObject obj = new HostInterfaceObject();
+        params.add(obj);
+        return obj;
     }
 }

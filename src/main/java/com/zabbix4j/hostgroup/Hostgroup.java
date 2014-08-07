@@ -302,13 +302,9 @@ public class Hostgroup extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, HostgroupMassremoveResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, HostgroupMassremoveResponse.class);
 
         return response;
     }
@@ -329,13 +325,9 @@ public class Hostgroup extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, HostgroupMassupdateResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, HostgroupMassupdateResponse.class);
 
         return response;
     }

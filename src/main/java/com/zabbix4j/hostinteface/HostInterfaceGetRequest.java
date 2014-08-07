@@ -25,12 +25,19 @@
 package com.zabbix4j.hostinteface;
 
 import com.zabbix4j.ZabbixApiRequest;
+import com.zabbix4j.utils.ZbxListUtils;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 /**
- * Created by Suguru Yajima on 2014/05/08.
+ * Request paramter for hostinterface.get
+ *
+ * @author Suguru Yajima on 2014/05/08.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class HostInterfaceGetRequest extends ZabbixApiRequest {
 
     private Params params = new Params();
@@ -39,51 +46,28 @@ public class HostInterfaceGetRequest extends ZabbixApiRequest {
         setMethod("hostinterface.get");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @EqualsAndHashCode(callSuper = false)
     public class Params {
-
         private List<Integer> hostids;
         private List<Integer> interfaceids;
         private List<Integer> itemids;
         private List<Integer> triggerids;
 
-        public List<Integer> getHostids() {
-            return hostids;
+        public void addHostId(Integer id) {
+            hostids = ZbxListUtils.add(hostids, id);
         }
 
-        public void setHostids(List<Integer> hostids) {
-            this.hostids = hostids;
+        public void addInterfaceId(Integer id) {
+            interfaceids = ZbxListUtils.add(interfaceids, id);
         }
 
-        public List<Integer> getInterfaceids() {
-            return interfaceids;
+        public void addItemId(Integer id) {
+            itemids = ZbxListUtils.add(itemids, id);
         }
 
-        public void setInterfaceids(List<Integer> interfaceids) {
-            this.interfaceids = interfaceids;
-        }
-
-        public List<Integer> getItemids() {
-            return itemids;
-        }
-
-        public void setItemids(List<Integer> itemids) {
-            this.itemids = itemids;
-        }
-
-        public List<Integer> getTriggerids() {
-            return triggerids;
-        }
-
-        public void setTriggerids(List<Integer> triggerids) {
-            this.triggerids = triggerids;
+        public void addTriggerId(Integer id) {
+            triggerids = ZbxListUtils.add(triggerids, id);
         }
     }
 

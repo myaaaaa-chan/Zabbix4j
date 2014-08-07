@@ -38,6 +38,38 @@ public class HostInterface extends ZabbixApiMethod {
         super(apiUrl, auth);
     }
 
+    /**
+     * This method allows to create new host interfaces.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/hostinterface/create">hostinterface.create</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
+    public HostInterfaceCreateResponse create(HostInterfaceCreateRequest request) throws ZabbixApiException {
+        HostInterfaceCreateResponse response = null;
+        request.setAuth(auth);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson(request);
+
+        String responseJson = sendRequest(requestJson);
+
+        response = gson.fromJson(responseJson, HostInterfaceCreateResponse.class);
+
+        return response;
+    }
+
+    /**
+     * The method allows to retrieve host interfaces according to the given parameters.</br>
+     * <p/>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/hostinterface/get">hostinterface.get</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
     public HostInterfaceGetResponse get(HostInterfaceGetRequest request) throws ZabbixApiException {
         HostInterfaceGetResponse response = null;
         request.setAuth(auth);
@@ -46,13 +78,9 @@ public class HostInterface extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
 
-        try {
-            String responseJson = sendRequest(requestJson);
+        String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, HostInterfaceGetResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
+        response = gson.fromJson(responseJson, HostInterfaceGetResponse.class);
 
         return response;
     }

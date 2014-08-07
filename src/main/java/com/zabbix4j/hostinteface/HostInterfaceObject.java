@@ -24,87 +24,51 @@
 
 package com.zabbix4j.hostinteface;
 
-import com.zabbix4j.ZabbixApiParamter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * Created by Suguru Yajima on 2014/05/01.
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class HostInterfaceObject {
 
     private Integer interfaceid;
-    private String dns = "";
+    private String dns;
     private Integer hostid;
     private String ip;
-    private Integer main = 1;
-    private Integer port = ZabbixApiParamter.ZABBIX_CLIENT_DEFAULT_PORT;
-    private Integer type = ZabbixApiParamter.HOST_INTERFACE_TYPE.AGENT.value;
-    private Integer useip = ZabbixApiParamter.HOST_AGENT_ACCESS_INTERFACE.IP_ADDRESS.value;
+    private Integer main;
+    private Integer port;
+    private Integer type;
+    private Integer useip;
 
     public HostInterfaceObject() {
+        super();
     }
 
-    public Integer getInterfaceid() {
-        return interfaceid;
+    public static enum MAIN {
+        NOT_DEFAULT(0),DEFAULT(1);
+
+        public int value;
+        private MAIN(int value) {
+            this.value = value;
+        }
     }
 
-    public void setInterfaceid(Integer interfaceid) {
-        this.interfaceid = interfaceid;
+    public static enum TYPE {
+        AGENT(1),SNMP(2),IPMI(3),JMX(4);
+        public int value;
+        private TYPE(int value) {
+            this.value = value;
+        }
     }
 
-    public String getDns() {
-        return dns;
+    public static enum USE_IP {
+        USE_HOST_DNS(0),USE_HOST_IP(1);
+        public int value;
+        private USE_IP(int value) {
+            this.value = value;
+        }
     }
-
-    public void setDns(String dns) {
-        this.dns = dns;
-    }
-
-    public Integer getHostid() {
-        return hostid;
-    }
-
-    public void setHostid(Integer hostid) {
-        this.hostid = hostid;
-    }
-
-    public String getIp() {
-        return ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
-
-    public Integer getMain() {
-        return main;
-    }
-
-    public void setMain(Integer main) {
-        this.main = main;
-    }
-
-    public Integer getPort() {
-        return port;
-    }
-
-    public void setPort(Integer port) {
-        this.port = port;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    public Integer getUseip() {
-        return useip;
-    }
-
-    public void setUseip(Integer useip) {
-        this.useip = useip;
-    }
-
 }

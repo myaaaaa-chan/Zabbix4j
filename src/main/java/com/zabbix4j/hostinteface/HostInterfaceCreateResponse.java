@@ -22,59 +22,35 @@
  * SOFTWARE.
  */
 
-package com.zabbix4j.screen;
+package com.zabbix4j.hostinteface;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 /**
- * @author Suguru Yajima
+ * Response parameter for hostinterface.create
+ *
+ * @author suguru yajima 2014
  */
-public class ScreenCreateResponse extends ZabbixApiResponse {
+@Data
+@EqualsAndHashCode(callSuper = false)
+public class HostInterfaceCreateResponse extends ZabbixApiResponse {
     private Result result;
 
-    public ScreenCreateResponse() {
+    public HostInterfaceCreateResponse() {
         super();
     }
 
-    /**
-     * Gets result.
-     *
-     * @return Value of result.
-     */
-    public Result getResult() {
-        return result;
-    }
-
-    /**
-     * Sets new result.
-     *
-     * @param result New value of result.
-     */
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
+    @Data
+    @EqualsAndHashCode(callSuper = false)
     public class Result {
-        private List<Integer> screenids;
+        private List<Integer> interfaceids;
 
-        /**
-         * Gets screenids.
-         *
-         * @return Value of screenids.
-         */
-        public List<Integer> getScreenids() {
-            return screenids;
-        }
-
-        /**
-         * Sets new screenids.
-         *
-         * @param screenids New value of screenids.
-         */
-        public void setScreenids(List<Integer> screenids) {
-            this.screenids = screenids;
+        public Result() {
+            super();
         }
     }
 }

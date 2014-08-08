@@ -46,11 +46,17 @@ public class DummyHost extends ZabbixApiTestDummyMethodBase {
 
         List<HostInterfaceObject> interfaces = new ArrayList<HostInterfaceObject>();
         HostInterfaceObject hostInterface = new HostInterfaceObject();
-        hostInterface.setIp("192.168.255.255");
+        hostInterface.setDns("test." + new Date().getTime() + "hostinteface.create");
+        hostInterface.setIp("192.168.100.100");
+        hostInterface.setMain(HostInterfaceObject.MAIN.DEFAULT.value);
+        hostInterface.setPort(10050);
+        hostInterface.setType(HostInterfaceObject.TYPE.AGENT.value);
+        hostInterface.setUseip(HostInterfaceObject.USE_IP.USE_HOST_IP.value);
+
         interfaces.add(hostInterface);
         params.setInterfaces(interfaces);
 
-        params.setHost("dummy host." + new Date().getTime());
+        params.setHost("dummy." + new Date().getTime() + ".host");
         params.setName("dymmy host name." + new Date().getTime());
 
         HostCreateResponse response = zabbixApi.host().create(request);

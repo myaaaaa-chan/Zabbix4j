@@ -64,6 +64,7 @@ public class HostInterface extends ZabbixApiMethod {
     /**
      * This method allows to delete host interfaces.</br>
      * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/hostinterface/delete">hosinterface.delete</a>
+     *
      * @param request
      * @return
      * @throws ZabbixApiException
@@ -79,6 +80,29 @@ public class HostInterface extends ZabbixApiMethod {
         String responseJson = sendRequest(requestJson);
 
         response = gson.fromJson(responseJson, HostInterfaceDeleteResponse.class);
+
+        return response;
+    }
+
+    /**
+     * This method allows to update existing host interfaces.</br>
+     * see <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/hostinterface/update">hostinterface.update</a>
+     *
+     * @param request
+     * @return
+     * @throws ZabbixApiException
+     */
+    public HostInterfaceUpdateResponse update(HostInterfaceUpdateRequest request) throws ZabbixApiException {
+        HostInterfaceUpdateResponse response = null;
+        request.setAuth(auth);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson(request);
+
+        String responseJson = sendRequest(requestJson);
+
+        response = gson.fromJson(responseJson, HostInterfaceUpdateResponse.class);
 
         return response;
     }

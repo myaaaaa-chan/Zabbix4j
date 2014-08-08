@@ -130,4 +130,19 @@ public class HostInterface extends ZabbixApiMethod {
 
         return response;
     }
+
+    public HostInterfaceExistsResponse exists(HostInterfaceExistsRequest request) throws ZabbixApiException {
+        HostInterfaceExistsResponse response = null;
+        request.setAuth(auth);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson(request);
+
+        String responseJson = sendRequest(requestJson);
+
+        response = gson.fromJson(responseJson, HostInterfaceExistsResponse.class);
+
+        return response;
+    }
 }

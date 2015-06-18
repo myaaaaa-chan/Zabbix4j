@@ -22,7 +22,15 @@ public class WebScenarioObject {
     private Integer status;
     private Integer templateid;
     private String variables;
+    private String url;
 
+    public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
     public Date getNextCheckDate() {
         if (nextcheck != null && nextcheck != 0) {
             return new Date(nextcheck);

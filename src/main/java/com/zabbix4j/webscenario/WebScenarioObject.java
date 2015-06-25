@@ -30,7 +30,8 @@ public class WebScenarioObject {
 
     public void setUrl(String url) {
 	this.url = url;
-	}
+      }
+
     public Date getNextCheckDate() {
         if (nextcheck != null && nextcheck != 0) {
             return new Date(nextcheck);

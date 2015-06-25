@@ -58,6 +58,14 @@ $ ./gradlew build
 
 $ ./gradlew jar
 
+## How to makr source.jar
+
+$./gradlew task sourcesJar
+
+## How to makr javadoc.jar
+
+$./gradlew task javadocJar
+
 ## License
 
 This software is distributed under the MIT License.

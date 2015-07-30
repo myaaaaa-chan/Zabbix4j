@@ -70,7 +70,7 @@ public class TriggerGetRequest extends ZabbixApiRequest {
         private String selectDiscoveryRule;
         private String selectLastEvent;
         private String filter;
-        private Integer limitSelects;
+        //private Integer limitSelects;
 
         public Params() {
             super();
@@ -264,6 +264,7 @@ public class TriggerGetRequest extends ZabbixApiRequest {
             this.filter = filter;
         }
 
+/*
         public Integer getLimitSelects() {
             return limitSelects;
         }
@@ -271,6 +272,7 @@ public class TriggerGetRequest extends ZabbixApiRequest {
         public void setLimitSelects(Integer limitSelects) {
             this.limitSelects = limitSelects;
         }
+*/
     }
 
 

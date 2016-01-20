@@ -5,7 +5,7 @@ Zabbix4j is a Zabbix API library for the Java language.
 Zabbix4j includes software from JSON.org to parse JSON response from the Zabbix API.
 You can see the license term at http://www.JSON.org/license.html
 
-Zabbix4j classes and methods structure is based on Zabbix API vsersion 2.2. 
+Zabbix4j classes and methods structure is based on Zabbix API vsersion 2.2.
 You should see [Zabbix API document](https://www.zabbix.com/documentation/2.2/manual/api)
 
 ## Usage
@@ -19,7 +19,7 @@ String password = "zabbix";
 // login to zabbix
 ZabbixApi zabbixApi = new ZabbixApi("http://localhost/zabbix/api_jsonrpc.php");
 zabbixApi.login(user, password);
-            
+
 final Integer groupId = 25;
 final Integer templateId = 10093;
 
@@ -47,6 +47,20 @@ params.setName("test host created1 name" + new Date().getTime());
 HostCreateResponse response = zabbixApi.host().create(request);
 
 int hostId = response.getResult().getHostids().get(0);
+
+//set search
+ItemGetRequest request = new ItemGetRequest();
+ItemGetRequest.Params params = request.getParams();
+String key = "web.test.in[f95b885a65,f95b885a65,bps]";
+List<Integer> hostids = new ArrayList<>();
+hostids.add(11785);
+params.setHostids(hostids);
+params.setWebitems(true);
+Map<String, String> search = new HashMap<String,String>();
+search.put("key_", key);
+params.setSearch(search);
+ItemGetResponse response = zabbixApi.item().get(request);
+
 ```
 
 

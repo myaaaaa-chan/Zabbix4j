@@ -46,7 +46,7 @@ public class ItemObject {
     private String description;
     private String error;
     private Integer flags;
-    private Float formula;
+    private String formula;
     private Integer history;
     private Integer inventory_link;
     private String ipmi_sensor;
@@ -69,6 +69,9 @@ public class ItemObject {
     private String snmpv3_privpassphrase;
     private String snmpv3_securitylevel;
     private String snmpv3_securityname;
+    private String snmpv3_authprotocol;
+    private String snmpv3_privprotocol;
+    private String snmpv3_contextname;
     private Integer status;
     private String templateid;
     private String trapper_hosts;
@@ -77,7 +80,10 @@ public class ItemObject {
     private String username;
     private String valuemapid;
     private Integer lifetime;
-
+    private Integer lastlogsize;
+    private Integer state;
+    private Integer evaltype;
+    
     public String getValuemapid() {
         return valuemapid;
     }
@@ -206,11 +212,11 @@ public class ItemObject {
         this.flags = flags;
     }
 
-    public Float getFormula() {
+    public String getFormula() {
         return formula;
     }
 
-    public void setFormula(Float formula) {
+    public void setFormula(String formula) {
         this.formula = formula;
     }
 
@@ -465,4 +471,55 @@ public class ItemObject {
     public void setLifetime(Integer lifetime) {
         this.lifetime = lifetime;
     }
+
+	public String getSnmpv3_authprotocol() {
+		return snmpv3_authprotocol;
+	}
+
+	public void setSnmpv3_authprotocol(String snmpv3_authprotocol) {
+		this.snmpv3_authprotocol = snmpv3_authprotocol;
+	}
+
+	public String getSnmpv3_privprotocol() {
+		return snmpv3_privprotocol;
+	}
+
+	public void setSnmpv3_privprotocol(String snmpv3_privprotocol) {
+		this.snmpv3_privprotocol = snmpv3_privprotocol;
+	}
+
+	public String getSnmpv3_contextname() {
+		return snmpv3_contextname;
+	}
+
+	public void setSnmpv3_contextname(String snmpv3_contextname) {
+		this.snmpv3_contextname = snmpv3_contextname;
+	}
+
+	public Integer getLastlogsize() {
+		return lastlogsize;
+	}
+
+	public void setLastlogsize(Integer lastlogsize) {
+		this.lastlogsize = lastlogsize;
+	}
+
+	public Integer getState() {
+		return state;
+	}
+
+	public void setState(Integer state) {
+		this.state = state;
+	}
+
+	public Integer getEvaltype() {
+		return evaltype;
+	}
+
+	public void setEvaltype(Integer evaltype) {
+		this.evaltype = evaltype;
+	}
+    
+    
 }
+

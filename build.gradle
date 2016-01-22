@@ -9,7 +9,7 @@ jar.libsDir = './lib'
 
 group = "com.github.0312birdzhang"
 archivesBaseName = "zabbix4j"
-version = '0.1.0'
+version = '0.1.4'
 
 repositories {
     mavenCentral()
@@ -65,14 +65,12 @@ uploadArchives {
   repositories {
     mavenDeployer {
       beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-	  
-      repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                  authentication(userName: hasProperty('ossrhUsername')?ossrhUsername:'BirdZhang', password: hasProperty('ossrhPassword')?ossrhPassword:'')
-                }
-
-                snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-                  authentication(userName: hasProperty('ossrhUsername')?ossrhUsername:'BirdZhang', password: hasProperty('ossrhPassword')?ossrhPassword:'')
-                }
+      repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/"){ 
+        authentication(userName: ossrhUsername, password: ossrhPassword) 
+        }
+      snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/"){ 
+        authentication(userName: ossrhUsername, password: ossrhPassword) 
+    	}	  
 
       pom.project {
         name 'zabbix4j'

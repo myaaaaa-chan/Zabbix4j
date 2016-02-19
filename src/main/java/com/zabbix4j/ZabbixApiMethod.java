@@ -57,7 +57,7 @@ public class ZabbixApiMethod {
     }
 
     public String sendRequest(String requestJson) throws ZabbixApiException {
-        logger.debug("request json is \n" + requestJson);
+        //logger.debug("request json is \n" + requestJson);
 
         // HTTP POST
         HttpResponse httpResponse;
@@ -112,7 +112,7 @@ public class ZabbixApiMethod {
             throw new ZabbixApiException("id mismatch");
         }
 
-        logger.debug("response json is \n" + responseBody);
+        //logger.debug("response json is \n" + responseBody);
 
         return responseBody;
     }

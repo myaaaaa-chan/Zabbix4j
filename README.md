@@ -86,7 +86,7 @@ $./gradlew task javadocJar
 <dependency>
 	<groupId>com.github.0312birdzhang</groupId>
 	<artifactId>zabbix4j</artifactId>
-	<version>0.1.3</version>
+	<version>0.1.5</version>
 </dependency>
 ```
 

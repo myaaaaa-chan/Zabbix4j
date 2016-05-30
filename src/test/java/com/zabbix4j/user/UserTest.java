@@ -18,7 +18,7 @@ public class UserTest {
     @Test
     public void testLogin1() {
 
-        User user = new User("http://192.168.200.10/zabbix/api_jsonrpc.php");
+        User user = new User("http://zabbix.dev.corp.flamingo-inc.com/api_jsonrpc.php");
         UserLoginRequest request = new UserLoginRequest();
         request.getParams().setUser("admin");
         request.getParams().setPassword("zabbix");

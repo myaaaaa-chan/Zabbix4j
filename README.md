@@ -80,13 +80,14 @@ $./gradlew task sourcesJar
 
 $./gradlew task javadocJar
 
+
 ## Use via Maven
 
 ```
 <dependency>
 	<groupId>com.github.0312birdzhang</groupId>
 	<artifactId>zabbix4j</artifactId>
-	<version>0.1.5</version>
+	<version>0.1.6</version>
 </dependency>
 ```
 
@@ -94,3 +95,4 @@ $./gradlew task javadocJar
 ## License
 
 This software is distributed under the MIT License.
+

@@ -48,7 +48,7 @@ public class ZabbixApiTestBase {
 
     protected void login(String user, String password) {
         try {
-            zabbixApi = new ZabbixApi("http://192.168.200.10/zabbix/api_jsonrpc.php");
+            zabbixApi = new ZabbixApi("http://zabbix.dev.corp.flamingo-inc.com/api_jsonrpc.php");
             zabbixApi.login(user, password);
         } catch (ZabbixApiException e) {
             fail(e.getMessage());

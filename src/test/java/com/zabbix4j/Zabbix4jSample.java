@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Zabbix4jSample {
 
-    public static final String ZBX_URL = "http://127.0.0.1/zabbix/api_jsonrpc.php";
+    public static final String ZBX_URL = "http://zabbix.dev.corp.flamingo-inc.com/api_jsonrpc.php";
     public static final String USERNAME = "admin";
     public static final String PASSWORD = "zabbix";
 

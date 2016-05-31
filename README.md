@@ -83,7 +83,7 @@ $./gradlew task javadocJar
 
 ## Use via Maven
 
-Because of my fault,version 0.1.4-5 have no class files,sorry for that.Please use version 0.1.3
+Because of my fault,version 0.1.4-5 have no class files,sorry for that.Please use version 0.1.3 or 0.1.6
 
 ```
 <dependency>
@@ -98,3 +98,6 @@ Because of my fault,version 0.1.4-5 have no class files,sorry for that.Please us
 
 This software is distributed under the MIT License.
 
+## Steps
+
+gradlew upload -x test

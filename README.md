@@ -1,5 +1,7 @@
 #Zabbix4j
 
+[![Gitter](https://badges.gitter.im/0312birdzhang/Zabbix4j.svg)](https://gitter.im/0312birdzhang/Zabbix4j?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 Zabbix4j is a Zabbix API library for the Java language.
 
 Zabbix4j includes software from JSON.org to parse JSON response from the Zabbix API.

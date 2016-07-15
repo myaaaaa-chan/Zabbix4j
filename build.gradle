@@ -66,10 +66,10 @@ uploadArchives {
     mavenDeployer {
       beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
       repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/"){ 
-        authentication(userName: "BirdZhang", password: "") 
+        authentication(userName: "BirdZhang", password: "ZHANGdebo0312") 
         }
       snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/"){ 
-        authentication(userName: "BirdZhang", password: "") 
+        authentication(userName: "BirdZhang", password: "ZHANGdebo0312") 
     	}	  
 
       pom.project {

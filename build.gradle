@@ -3,13 +3,13 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'signing'
 
-sourceCompatibility = 1.6
-jar.baseName = 'zabbix4j'
+sourceCompatibility = 1.7
+jar.baseName = 'Zabbix4j'
 jar.libsDir = './lib'
 
 group = "com.github.0312birdzhang"
-archivesBaseName = "zabbix4j"
-version = '0.1.6'
+archivesBaseName = "Zabbix4j"
+version = '0.1.7'
 
 repositories {
     mavenCentral()

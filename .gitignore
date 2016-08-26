@@ -1,7 +1,7 @@
 out
 lib
 .idea
-.gradle
+.gradle*
 Zabbix4j.iml
 logs
 build/reports

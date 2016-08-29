@@ -1,6 +1,7 @@
 package com.zabbix4j.webscenario;
 
 import com.zabbix4j.ZabbixApiRequest;
+import com.zabbix4j.utils.ZbxListUtils;
 
 import java.util.List;
 
@@ -33,14 +34,18 @@ public class HttpTestUpdateRequest extends ZabbixApiRequest {
     }
 
     public class Params extends WebScenarioObject {
-        private List<WebScenarioObject> steps;
+        private List<ScenarioStepObject> steps;
+
+        public void addScenarioStepObject(ScenarioStepObject obj) {
+            steps = ZbxListUtils.add(steps, obj);
+        }
 
         /**
          * Gets steps.
          *
          * @return Value of steps.
          */
-        public List<WebScenarioObject> getSteps() {
+        public List<ScenarioStepObject> getSteps() {
             return steps;
         }
 
@@ -49,7 +54,7 @@ public class HttpTestUpdateRequest extends ZabbixApiRequest {
          *
          * @param steps New value of steps.
          */
-        public void setSteps(List<WebScenarioObject> steps) {
+        public void setSteps(List<ScenarioStepObject> steps) {
             this.steps = steps;
         }
     }

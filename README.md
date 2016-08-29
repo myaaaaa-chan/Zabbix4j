@@ -74,11 +74,11 @@ $ ./gradlew build
 
 $ ./gradlew jar
 
-## How to makr source.jar
+## How to make source.jar
 
 $./gradlew task sourcesJar
 
-## How to makr javadoc.jar
+## How to make javadoc.jar
 
 $./gradlew task javadocJar
 
@@ -102,4 +102,4 @@ This software is distributed under the MIT License.
 
 ## Steps
 
-gradlew upload -x test
+$./gradlew upload -x test

@@ -22,7 +22,7 @@ public class ActionDeleteTest extends ZabbixApiTestBase {
         Integer expectedId = dummyAction.create();
 
         ActionDeleteRequest request = new ActionDeleteRequest();
-        request.getParams().add(expectedId);
+        request.addActionId(expectedId);
 
         ActionDeleteResponse response = zabbixApi.action().delete(request);
         assertNotNull(response);

@@ -50,7 +50,7 @@ public class ActionCondition {
     private Integer operator;
 
     public static enum CONDITION_TYPE_TRIGGER {
-        HOST_GROUP(0), HOST(1), TRIGGER(2), TRIGGER_NAMW(3), TRIIGER_SERVERITY(4), TRIGGER_VALUE(5), TIME_PERIOD(6), HOST_TEMPLATE(13), APPLICATION(15), MAINTENANCE_STATUS(16), NODE(17);
+        HOST_GROUP(0), HOST(1), TRIGGER(2), TRIGGER_NAME(3), TRIIGER_SERVERITY(4), TRIGGER_VALUE(5), TIME_PERIOD(6), HOST_TEMPLATE(13), APPLICATION(15), MAINTENANCE_STATUS(16), NODE(17);
 
         public int value;
 
@@ -98,4 +98,45 @@ public class ActionCondition {
             this.value = value;
         }
     }
+
+	public Integer getConditionid() {
+		return conditionid;
+	}
+
+	public void setConditionid(Integer conditionid) {
+		this.conditionid = conditionid;
+	}
+
+	public Integer getConditiontype() {
+		return conditiontype;
+	}
+
+	public void setConditiontype(Integer conditiontype) {
+		this.conditiontype = conditiontype;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
+	}
+
+	public Integer getActionid() {
+		return actionid;
+	}
+
+	public void setActionid(Integer actionid) {
+		this.actionid = actionid;
+	}
+
+	public Integer getOperator() {
+		return operator;
+	}
+
+	public void setOperator(Integer operator) {
+		this.operator = operator;
+	}
+    
 }

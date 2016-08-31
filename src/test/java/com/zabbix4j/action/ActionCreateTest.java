@@ -68,8 +68,7 @@ public class ActionCreateTest extends ZabbixApiTestBase {
     private void deleteDummy(Integer id) throws ZabbixApiException {
 
         ActionDeleteRequest request = new ActionDeleteRequest();
-        request.getParams().add(id);
-
+        request.addActionId(id);
         ActionDeleteResponse response = zabbixApi.action().delete(request);
     }
 }

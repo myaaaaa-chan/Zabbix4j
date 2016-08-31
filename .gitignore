@@ -10,3 +10,6 @@ build/classes
 build/test-results
 build/tmp
 build/*
+/build/
+/bin/
+/target/

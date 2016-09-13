@@ -60,17 +60,43 @@ public class ActionCreateRequest extends ZabbixApiRequest {
 
     @Data
     public class Params extends ActionObject {
+    	private Filter filter = new Filter();
+    	
+    	public Filter createFilter(){
+    		return filter;
+    	}
+    	
+    	public class Filter{
+    		private int evaltype;
+    		private List<ActionCondition> conditions;
+    		
+    		public Filter(){
+    			super();
+    		}
+    		
+/*			public int getEvaltype() {
+				return evaltype;
+			}*/
+			public void setEvaltype(int evaltype) {
+				this.evaltype = evaltype;
+			}
+/*			public List<ActionCondition> getConditions() {
+				return conditions;
+			}*/
 
-        private List<ActionCondition> conditions;
+			public void addActionConditon(ActionCondition ac) {
+				conditions = ZbxListUtils.add(conditions, ac);
+	        }
+    		
+    		
+    	}
         private List<ActionOperation> operations;
 
         public Params() {
             super();
         }
 
-        public void addActionConditon(ActionCondition ac) {
-            conditions = ZbxListUtils.add(conditions, ac);
-        }
+        
 
         public void addActionOperation(ActionOperation ao) {
             operations = ZbxListUtils.add(operations, ao);

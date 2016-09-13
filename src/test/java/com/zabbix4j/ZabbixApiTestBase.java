@@ -37,8 +37,8 @@ import static org.junit.Assert.fail;
 public class ZabbixApiTestBase {
 
     protected static Logger logger = LoggerFactory.getLogger(ZabbixApiTestBase.class);
-    protected String user = "admin";
-    protected String password = "zabbix";
+    protected String user = "ops";
+    protected String password = "Tsupport_308sdfllsa";
 
     protected ZabbixApi zabbixApi;
 

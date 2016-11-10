@@ -55,7 +55,7 @@ public class ActionGetTest extends ZabbixApiTestBase {
         ac.setOperator(ActionCondition.CONDITION_OPERATOR.EQUAL.value);
         ac.setValue("10109");
         params.createFilter().addActionConditon(ac);
-
+        params.createFilter().setEvaltype(0);
         ActionOperation ao = new ActionOperation();
         ao.setOperationtype(0);
         ao.setEsc_period(0);

@@ -46,7 +46,6 @@ public class Action extends ZabbixApiMethod {
 
         String requestJson = gson.toJson(request);
         
-        System.out.println(requestJson);
         try {
             String responseJson = sendRequest(requestJson);
 

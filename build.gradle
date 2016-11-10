@@ -9,7 +9,7 @@ jar.libsDir = './lib'
 
 group = "com.github.0312birdzhang"
 archivesBaseName = "Zabbix4j"
-version = '0.1.7'
+version = '0.1.8'
 
 repositories {
     mavenCentral()

@@ -36,6 +36,7 @@ import java.util.List;
  * Request paramter of action.create
  *
  * @author Suguru Yajima on 2014/05/19.
+ * 
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -74,15 +75,10 @@ public class ActionCreateRequest extends ZabbixApiRequest {
     			super();
     		}
     		
-/*			public int getEvaltype() {
-				return evaltype;
-			}*/
 			public void setEvaltype(int evaltype) {
 				this.evaltype = evaltype;
 			}
-/*			public List<ActionCondition> getConditions() {
-				return conditions;
-			}*/
+
 
 			public void addActionConditon(ActionCondition ac) {
 				conditions = ZbxListUtils.add(conditions, ac);

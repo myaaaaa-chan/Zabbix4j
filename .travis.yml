@@ -1,7 +1,5 @@
 language: java
 
-script: gradlew jar task sourcesJar task javadocJar
-
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
 cache:

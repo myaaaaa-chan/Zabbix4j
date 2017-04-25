@@ -10,6 +10,9 @@ build/classes
 build/test-results
 build/tmp
 build/*
+.settings
 /build/
 /bin/
 /target/
+.gitignore
+/build.gradle

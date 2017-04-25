@@ -43,7 +43,7 @@ public class GetRequestCommonParams {
     private Map<String, String> search;
     private Boolean searchByAny;
     private Boolean searchWildcardsEnabled;
-    private List<SortOrder> sortorder;
+    private List<String> sortorder;
     private Boolean startSearch;
 	private Integer limitSelects;
     private List<String> sortfield;
@@ -198,11 +198,11 @@ public class GetRequestCommonParams {
         this.sortfield = sortfield;
     }
 
-    public List<SortOrder> getSortorder() {
+    public List<String> getSortorder() {
         return sortorder;
     }
 
-    public void setSortorder(List<SortOrder> sortorder) {
+    public void setSortorder(List<String> sortorder) {
         this.sortorder = sortorder;
     }
 
@@ -216,10 +216,10 @@ public class GetRequestCommonParams {
 		this.search = search;
 	}
 
-	public void setSortOrder(SortOrder order) {
+/*	public void setSortOrder(SortOrder order) {
         sortorder = ZbxListUtils.add(sortorder, order);
 
-    }
+    }*/
 
     public Boolean getStartSearch() {
 		return startSearch;
@@ -229,12 +229,19 @@ public class GetRequestCommonParams {
 		this.startSearch = startSearch;
 	}
 	
-    public class SortOrder {
+   /* public static class SortOrder {
         private String sortfield;
-        private String order;
-
-        private SortOrder() {
+        private String sortorder;
+        
+        public SortOrder() {
         }
+        public String getSortorder() {
+			return sortorder;
+		}
+
+		public void setSortorder(String sortorder) {
+			this.sortorder = sortorder;
+		}
 
         public String getSortfield() {
             return sortfield;
@@ -243,7 +250,7 @@ public class GetRequestCommonParams {
         public void setSortfield(String sortfield) {
             this.sortfield = sortfield;
         }
-    }
+    }*/
     
 }
 

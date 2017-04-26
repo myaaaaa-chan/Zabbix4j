@@ -1,4 +1,4 @@
-#Zabbix4j
+# Zabbix4j
 
 [![Gitter](https://badges.gitter.im/0312birdzhang/Zabbix4j.svg)](https://gitter.im/0312birdzhang/Zabbix4j?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Build Status](https://travis-ci.org/0312birdzhang/Zabbix4j.svg?branch=master)](https://travis-ci.org/0312birdzhang/Zabbix4j)
@@ -86,13 +86,13 @@ $./gradlew task javadocJar
 
 ## Use via Maven
 
-Because of my fault,version 0.1.4-5 have no class files,sorry for that.Please use version 0.1.3 or 0.1.6
+Because of my fault,version 0.1.4-5 have no class files,sorry for that.Please use after 0.1.6
 
 ```
 <dependency>
-	<groupId>com.github.0312birdzhang</groupId>
-	<artifactId>zabbix4j</artifactId>
-	<version>0.1.6</version>
+    <groupId>com.github.0312birdzhang</groupId>
+    <artifactId>Zabbix4j</artifactId>
+    <version>0.1.9</version>
 </dependency>
 ```
 
@@ -101,6 +101,6 @@ Because of my fault,version 0.1.4-5 have no class files,sorry for that.Please us
 
 This software is distributed under the MIT License.
 
-## Steps
+## Steps upload to nexus
 
-$./gradlew upload -x test
+$./gradlew upload -x test -x javadoc

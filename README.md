@@ -1,11 +1,14 @@
-#Zabbix4j
+# Zabbix4j
+
+[![Gitter](https://badges.gitter.im/0312birdzhang/Zabbix4j.svg)](https://gitter.im/0312birdzhang/Zabbix4j?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Build Status](https://travis-ci.org/0312birdzhang/Zabbix4j.svg?branch=master)](https://travis-ci.org/0312birdzhang/Zabbix4j)
 
 Zabbix4j is a Zabbix API library for the Java language.
 
 Zabbix4j includes software from JSON.org to parse JSON response from the Zabbix API.
 You can see the license term at http://www.JSON.org/license.html
 
-Zabbix4j classes and methods structure is based on Zabbix API vsersion 2.2. 
+Zabbix4j classes and methods structure is based on Zabbix API vsersion 2.2.
 You should see [Zabbix API document](https://www.zabbix.com/documentation/2.2/manual/api)
 
 ## Usage
@@ -19,7 +22,7 @@ String password = "zabbix";
 // login to zabbix
 ZabbixApi zabbixApi = new ZabbixApi("http://localhost/zabbix/api_jsonrpc.php");
 zabbixApi.login(user, password);
-            
+
 final Integer groupId = 25;
 final Integer templateId = 10093;
 
@@ -47,6 +50,20 @@ params.setName("test host created1 name" + new Date().getTime());
 HostCreateResponse response = zabbixApi.host().create(request);
 
 int hostId = response.getResult().getHostids().get(0);
+
+//set search
+ItemGetRequest request = new ItemGetRequest();
+ItemGetRequest.Params params = request.getParams();
+String key = "web.test.in[f95b885a65,f95b885a65,bps]";
+List<Integer> hostids = new ArrayList<>();
+hostids.add(11785);
+params.setHostids(hostids);
+params.setWebitems(true);
+Map<String, String> search = new HashMap<String,String>();
+search.put("key_", key);
+params.setSearch(search);
+ItemGetResponse response = zabbixApi.item().get(request);
+
 ```
 
 
@@ -58,6 +75,32 @@ $ ./gradlew build
 
 $ ./gradlew jar
 
+## How to make source.jar
+
+$./gradlew task sourcesJar
+
+## How to make javadoc.jar
+
+$./gradlew task javadocJar
+
+
+## Use via Maven
+
+Because of my fault,version 0.1.4-5 have no class files,sorry for that.Please use after 0.1.6
+
+```
+<dependency>
+    <groupId>com.github.0312birdzhang</groupId>
+    <artifactId>Zabbix4j</artifactId>
+    <version>0.1.9</version>
+</dependency>
+```
+
+
 ## License
 
 This software is distributed under the MIT License.
+
+## Steps upload to nexus
+
+$./gradlew upload -x test -x javadoc

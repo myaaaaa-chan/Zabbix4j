@@ -1,6 +1,7 @@
 package com.zabbix4j.action;
 
 import com.zabbix4j.ZabbixApiRequest;
+import com.zabbix4j.action.ActionCreateRequest.Params;
 import com.zabbix4j.utils.ZbxListUtils;
 import lombok.Data;
 
@@ -20,7 +21,15 @@ public class ActionExistsRequest extends ZabbixApiRequest {
         setMethod("action.exists");
     }
 
-    @Data
+    public Params getParams() {
+		return params;
+	}
+
+	public void setParams(Params params) {
+		this.params = params;
+	}
+
+	@Data
     public class Params {
         private List<Integer> actionid;
         private List<String> name;

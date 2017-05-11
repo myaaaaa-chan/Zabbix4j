@@ -1,6 +1,6 @@
 <configuration>
 
-    <property name="LoggingDir" value="logs/" />
+    <property name="LoggingDir" value="/data/logs/" />
     <property name="ROOT_LEVEL" value="TRACE" />
     <timestamp key="byDate" datePattern="yyyyMMdd"/>
 

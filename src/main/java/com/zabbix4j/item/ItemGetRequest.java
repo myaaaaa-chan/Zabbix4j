@@ -29,7 +29,7 @@ import com.zabbix4j.utils.ZbxListUtils;
 import com.zabbix4j.ZabbixApiRequest;
 
 import java.util.List;
-
+import java.util.Map;
 /**
  * Created by Suguru Yajima on 2014/05/02.
  */
@@ -67,7 +67,16 @@ public class ItemGetRequest extends ZabbixApiRequest {
         private String host;
         private String application;
         private Boolean with_triggers;
+	private Map<String, String> searchKey;
+        
+        public Map<String, String> getSearchKey() {
+		return searchKey;
+	}
 
+
+	public void setSearchKey(Map<String, String> searchKey) {
+		this.searchKey = searchKey;
+	}
         public Params() {
         }
 

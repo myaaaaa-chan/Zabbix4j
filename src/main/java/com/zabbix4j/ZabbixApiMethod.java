@@ -27,11 +27,15 @@ package com.zabbix4j;
 import com.google.gson.Gson;
 import com.zabbix4j.utils.json.JSONException;
 import com.zabbix4j.utils.json.JSONObject;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,7 +57,7 @@ public class ZabbixApiMethod {
     }
 
     public String sendRequest(String requestJson) throws ZabbixApiException {
-        logger.debug("request json is \n" + requestJson);
+        //logger.debug("request json is \n" + requestJson);
 
         // HTTP POST
         HttpResponse httpResponse;
@@ -63,7 +67,7 @@ public class ZabbixApiMethod {
         String responseBody = null;
         try {
             httpPost.setHeader("Content-Type", "application/json-rpc");
-            httpPost.setEntity(new StringEntity(requestJson));
+            httpPost.setEntity(new StringEntity(requestJson.toString(), HTTP.UTF_8)); 
 
             @SuppressWarnings("deprecated")
             DefaultHttpClient client = new DefaultHttpClient();
@@ -108,7 +112,7 @@ public class ZabbixApiMethod {
             throw new ZabbixApiException("id mismatch");
         }
 
-        logger.debug("response json is \n" + responseBody);
+        //logger.debug("response json is \n" + responseBody);
 
         return responseBody;
     }

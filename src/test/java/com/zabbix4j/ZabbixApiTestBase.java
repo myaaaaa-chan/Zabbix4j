@@ -37,8 +37,8 @@ import static org.junit.Assert.fail;
 public class ZabbixApiTestBase {
 
     protected static Logger logger = LoggerFactory.getLogger(ZabbixApiTestBase.class);
-    protected String user = "admin";
-    protected String password = "zabbix";
+    protected String user = "ops";
+    protected String password = "Tsupport_308sdfllsa";
 
     protected ZabbixApi zabbixApi;
 
@@ -48,7 +48,7 @@ public class ZabbixApiTestBase {
 
     protected void login(String user, String password) {
         try {
-            zabbixApi = new ZabbixApi("http://192.168.200.10/zabbix/api_jsonrpc.php");
+            zabbixApi = new ZabbixApi("http://zabbix.dev.corp.flamingo-inc.com/api_jsonrpc.php");
             zabbixApi.login(user, password);
         } catch (ZabbixApiException e) {
             fail(e.getMessage());

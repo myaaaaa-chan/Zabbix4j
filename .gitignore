@@ -1,7 +1,7 @@
 out
 lib
 .idea
-.gradle
+.gradle*
 Zabbix4j.iml
 logs
 build/reports
@@ -9,3 +9,10 @@ build/resources
 build/classes
 build/test-results
 build/tmp
+build/*
+.settings
+/build/
+/bin/
+/target/
+.gitignore
+/build.gradle

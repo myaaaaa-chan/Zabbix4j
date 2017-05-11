@@ -38,7 +38,15 @@ public class ActionDeleteResponse extends ZabbixApiResponse {
 
     private Result result = new Result();
 
-    public ActionDeleteResponse() {
+    public Result getResult() {
+		return result;
+	}
+
+	public void setResult(Result result) {
+		this.result = result;
+	}
+
+	public ActionDeleteResponse() {
         super();
     }
 

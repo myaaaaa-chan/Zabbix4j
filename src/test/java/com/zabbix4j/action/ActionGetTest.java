@@ -54,8 +54,8 @@ public class ActionGetTest extends ZabbixApiTestBase {
         ac.setConditiontype(ActionCondition.CONDITION_TYPE_TRIGGER.HOST.value);
         ac.setOperator(ActionCondition.CONDITION_OPERATOR.EQUAL.value);
         ac.setValue("10109");
-        params.addActionConditon(ac);
-
+        params.createFilter().addActionConditon(ac);
+        params.createFilter().setEvaltype(0);
         ActionOperation ao = new ActionOperation();
         ao.setOperationtype(0);
         ao.setEsc_period(0);
@@ -82,7 +82,7 @@ public class ActionGetTest extends ZabbixApiTestBase {
     private void deleteDummy(Integer id) throws ZabbixApiException {
 
         ActionDeleteRequest request = new ActionDeleteRequest();
-        request.getParams().add(id);
+        request.addActionId(id);
 
         ActionDeleteResponse response = zabbixApi.action().delete(request);
     }

@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.zabbix4j.item;
+package com.zabbix4j.valuemaps;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -30,22 +30,22 @@ import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiMethod;
 
 /**
- * Created by Suguru Yajima on 2014/05/02.
+ * Created by 0312birdzhang on 2016/02/19.
  */
-public class Item extends ZabbixApiMethod {
+public class ValueMaps extends ZabbixApiMethod {
 
-    public Item(String apiUrl, String auth) {
+    public ValueMaps(String apiUrl, String auth) {
         super(apiUrl, auth);
     }
 
-    public ItemGetResponse get(ItemGetRequest request) throws ZabbixApiException {
-        ItemGetResponse response = null;
+    public ValueMapsGetResponse get(ValueMapsGetRequest request) throws ZabbixApiException {
+        ValueMapsGetResponse response = null;
         request.setAuth(auth);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String requestJson = gson.toJson(request);
         try {
             String responseJson = sendRequest(requestJson);
-            response = gson.fromJson(responseJson, ItemGetResponse.class);
+            response = gson.fromJson(responseJson, ValueMapsGetResponse.class);
         } catch (ZabbixApiException e) {
             throw new ZabbixApiException(e);
         }
@@ -53,8 +53,8 @@ public class Item extends ZabbixApiMethod {
         return response;
     }
 
-    public ItemCreateResponse create(ItemCreateRequest request) throws ZabbixApiException {
-        ItemCreateResponse response = null;
+    public ValueMapsCreateResponse create(ValueMapsCreateRequest request) throws ZabbixApiException {
+        ValueMapsCreateResponse response = null;
         request.setAuth(auth);
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -64,7 +64,7 @@ public class Item extends ZabbixApiMethod {
         try {
             String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, ItemCreateResponse.class);
+            response = gson.fromJson(responseJson, ValueMapsCreateResponse.class);
         } catch (ZabbixApiException e) {
             throw new ZabbixApiException(e);
         }
@@ -72,8 +72,8 @@ public class Item extends ZabbixApiMethod {
         return response;
     }
 
-    public ItemUpdateResponse update(ItemUpdateRequest request) throws ZabbixApiException {
-        ItemUpdateResponse response = null;
+    public ValueMapsUpdateResponse update(ValueMapsUpdateRequest request) throws ZabbixApiException {
+        ValueMapsUpdateResponse response = null;
         request.setAuth(auth);
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -83,7 +83,7 @@ public class Item extends ZabbixApiMethod {
         try {
             String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, ItemUpdateResponse.class);
+            response = gson.fromJson(responseJson, ValueMapsUpdateResponse.class);
         } catch (ZabbixApiException e) {
             throw new ZabbixApiException(e);
         }
@@ -91,8 +91,8 @@ public class Item extends ZabbixApiMethod {
         return response;
     }
 
-    public ItemDeleteResponse delete(ItemDeleteRequest request) throws ZabbixApiException {
-        ItemDeleteResponse response = null;
+    public ValueMapsDeleteResponse delete(ValueMapsDeleteRequest request) throws ZabbixApiException {
+        ValueMapsDeleteResponse response = null;
         request.setAuth(auth);
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -102,7 +102,7 @@ public class Item extends ZabbixApiMethod {
         try {
             String responseJson = sendRequest(requestJson);
 
-            response = gson.fromJson(responseJson, ItemDeleteResponse.class);
+            response = gson.fromJson(responseJson, ValueMapsDeleteResponse.class);
         } catch (ZabbixApiException e) {
             throw new ZabbixApiException(e);
         }

@@ -17,7 +17,7 @@ public class ActionExistsTest extends ZabbixApiTestBase {
 
     @Test
     public void testExists() throws Exception {
-        final Integer actionid = 25;
+        final Integer actionid = 3;
 
         ActionExistsRequest request = new ActionExistsRequest();
         ActionExistsRequest.Params params = request.getParams();

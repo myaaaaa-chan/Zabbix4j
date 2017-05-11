@@ -52,5 +52,23 @@ public class ActionCreateResponse extends ZabbixApiResponse {
         }
 
         List<Integer> actionids;
+
+		public List<Integer> getActionids() {
+			return actionids;
+		}
+
+		public void setActionids(List<Integer> actionids) {
+			this.actionids = actionids;
+		}
+        
     }
+
+	public Result getResult() {
+		return result;
+	}
+
+	public void setResult(Result result) {
+		this.result = result;
+	}
+    
 }

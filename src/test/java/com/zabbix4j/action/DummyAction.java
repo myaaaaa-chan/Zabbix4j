@@ -32,7 +32,7 @@ public class DummyAction extends ZabbixApiTestDummyMethodBase {
         ac.setConditiontype(ActionCondition.CONDITION_TYPE_TRIGGER.HOST.value);
         ac.setOperator(ActionCondition.CONDITION_OPERATOR.EQUAL.value);
         ac.setValue(hostId);
-        param.addActionConditon(ac);
+        param.createFilter().addActionConditon(ac);
 
         ActionOperation ao = new ActionOperation();
         ao.setOperationtype(0);

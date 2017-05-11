@@ -27,6 +27,7 @@ package com.zabbix4j;
 import com.zabbix4j.utils.ZbxListUtils;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Suguru Yajima on 2014/05/02.
@@ -39,12 +40,12 @@ public class GetRequestCommonParams {
     private List<Integer> nodeids;
     private String output = "extend";
     private Boolean preservekeys;
-    private String search;
+    private Map<String, String> search;
     private Boolean searchByAny;
     private Boolean searchWildcardsEnabled;
-    private List<SortOrder> sortorder;
-    private String startSearch;
-    private Integer limitSelects;
+    private List<String> sortorder;
+    private Boolean startSearch;
+	private Integer limitSelects;
     private List<String> sortfield;
     private String selectConditions;
     private String selectOperations;
@@ -180,13 +181,6 @@ public class GetRequestCommonParams {
         return preservekeys;
     }
 
-    public String getSearch() {
-        return search;
-    }
-
-    public void setSearch(String search) {
-        this.search = search;
-    }
 
     public Boolean isSearchByAny() {
         return searchByAny;
@@ -204,33 +198,50 @@ public class GetRequestCommonParams {
         this.sortfield = sortfield;
     }
 
-    public List<SortOrder> getSortorder() {
+    public List<String> getSortorder() {
         return sortorder;
     }
 
-    public void setSortorder(List<SortOrder> sortorder) {
+    public void setSortorder(List<String> sortorder) {
         this.sortorder = sortorder;
     }
 
-    public String getStartSearch() {
-        return startSearch;
-    }
 
-    public void setStartSearch(String startSearch) {
-        this.startSearch = startSearch;
-    }
+   
+	public Map<String, String> getSearch() {
+		return search;
+	}
 
-    public void setSortOrder(SortOrder order) {
+	public void setSearch(Map<String, String> search) {
+		this.search = search;
+	}
+
+/*	public void setSortOrder(SortOrder order) {
         sortorder = ZbxListUtils.add(sortorder, order);
 
-    }
+    }*/
 
-    public class SortOrder {
+    public Boolean getStartSearch() {
+		return startSearch;
+	}
+
+	public void setStartSearch(Boolean startSearch) {
+		this.startSearch = startSearch;
+	}
+	
+   /* public static class SortOrder {
         private String sortfield;
-        private String order;
-
-        private SortOrder() {
+        private String sortorder;
+        
+        public SortOrder() {
         }
+        public String getSortorder() {
+			return sortorder;
+		}
+
+		public void setSortorder(String sortorder) {
+			this.sortorder = sortorder;
+		}
 
         public String getSortfield() {
             return sortfield;
@@ -239,5 +250,7 @@ public class GetRequestCommonParams {
         public void setSortfield(String sortfield) {
             this.sortfield = sortfield;
         }
-    }
+    }*/
+    
 }
+

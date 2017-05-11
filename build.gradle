@@ -1,11 +1,15 @@
+
 apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'signing'
 
-sourceCompatibility = 1.6
-jar.baseName = 'zabbix4j'
-jar.libsDir = './lib'
+sourceCompatibility = 1.7
+jar.baseName = 'Zabbix4j'
 jar.libsDir = './lib'
 
-version = '0.1'
+group = "com.github.0312birdzhang"
+archivesBaseName = "Zabbix4j"
+version = '0.1.9'
 
 repositories {
     mavenCentral()
@@ -37,4 +41,65 @@ task installDependencies << {
         from configurations.compile
         into './lib'
     }
+}
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+signing {
+    sign configurations.archives
+}
+
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+      repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/"){ 
+        authentication(userName: "BirdZhang", password: "") 
+        }
+      snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/"){ 
+        authentication(userName: "BirdZhang", password: "") 
+    	}	  
+
+      pom.project {
+        name 'zabbix4j'
+        packaging 'jar'
+        // optionally artifactId can be defined here 
+        description 'Zabbix API library for the Java language.'
+        url 'https://github.com/0312birdzhang/Zabbix4j'
+
+        scm {
+          connection 'scm:svn:http://github.com/0312birdzhang/Zabbix4j'
+          developerConnection 'scm:svn:https://github.com/0312birdzhang/Zabbix4j'
+          url 'https://github.com/0312birdzhang/Zabbix4j'
+        }
+
+        licenses {
+          license {
+            name 'The Apache License, Version 2.0'
+            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+          }
+        }
+
+        developers {
+          developer {
+            id '0312birdzhang'
+            name 'BirdZhang'
+            email '0312birdzhang@gmail.com'
+          }
+        }
+      }
+    }
+  }
 }
